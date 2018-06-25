@@ -32,8 +32,8 @@ class Home extends Component {
                 <Navbar />
                 {!this.state.isLogged &&
                 <div>
-                    <Catalog />
                     <Features />
+                    <Catalog />
                     <Developers />
                     <About />
                     <Contact />

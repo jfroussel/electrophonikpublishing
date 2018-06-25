@@ -21,19 +21,17 @@ class Catalog extends Component {
 
     return (
       <ScrollableAnchor id={'catalog'}>
-        <section className="features-1 text-center">
-          <div className="container">
-            <h2 className="font-weight-light">Catalog</h2>
-            <p className="lead constrain-width mt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. At aliquam rhoncus donec magna turpis, dictum sit amet tellus at, commodo elementum sapien.</p>
-            <div className="divider"></div>
-            <div className="row">
+        <section className="features-1">
+          <div className="container-fluid container-catalog">
+            
+           
               <CatalogHeader />
-            </div>
+           
             <div className="row">
-              <div className="col-3">
+              <div className="col-2 catalog-sidebar">
                 <CatalogSidebar />
               </div>
-              <div className="col-9">
+              <div className="col-10">
                 <CatalogContent />
               </div>
             </div>

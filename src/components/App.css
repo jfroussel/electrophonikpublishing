@@ -475,14 +475,14 @@ li.nav-item .btn-white {
 }
 
 .react-autosuggest__input {
-  width: 240px;
-  height: 30px;
+  width: 840px;
   padding: 10px 20px 10px 40px;
   font-family: Helvetica, sans-serif;
   font-weight: 300;
-  font-size: 16px;
+  font-size: 20px;
   border: 1px solid #aaa;
-  border-radius: 4px;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, .7);
 }
 
 
@@ -513,6 +513,7 @@ li.nav-item .btn-white {
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   z-index: 2;
+  background-color: rgba(255, 255, 255, .7);
 }
 
 .react-autosuggest__suggestions-list {
@@ -538,6 +539,6 @@ li.nav-item .btn-white {
   position: absolute;
   top: 13px;
   left: 10px;
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 37px;
 }

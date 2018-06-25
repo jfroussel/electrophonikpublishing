@@ -1,5 +1,9 @@
 import React from 'react'
 import Autosuggest from 'react-autosuggest';
+import SearchIcon from '../../assets/search.svg'
+
+
+
 
 const names = [
     'Brian',
@@ -12,6 +16,7 @@ const names = [
     'David',
     'Misha'  
   ];
+
 
 // https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Special_Characters
 const escapeRegexCharacters = str => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -34,7 +39,7 @@ const renderSuggestion = suggestion => suggestion;
 
 const renderInputComponent = inputProps => (
   <div className="inputContainer">
-    <img className="icon" src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-128.png" alt='finder' />
+    <img className="icon" src={SearchIcon} alt='finder' />
     <input {...inputProps} />
   </div>
 );
@@ -47,6 +52,8 @@ class AutoSearch extends React.Component {
       suggestions: []
     };
   }
+
+  
 
   onChange = (event, { newValue, method }) => {
     this.setState({
@@ -69,7 +76,7 @@ class AutoSearch extends React.Component {
   render() {
     const { value, suggestions } = this.state;
     const inputProps = {
-      placeholder: "Type 'c'",
+      placeholder: "   Search By Genre or Mood ...",
       value,
       onChange: this.onChange
     };

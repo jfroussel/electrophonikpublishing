@@ -16,7 +16,8 @@ const style = {
     baseline: {
         color: '#FFF',
         fontSize: 60,
-        paddingTop: 150
+        paddingTop: 150,
+        fontWeight: '200',
     },
    
 }
@@ -48,7 +49,7 @@ class Cover extends Component {
             <ScrollableAnchor id={'cover'}>
                 <section className="cover-container pb-5" style={style.coverImage}>
                     <div className="container">
-                        <p className="text-left pl-5 font-weight-bold " style={style.baseline}>Explore Our<br />
+                        <p className="text-left " style={style.baseline}>Explore Our<br />
                             Curated Royalty-Free<br />
                             Music Library
                            

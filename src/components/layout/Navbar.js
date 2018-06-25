@@ -43,7 +43,7 @@ class Navbar extends Component {
         return (
 
             <ScrollableAnchor id={'home'}>
-                <section className="cover-5 text-center">
+                <section className="cover-5">
                     <nav className="navbar navbar-expand-lg navbar-light navbar-custom fixed-top">
                         <div className="container">
                             <a className="navbar-brand pt-2">

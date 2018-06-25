@@ -6,15 +6,28 @@ import SearchIcon from '../../assets/search.svg'
 
 
 const names = [
-    'Brian',
-    'billy',
-    'bounce',
-    'Caley',
-    'Casey',
-    'Caroline',
-    'Chris',
-    'David',
-    'Misha'  
+    'Jazz',
+    'Funk',
+    'Blues',
+    'Pop',
+    'Rock',
+    'Hard rock',
+    'Classique',
+    'Country',
+    'Reggae',
+    'Ambient',
+    'Ballade',
+    'Cinematic',
+    'Drum n bass',
+    'Easy listening',
+    'Electro',
+    'Epic trailer',
+    'Folk',
+    'Hip-hop',
+    'Latin',
+    'Metal',
+    'Orchestral',
+    'World music',  
   ];
 
 

@@ -4,6 +4,7 @@ import { auth } from '../../firebase'
 const PublicNavigation = () =>
     <div className="navbar-nav">
         <a className="nav-item nav-link active " href="#home">Home <span className="sr-only">(current)</span></a>
+        <a className="nav-item nav-link nav-item-hover " href="#catalog">Catalog</a>
         <a className="nav-item nav-link nav-item-hover " href="#features">Features</a>
         <a className="nav-item nav-link nav-item-hover " href="#developers">Developers</a>
         <a className="nav-item nav-link nav-item-hover " href="#works">Works</a>

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import ScrollableAnchor, { } from 'react-scrollable-anchor'
-import axios from 'axios'
+import CatalogHeader from '../components/catalog/CatalogHeader'
+import CatalogSidebar from '../components/catalog/CatalogSidebar'
+import CatalogContent from '../components/catalog/CatalogContent'
+
 
 
 
@@ -14,13 +17,6 @@ class Catalog extends Component {
   }
 
 
-  componentWillMount() {
-    console.log('component will mount : ok')
-   
-
-  }
-
-
   render() {
 
     return (
@@ -31,10 +27,17 @@ class Catalog extends Component {
             <p className="lead constrain-width mt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. At aliquam rhoncus donec magna turpis, dictum sit amet tellus at, commodo elementum sapien.</p>
             <div className="divider"></div>
             <div className="row">
-              <div>
-                {console.log(this.state.dataFixtures)}
+              <CatalogHeader />
+            </div>
+            <div className="row">
+              <div className="col-3">
+                <CatalogSidebar />
+              </div>
+              <div className="col-9">
+                <CatalogContent />
               </div>
             </div>
+
           </div>
         </section>
       </ScrollableAnchor>

@@ -16,15 +16,7 @@ class Catalog extends Component {
 
   componentWillMount() {
     console.log('component will mount : ok')
-    const url = 'https://freemusicarchive.org/recent.json'
-
-    axios.get(url)
-      .then((response) => {
-        this.setState({ dataFixtures: response })
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+   
 
   }
 

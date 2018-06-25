@@ -7,6 +7,7 @@ import Contact from './Contact'
 import About from './About'
 import Works from './Works'
 import firebase from 'firebase'
+import Catalog from '../../containers/Catalog'
 
 class Home extends Component {
 
@@ -31,6 +32,7 @@ class Home extends Component {
                 <Navbar />
                 {!this.state.isLogged &&
                 <div>
+                    <Catalog />
                     <Features />
                     <Developers />
                     <About />

@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import Navbar from './Navbar'
-import Developers from './devSection/Developers'
 import Features from './Features'
 import Footer from './Footer'
 import Contact from './Contact'
@@ -34,7 +33,6 @@ class Home extends Component {
                 <div>
                     <Features />
                     <Catalog />
-                    <Developers />
                     <About />
                     <Contact />
                     <Works />

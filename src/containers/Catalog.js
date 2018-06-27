@@ -23,10 +23,7 @@ class Catalog extends Component {
       <ScrollableAnchor id={'catalog'}>
         <section className="features-1">
           <div className="container-fluid container-catalog">
-            
-           
               <CatalogHeader />
-           
             <div className="row">
               <div className="col-2 catalog-sidebar">
                 <CatalogSidebar />

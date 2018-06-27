@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const Genres = ['Jazz',
+const genres = ['Jazz',
   'Funk',
   'Blues',
   'Pop',
@@ -22,7 +22,7 @@ const Genres = ['Jazz',
   'Metal',
   'Orchestral',
   'World music',]
-const Moods = [
+const moods = [
   'Action / Sports',
   'Adventure / Discovery',
   'Aggressive',
@@ -35,8 +35,8 @@ const Moods = [
   'Gentle / Light',
   'Happy / Cheerful',
 ]
-const Artists = []
-const Instruments = [
+const artists = ['jeff','olive']
+const instruments = [
   'Accordion',
   'Bagpipes',
   'Banjo',
@@ -87,44 +87,44 @@ export default class CatalogSidebar extends Component {
   render() {
     return (
       <div>
-        <div class="accordion" id="accordionExample">
-          <div class="card card-catalog">
-            <div class="card-header" id="headingOne">
-              <h5 class="mb-0">
-                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <div className="accordion" id="accordionExample">
+          <div className="card card-catalog">
+            <div className="card-header" id="headingOne">
+              <h5 className="mb-0">
+                <button className="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                   Genres
                 </button>
               </h5>
             </div>
 
-            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-              <div class="card-body">
-                {Genres.map((genre) => {
+            <div id="collapseOne" className="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div className="card-body">
+                {genres.map((genre) => {
                   return (
-                    <div class="form-group form-check" key={genre}>
-                      <input type="checkbox" class="form-check-input" id={genre} />
-                      <label class="form-check-label" for="exampleCheck1">{genre}</label>
+                    <div className="form-group form-check" key={genre}>
+                      <input type="checkbox" className="form-check-input" id={genre} />
+                      <label className="form-check-label" htmlFor="exampleCheck1">{genre}</label>
                     </div>
                   )
                 })}
               </div>
             </div>
           </div>
-          <div class="card card-catalog">
-            <div class="card-header" id="headingTwo">
-              <h5 class="mb-0">
-                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          <div className="card card-catalog">
+            <div className="card-header" id="headingTwo">
+              <h5 className="mb-0">
+                <button className="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                   Mood
                 </button>
               </h5>
             </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-              <div class="card-body">
-                {Moods.map((mood) => {
+            <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+              <div className="card-body">
+                {moods.map((mood) => {
                   return (
-                    <div class="form-group form-check" key={mood}>
-                      <input type="checkbox" class="form-check-input" id={mood} />
-                      <label class="form-check-label" for="exampleCheck1">{mood}</label>
+                    <div className="form-group form-check" key={mood}>
+                      <input type="checkbox" className="form-check-input" id={mood} />
+                      <label className="form-check-label" htmlFor="exampleCheck1">{mood}</label>
                     </div>
                   )
                 })}
@@ -132,63 +132,71 @@ export default class CatalogSidebar extends Component {
             </div>
           </div>
 
-          <div class="card card-catalog">
-            <div class="card-header" id="headingThree">
-              <h5 class="mb-0">
-                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          <div className="card card-catalog">
+            <div className="card-header" id="headingThree">
+              <h5 className="mb-0">
+                <button className="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                   BPM
                 </button>
               </h5>
             </div>
-            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-              <div class="card-body">
+            <div id="collapseThree" className="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+              <div className="card-body">
               </div>
             </div>
           </div>
 
-          <div class="card card-catalog">
-            <div class="card-header" id="headingFour">
-              <h5 class="mb-0">
-                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+          <div className="card card-catalog">
+            <div className="card-header" id="headingFour">
+              <h5 className="mb-0">
+                <button className="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
                   Length
                 </button>
               </h5>
             </div>
-            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
-              <div class="card-body">
+            <div id="collapseFour" className="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+              <div className="card-body">
               </div>
             </div>
           </div>
 
-          <div class="card card-catalog">
-            <div class="card-header" id="headingFive">
-              <h5 class="mb-0">
-                <button class="btn btn-link collapsed " type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseThree">
-                  Artists
+          <div className="card card-catalog">
+            <div className="card-header" id="headingFive">
+              <h5 className="mb-0">
+                <button className="btn btn-link collapsed " type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseThree">
+                className
                 </button>
               </h5>
             </div>
-            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
-              <div class="card-body">
+            <div id="collapseFive" className="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+              <div className="card-body">
+              {artists.map((artist) => {
+                  return (
+                    <div className="form-group form-check" key={artist}>
+                      <input type="checkbox" className="form-check-input" id={artist} />
+                      <label className="form-check-label" htmlFor="exampleCheck1">{artist}</label>
+                    </div>
+                  )
+                })}
               </div>
             </div>
           </div>
 
-          <div class="card card-catalog">
-            <div class="card-header" id="headingSix">
-              <h5 class="mb-0">
-                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseThree">
+          <div className="card card-catalog">
+            <div className="card-header" id="headingSix">
+              <h5 className="mb-0">
+                <button className="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseThree">
                   Instruments
                 </button>
               </h5>
             </div>
-            <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
-              <div class="card-body">
-              {Instruments.map((instrument) => {
+            <div id="collapseSix" className="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+              <div className="card-body">
+              {instruments.map((instrument) => {
                   return (
-                    <div class="form-group form-check" key={instrument}>
-                      <input type="checkbox" class="form-check-input" id={instrument} />
-                      <label class="form-check-label" for="exampleCheck1">{instrument}</label>
+                    <div className="form-group form-check" key={instrument}>
+                      <input type="checkbox" className="form-check-input" id={instrument} />
+                      <label className="form-check-label" htmlFor="exampleCheck1">{instrument}</label>
                     </div>
                   )
                 })}

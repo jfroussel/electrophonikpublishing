@@ -468,6 +468,10 @@ li.nav-item .btn-white {
 .nav-item-hover:hover{
   color:rgb(216, 214, 214) !important;
 }
+.nav-item-hover.active{
+  color:rgb(241, 209, 63) !important;
+}
+
 
 
 .react-autosuggest__container {

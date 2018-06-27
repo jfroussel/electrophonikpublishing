@@ -6,7 +6,6 @@ const PublicNavigation = () =>
         <a className="nav-item nav-link active " href="#home">Home <span className="sr-only">(current)</span></a>
         <a className="nav-item nav-link nav-item-hover " href="#catalog">Catalog</a>
         <a className="nav-item nav-link nav-item-hover " href="#features">Features</a>
-        <a className="nav-item nav-link nav-item-hover " href="#developers">Developers</a>
         <a className="nav-item nav-link nav-item-hover " href="#works">Works</a>
         <a className="nav-item nav-link nav-item-hover " href="#about">About</a>
         <a className="nav-item nav-link nav-item-hover" href="#contact">Contact</a>

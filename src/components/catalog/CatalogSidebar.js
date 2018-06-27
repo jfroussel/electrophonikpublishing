@@ -164,7 +164,7 @@ export default class CatalogSidebar extends Component {
             <div className="card-header" id="headingFive">
               <h5 className="mb-0">
                 <button className="btn btn-link collapsed " type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseThree">
-                className
+                Artists
                 </button>
               </h5>
             </div>

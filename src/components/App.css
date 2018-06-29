@@ -574,3 +574,22 @@ li.nav-item .btn-white {
   border-right: solid 1px #696b6e;
   min-height: 1000px;
 }
+
+
+.page-item.active .page-link {
+  z-index: 1;
+  color: #f1b610;
+  background-color: transparent;
+  border-color: #f1b610;
+}
+
+.page-link {
+  position: relative;
+  display: block;
+  padding: .5rem .75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: #f1b610;
+  background-color: transparent;
+  border: 1px solid transparent;
+}

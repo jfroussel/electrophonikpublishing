@@ -3,13 +3,10 @@ import React, { Component } from 'react';
 class Audioplayer extends Component {
     render() {
         return (
-            <div>
-                <audio id="t-rex-roar-loop" controls loop>
-                    <source
-                        type="audio/mpeg"
-                        src="http://soundbible.com/mp3/Tyrannosaurus%20Rex%20Roar-SoundBible.com-807702404.mp3" />
-                    Your browser does not support the <code>audio</code> element.
-                </audio>
+            <div>   
+                <i class="fa fa-play-circle fa-2x text-warning " aria-hidden="true"></i>
+                <i class="fa fa-pause-circle fa-2x text-warning ml-2" aria-hidden="true"></i>
+                <i class="fa fa-stop-circle fa-2x text-warning ml-2" aria-hidden="true"></i>
             </div>
         );
     }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 const style = {
     icon: {
-        color: '#ffc107',
+        color: '#dcad54',
         backgroundColor: 'transparent',
         
     },

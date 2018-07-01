@@ -23,9 +23,9 @@ const newPerson = () => {
     lastName: namor.generate({ words: 1, numbers: 0 }),
     tools:<AudioPlayer />,
     buy:<Buy />,
-    age: Math.floor(Math.random() * 30),
-    visits: Math.floor(Math.random() * 100),
-    progress: Math.floor(Math.random() * 100),
+    loops: '1-2-3-4',
+    bpm: Math.floor(Math.random() * 100),
+    length: '2:25',
     status:
       statusChance > 0.66
         ? "relationship"

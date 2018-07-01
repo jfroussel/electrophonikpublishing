@@ -3,10 +3,10 @@
 }
 
 .ReactTable .-pagination {
-    color:#ffc107;
+    color:#dcad54;
 }
 .ReactTable .-pagination .-btn:not([disabled]):hover {
-    color:#ffc107;
+    color:#dcad54;
 }
 
 .ReactTable .-pagination input, .ReactTable .-pagination select {

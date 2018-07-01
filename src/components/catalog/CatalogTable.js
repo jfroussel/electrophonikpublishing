@@ -47,13 +47,23 @@ class CatalogTable extends Component {
                             columns: [
                                 
                                 {
-                                    Header: "First Name",
+                                    Header: "Title",
                                     accessor: "firstName",
 
                                 },
                                 {
-                                    Header: "Last Name",
-                                    accessor: "lastName",
+                                    Header: "Length",
+                                    accessor: "length",
+
+                                },
+                                {
+                                    Header: "BPM",
+                                    accessor: "bpm",
+
+                                },
+                                {
+                                    Header: "Loops",
+                                    accessor: "loops",
 
                                 },
                                 {

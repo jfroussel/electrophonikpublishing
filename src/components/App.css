@@ -562,10 +562,10 @@ li.nav-item .btn-white {
   text-decoration: none;
 }
 .btn-link:hover {
-  color: #ffc107 !important;
+  color: #dcad54 !important;
 }
 .form-check-label {
-  color: #ffc107 !important;
+  color: #dcad54 !important;
   font-size: 14px;
 
 }
@@ -578,9 +578,9 @@ li.nav-item .btn-white {
 
 .page-item.active .page-link {
   z-index: 1;
-  color: #f1b610;
+  color: #dcad54;;
   background-color: transparent;
-  border-color: #f1b610;
+  border-color: #dcad54;
 }
 
 .page-link {
@@ -589,7 +589,7 @@ li.nav-item .btn-white {
   padding: .5rem .75rem;
   margin-left: -1px;
   line-height: 1.25;
-  color: #f1b610;
+  color: #dcad54;
   background-color: transparent;
   border: 1px solid transparent;
 }

@@ -1,0 +1,20 @@
+.ReactTable .rt-table {
+    color: #fff;
+}
+
+.ReactTable .-pagination {
+    color:#ffc107;
+}
+.ReactTable .-pagination .-btn:not([disabled]):hover {
+    color:#ffc107;
+}
+
+.ReactTable .-pagination input, .ReactTable .-pagination select {
+    border: 1px solid rgba(0,0,0,0.1);
+    background: transparent;
+    padding: 5px 7px;
+    font-size: inherit;
+    border-radius: 3px;
+    font-weight: normal;
+    outline: none;
+}

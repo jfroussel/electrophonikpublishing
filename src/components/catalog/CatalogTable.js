@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { makeData, fixturesData } from "./Utils";
+import { fixturesData } from "./Utils";
 // Import React Table
 import ReactTable from "react-table";
 import "react-table/react-table.css";
@@ -50,7 +50,7 @@ class CatalogTable extends Component {
                                     Expander: ({ isExpanded, ...rest }) =>
                                         <div>
                                             {isExpanded
-                                                ? <span>&#x2299;</span>
+                                                ? <span>&#x229D;</span>
                                                 : <span>&#x2295;</span>}
                                         </div>,
                                     style: {
@@ -60,14 +60,15 @@ class CatalogTable extends Component {
                                         textAlign: "center",
                                         userSelect: "none"
                                     },
-                                    Footer: () => <span>&hearts;</span>
                                 }
                             ]
                         },
                         {
 
                             columns: [
-
+                                {
+                                    accessor:"play"
+                                },
                                 {
                                     Header: "Title",
                                     accessor: "title",

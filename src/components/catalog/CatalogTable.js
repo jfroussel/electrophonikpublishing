@@ -19,11 +19,11 @@ class CatalogTable extends Component {
                     data={data}
                     columns={[
                         {
-                            
+
                             columns: [
                                 {
                                     expander: true,
-                                    
+
                                     width: 65,
                                     Expander: ({ isExpanded, ...rest }) =>
                                         <div>
@@ -43,9 +43,9 @@ class CatalogTable extends Component {
                             ]
                         },
                         {
-                            
+
                             columns: [
-                                
+
                                 {
                                     Header: "Title",
                                     accessor: "firstName",
@@ -67,18 +67,18 @@ class CatalogTable extends Component {
 
                                 },
                                 {
-                                    Header: "Tools",
+
                                     accessor: "tools",
 
                                 },
                                 {
-                                    Header: "Buy in",
+
                                     accessor: "buy",
                                 }
                             ]
                         },
-                        
-                        
+
+
                     ]}
                     defaultPageSize={10}
                     className="-striped -highlight"

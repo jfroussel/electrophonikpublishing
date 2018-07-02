@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import AudioPlayer from './Audioplayer'
 import CatalogTable from './CatalogTable'
 
 export default class CatalogContent extends Component {

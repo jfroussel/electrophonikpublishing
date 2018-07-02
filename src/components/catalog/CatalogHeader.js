@@ -15,10 +15,10 @@ export default class CatalogHeader extends Component {
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link" href="#">GENRE</a>
+              <a className="nav-link" href="">GENRE</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">MOOD</a>
+              <a className="nav-link" href="">MOOD</a>
             </li>
           </ul>
         </div>

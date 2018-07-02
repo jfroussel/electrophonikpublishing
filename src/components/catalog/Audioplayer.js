@@ -6,7 +6,7 @@ const style = {
 
     },
     iconBox: {
-        border: 'solid 1px #fff',
+        border: 'solid 2px #dfe1e5c2',
         textAlign: 'center',
         paddingTop: 5,
         borderRadius: 50,

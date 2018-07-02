@@ -12,6 +12,7 @@ const style = {
         border: 'solid 1px #6c757d',
         padding: '10px 10px',
         fontWeight: '200',
+        color:'#fff'
     }
 }
 

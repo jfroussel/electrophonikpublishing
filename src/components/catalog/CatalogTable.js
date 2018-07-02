@@ -4,6 +4,24 @@ import { makeData } from "./Utils";
 import ReactTable from "react-table";
 import "react-table/react-table.css";
 
+const style = {
+    subComponent: {
+        border: 'solid 1px #6c757d',
+        padding: '10px 10px',
+        fontWeight: '200',
+    }
+}
+
+const SubComponent = () => {
+    return (
+        <div style={style.subComponent}>
+            Title : titre du morceau <br />
+            Tags : jazz, blues, rock <br />
+            loops details : details des boucles disponiblent <br />
+        </div>
+
+    )
+}
 class CatalogTable extends Component {
     constructor(props) {
         super(props);
@@ -82,7 +100,7 @@ class CatalogTable extends Component {
                     ]}
                     defaultPageSize={10}
                     className="-striped -highlight"
-                    SubComponent={() => <div style={{ padding: '10px' }}>Hello</div>}
+                    SubComponent={() => <div style={{ padding: '10px' }}><SubComponent /></div>}
                 />
                 <br />
 

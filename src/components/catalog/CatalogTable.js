@@ -19,11 +19,11 @@ class CatalogTable extends Component {
                     data={data}
                     columns={[
                         {
-                            Header: "Expand",
+                            
                             columns: [
                                 {
                                     expander: true,
-                                    Header: () => <strong>More</strong>,
+                                    
                                     width: 65,
                                     Expander: ({ isExpanded, ...rest }) =>
                                         <div>
@@ -43,7 +43,7 @@ class CatalogTable extends Component {
                             ]
                         },
                         {
-                            Header: "Name",
+                            
                             columns: [
                                 
                                 {

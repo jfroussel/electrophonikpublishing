@@ -18,6 +18,7 @@
     "react-scrollable-anchor": "^0.6.1",
     "react-soundplayer": "^1.0.4",
     "react-table": "^6.8.6",
+    "recursive-readdir": "^2.2.2",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0"
   },

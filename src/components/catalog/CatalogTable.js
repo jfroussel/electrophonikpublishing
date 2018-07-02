@@ -1,8 +1,11 @@
 import React, { Component } from "react";
-import { makeData } from "./Utils";
+import { makeData, fixturesData } from "./Utils";
 // Import React Table
 import ReactTable from "react-table";
 import "react-table/react-table.css";
+
+
+
 
 const style = {
     subComponent: {
@@ -12,25 +15,26 @@ const style = {
     }
 }
 
-const SubComponent = () => {
-    return (
-        <div style={style.subComponent}>
-            Title : titre du morceau <br />
-            Tags : jazz, blues, rock <br />
-            loops details : details des boucles disponiblent <br />
-        </div>
 
-    )
-}
 class CatalogTable extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: makeData()
+            data: fixturesData
         };
     }
+    
     render() {
         const { data } = this.state;
+        const SubComponent = () => {
+            return (
+                <div style={style.subComponent}>
+                    Title : Across The Border <br />
+                    Tags : jazz, blues, rock <br />
+                    loops details : details des boucles disponiblent <br />
+                </div>
+            )
+        }
         return (
             <div>
                 <ReactTable
@@ -66,7 +70,7 @@ class CatalogTable extends Component {
 
                                 {
                                     Header: "Title",
-                                    accessor: "firstName",
+                                    accessor: "title",
 
                                 },
                                 {
@@ -86,7 +90,7 @@ class CatalogTable extends Component {
                                 },
                                 {
 
-                                    accessor: "tools",
+                                    accessor: "player",
 
                                 },
                                 {

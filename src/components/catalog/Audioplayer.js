@@ -12,6 +12,7 @@ const style = {
         borderRadius: 50,
         width: 40,
         height: 40,
+        cursor:'pointer'
     }
 }
 class Audioplayer extends Component {

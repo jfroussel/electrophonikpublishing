@@ -4,17 +4,19 @@ import AudioPlayer from './Audioplayer'
 
 const style = {
   icon: {
-      color: '#dcad54',
-      backgroundColor: 'transparent',
+    color: '#dcad54',
+    backgroundColor: 'transparent',
+    
 
   },
   iconBox: {
-      border: 'solid 1px #fff',
-      textAlign: 'center',
-      paddingTop: 5,
-      borderRadius: 50,
-      width: 40,
-      height: 40,
+    border: 'solid 1px #fff',
+    textAlign: 'center',
+    paddingTop: 5,
+    borderRadius: 50,
+    width: 40,
+    height: 40,
+    cursor:'pointer'
   }
 }
 
@@ -24,17 +26,28 @@ const Buy = () => {
   )
 }
 
+const handleClickPlayer = () => {
+  return (
+    console.log('click on player')
+  )
+}
+
+
 const Play = () => {
   return (
-    <div style={style.iconBox} className="ml-3">
-      <i className="fa fa-play" aria-hidden="true" style={style.icon}></i>
+    <div style={style.iconBox} className="ml-3" onClick={handleClickPlayer}>
+      <i
+        className="fa fa-play"
+        aria-hidden="true"
+        style={style.icon}
+        ></i>
     </div>
   )
 }
 
 export const fixturesData = [
   {
-    play:<Play />,
+    play: <Play />,
     title: 'Across The Border1',
     url: 'data/_Across The Border_ CinematicCountry Dm 65bpm.mp3',
     key: 'Dm',
@@ -51,7 +64,7 @@ export const fixturesData = [
 
   },
   {
-    play:<Play />,
+    play: <Play />,
     title: 'Across The Border2',
     url: 'data/_Across The Border_ CinematicCountry Dm 65bpm.mp3',
     key: 'Dm',
@@ -67,7 +80,7 @@ export const fixturesData = [
     buy: <Buy />,
   },
   {
-    play:<Play />,
+    play: <Play />,
     title: 'Across The Border3',
     url: 'data/_Across The Border_ CinematicCountry Dm 65bpm.mp3',
     key: 'Dm',
@@ -83,7 +96,7 @@ export const fixturesData = [
     buy: <Buy />,
   },
   {
-    play:<Play />,
+    play: <Play />,
     title: 'Across The Border4',
     url: 'data/_Across The Border_ CinematicCountry Dm 65bpm.mp3',
     key: 'Dm',
@@ -99,7 +112,7 @@ export const fixturesData = [
     buy: <Buy />,
   },
   {
-    play:<Play />,
+    play: <Play />,
     title: 'Across The Border5',
     url: 'data/_Across The Border_ CinematicCountry Dm 65bpm.mp3',
     key: 'Dm',
@@ -115,7 +128,7 @@ export const fixturesData = [
     buy: <Buy />,
   },
   {
-    play:<Play />,
+    play: <Play />,
     title: 'Across The Border6',
     url: 'data/_Across The Border_ CinematicCountry Dm 65bpm.mp3',
     key: 'Dm',
@@ -131,7 +144,7 @@ export const fixturesData = [
     buy: <Buy />,
   },
   {
-    play:<Play />,
+    play: <Play />,
     title: 'Across The Border7',
     url: 'data/_Across The Border_ CinematicCountry Dm 65bpm.mp3',
     key: 'Dm',
@@ -147,7 +160,7 @@ export const fixturesData = [
     buy: <Buy />,
   },
   {
-    play:<Play />,
+    play: <Play />,
     title: 'Across The Border8',
     url: 'data/_Across The Border_ CinematicCountry Dm 65bpm.mp3',
     key: 'Dm',
@@ -163,7 +176,7 @@ export const fixturesData = [
     buy: <Buy />,
   },
   {
-    play:<Play />,
+    play: <Play />,
     title: 'Across The Border9',
     url: 'data/_Across The Border_ CinematicCountry Dm 65bpm.mp3',
     key: 'Dm',
@@ -179,7 +192,7 @@ export const fixturesData = [
     buy: <Buy />,
   },
   {
-    play:<Play />,
+    play: <Play />,
     title: 'Across The Border10',
     url: 'data/_Across The Border_ CinematicCountry Dm 65bpm.mp3',
     key: 'Dm',

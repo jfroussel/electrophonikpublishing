@@ -4,7 +4,14 @@ import CatalogHeader from '../components/catalog/CatalogHeader'
 import CatalogSidebar from '../components/catalog/CatalogSidebar'
 import CatalogContent from '../components/catalog/CatalogContent'
 
-
+const style = {
+  content: {
+    backgroundColor: '#001a1a',
+  },
+  sidebar: {
+    backgroundColor: '#001a1a',
+  }
+}
 
 
 class Catalog extends Component {
@@ -25,10 +32,10 @@ class Catalog extends Component {
           <div className="container-fluid container-catalog">
               <CatalogHeader />
             <div className="row">
-              <div className="col-2 catalog-sidebar">
+              <div className="col-2" style={style.sidebar}>
                 <CatalogSidebar />
               </div>
-              <div className="col-10">
+              <div className="col-10" style={style.content}>
                 <CatalogContent />
               </div>
             </div>

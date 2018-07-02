@@ -17,7 +17,7 @@ const style = {
         color: '#FFF',
         fontSize: 60,
         paddingTop: 150,
-        fontWeight: '200',
+        fontWeight: '300',
     },
    
 }

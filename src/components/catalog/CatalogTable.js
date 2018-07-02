@@ -88,6 +88,12 @@ class CatalogTable extends Component {
                                 {
                                     Header: "Loops",
                                     accessor: "loops",
+                                    style: {
+                                      cursor: "pointer",
+                                      
+                                      textAlign: "left",
+                                      
+                                  },
 
                                 },
                                 {

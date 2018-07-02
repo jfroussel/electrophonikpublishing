@@ -45,7 +45,7 @@ class Navbar extends Component {
             <ScrollableAnchor id={'home'}>
                 <section className="cover-5">
                     <nav className="navbar navbar-expand-lg navbar-light navbar-custom fixed-top">
-                        <div className="container">
+                        <div className="container-fluid">
                             <a className="navbar-brand pt-2">
                                 <img src={Logo} width="150" alt="" />
                             </a>

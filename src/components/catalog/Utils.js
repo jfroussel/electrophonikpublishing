@@ -17,6 +17,13 @@ const style = {
     width: 40,
     height: 40,
     cursor: 'pointer'
+  },
+  loops: {
+    border: 'solid 2px #fff',
+    textAlign: 'center',
+    width: 25,
+    height: 25,
+    borderRadius: 50,
   }
 }
 
@@ -34,7 +41,7 @@ const handleClickPlayer = () => {
 
 const handleMouseOver = (e) => {
   return (
-    console.log('mouse over',e)
+    console.log('mouse over', e)
   )
 
 }
@@ -52,6 +59,21 @@ const Play = () => {
   )
 }
 
+const Loops = (props) => {
+  console.log(props.number)
+  return (
+    <div className="row ml-1" >
+      {
+        props.number.map((number) => {
+          return (
+            <div className="ml-1" style={style.loops} key={number}>{number}</div>
+          )
+        })
+      }
+    </div>
+  )
+}
+
 export const fixturesData = [
   {
     play: <Play />,
@@ -64,7 +86,7 @@ export const fixturesData = [
     mood: 'Cinematic',
     genre: 'Country',
     tag: ['jazz', 'funk', 'blues'],
-    loops: [1, 2, 3, 4, 5],
+    loops: <Loops number={[1, 2, 3]} />,
     price: 25,
     player: <AudioPlayer />,
     buy: <Buy />,
@@ -81,7 +103,7 @@ export const fixturesData = [
     mood: 'Cinematic',
     genre: 'Country',
     tag: ['jazz', 'funk', 'blues'],
-    loops: [1, 2, 3, 4, 5],
+    loops: <Loops number={[1, 2, 3, 4]} />,
     price: 25,
     player: <AudioPlayer />,
     buy: <Buy />,
@@ -97,7 +119,7 @@ export const fixturesData = [
     mood: 'Cinematic',
     genre: 'Country',
     tag: ['jazz', 'funk', 'blues'],
-    loops: [1, 2, 3, 4, 5],
+    loops: <Loops number={[1, 2, 3, 4, 5]} />,
     price: 25,
     player: <AudioPlayer />,
     buy: <Buy />,
@@ -113,7 +135,7 @@ export const fixturesData = [
     mood: 'Cinematic',
     genre: 'Country',
     tag: ['jazz', 'funk', 'blues'],
-    loops: [1, 2, 3, 4, 5],
+    loops: <Loops number={[1, 2]} />,
     price: 25,
     player: <AudioPlayer />,
     buy: <Buy />,
@@ -129,7 +151,7 @@ export const fixturesData = [
     mood: 'Cinematic',
     genre: 'Country',
     tag: ['jazz', 'funk', 'blues'],
-    loops: [1, 2, 3, 4, 5],
+    loops: <Loops number={[1, 2, 3]} />,
     price: 25,
     player: <AudioPlayer />,
     buy: <Buy />,
@@ -145,7 +167,7 @@ export const fixturesData = [
     mood: 'Cinematic',
     genre: 'Country',
     tag: ['jazz', 'funk', 'blues'],
-    loops: [1, 2, 3, 4, 5],
+    loops: <Loops number={[1]} />,
     price: 25,
     player: <AudioPlayer />,
     buy: <Buy />,
@@ -161,7 +183,7 @@ export const fixturesData = [
     mood: 'Cinematic',
     genre: 'Country',
     tag: ['jazz', 'funk', 'blues'],
-    loops: [1, 2, 3, 4, 5],
+    loops: <Loops number={[1, 2, 3, 4]} />,
     price: 25,
     player: <AudioPlayer />,
     buy: <Buy />,
@@ -177,7 +199,7 @@ export const fixturesData = [
     mood: 'Cinematic',
     genre: 'Country',
     tag: ['jazz', 'funk', 'blues'],
-    loops: [1, 2, 3, 4, 5],
+    loops: <Loops number={[1]} />,
     price: 25,
     player: <AudioPlayer />,
     buy: <Buy />,
@@ -193,7 +215,7 @@ export const fixturesData = [
     mood: 'Cinematic',
     genre: 'Country',
     tag: ['jazz', 'funk', 'blues'],
-    loops: [1, 2, 3, 4, 5],
+    loops: <Loops number={[1, 2, 3, 4]} />,
     price: 25,
     player: <AudioPlayer />,
     buy: <Buy />,
@@ -209,7 +231,7 @@ export const fixturesData = [
     mood: 'Cinematic',
     genre: 'Country',
     tag: ['jazz', 'funk', 'blues'],
-    loops: [1, 2, 3, 4, 5],
+    loops: <Loops number={[1, 2, 3]} />,
     price: 25,
     player: <AudioPlayer />,
     buy: <Buy />,

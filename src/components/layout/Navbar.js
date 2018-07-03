@@ -12,7 +12,6 @@ const style = {
     cartNumber: {
         color: '#189db2',
         marginTop: '0.2em',
-        marginLeft: '1em',
         fontSize: '14px'
     }
 }
@@ -55,7 +54,7 @@ class Navbar extends Component {
                     <nav className="navbar navbar-expand-lg navbar-light navbar-custom fixed-top">
                         <div className="container-fluid">
                             <a className="navbar-brand pt-2">
-                                <img src={Logo} width="150" alt="" />
+                                <img src={Logo} width="100" alt="logo" />
                             </a>
                             <button
                                 className="navbar-toggler"
@@ -105,7 +104,7 @@ class Navbar extends Component {
 
                                             </div>
                                         </li> : null}
-                                    <span class="fa-stack fa-1x">
+                                    <span class="fa-stack fa-1x pl-5">
                                         <i class="fas fa-shopping-cart fa-2x fa-stack-1x text-white"></i>
                                         <strong class="fa-stack-1x" style={style.cartNumber}>2</strong>
                                     </span>

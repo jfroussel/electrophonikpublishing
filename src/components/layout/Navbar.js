@@ -8,6 +8,14 @@ import AuthPage from './AuthPage'
 import MemberHome from './member/MemberHome'
 import { PrivateNavigation, PublicNavigation } from './Navigation'
 
+const style = {
+    cartNumber: {
+        color: '#189db2',
+        marginTop: '0.2em',
+        marginLeft: '1em',
+        fontSize: '14px'
+    }
+}
 class Navbar extends Component {
 
     constructor(props) {
@@ -37,7 +45,7 @@ class Navbar extends Component {
     render() {
 
         const handleClick = (e) => {
-            window.scrollTo(0,0);
+            window.scrollTo(0, 0);
         }
 
         return (
@@ -76,7 +84,9 @@ class Navbar extends Component {
                                                 aria-expanded="false"
                                                 onClick={handleClick}
                                             ><i className="far fa-user fa-1x mr-2 "></i>Login</a>
+
                                         </li>
+
                                         :
                                         null
                                     }
@@ -91,8 +101,14 @@ class Navbar extends Component {
 
                                                 <div className="dropdown-divider"></div>
                                                 <a className="dropdown-item" href="" onClick={doSignOut}>Sign out</a>
+                                                <a className="dropdown-item" ><i class="fas fa-shopping-cart"></i></a>
+
                                             </div>
                                         </li> : null}
+                                    <span class="fa-stack fa-1x">
+                                        <i class="fas fa-shopping-cart fa-2x fa-stack-1x text-white"></i>
+                                        <strong class="fa-stack-1x" style={style.cartNumber}>2</strong>
+                                    </span>
                                 </ul>
                             </div>
                         </div>

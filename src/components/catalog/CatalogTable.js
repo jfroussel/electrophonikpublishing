@@ -12,7 +12,7 @@ const style = {
         border: 'solid 1px #6c757d',
         padding: '10px 10px',
         fontWeight: '200',
-        color:'#fff'
+        color: '#fff'
     }
 }
 
@@ -24,7 +24,7 @@ class CatalogTable extends Component {
             data: fixturesData
         };
     }
-    
+
     render() {
         const { data } = this.state;
         const SubComponent = () => {
@@ -46,7 +46,6 @@ class CatalogTable extends Component {
                             columns: [
                                 {
                                     expander: true,
-
                                     width: 65,
                                     Expander: ({ isExpanded, ...rest }) =>
                                         <div>
@@ -65,10 +64,9 @@ class CatalogTable extends Component {
                             ]
                         },
                         {
-
                             columns: [
                                 {
-                                    accessor:"play"
+                                    accessor: "play"
                                 },
                                 {
                                     Header: "Title",
@@ -89,12 +87,10 @@ class CatalogTable extends Component {
                                     Header: "Loops",
                                     accessor: "loops",
                                     style: {
-                                      cursor: "pointer",
-                                      
-                                      textAlign: "left",
-                                      
-                                  },
+                                        cursor: "pointer",
+                                        textAlign: "left",
 
+                                    },
                                 },
                                 {
 
@@ -107,8 +103,6 @@ class CatalogTable extends Component {
                                 }
                             ]
                         },
-
-
                     ]}
                     defaultPageSize={10}
                     className="-striped -highlight"

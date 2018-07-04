@@ -74,7 +74,7 @@ class Navbar extends Component {
 
                                     {!this.state.isLogged ?
 
-                                        <li className="nav-item">
+                                        <li className="nav-item nav-login">
                                             <a
                                                 className="nav-link text-info"
                                                 href="#home"
@@ -82,7 +82,7 @@ class Navbar extends Component {
                                                 data-target="#collapse"
                                                 aria-expanded="false"
                                                 onClick={handleClick}
-                                            ><i className="far fa-user fa-1x mr-2 "></i>Login</a>
+                                            ><i className="far fa-user mr-2 login-icon "></i>Login</a>
 
                                         </li>
 
@@ -104,10 +104,14 @@ class Navbar extends Component {
 
                                             </div>
                                         </li> : null}
-                                    <span class="fa-stack fa-1x pl-5">
-                                        <i class="fas fa-shopping-cart fa-2x fa-stack-1x text-white"></i>
-                                        <strong class="fa-stack-1x" style={style.cartNumber}>2</strong>
-                                    </span>
+                                    <div className="cart-element">
+                                        <span className="cart-icon">
+                                        <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
+                                        </span>
+                                        <span className="cart-notification">
+                                        2
+                                        </span>
+                                    </div>
                                 </ul>
                             </div>
                         </div>

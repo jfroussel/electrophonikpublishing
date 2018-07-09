@@ -58,20 +58,20 @@ class Auth extends React.Component {
                         <p className="lead constrain-width mt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. At aliquam rhoncus donec magna turpis, dictum sit amet tellus at, commodo elementum sapien.</p>
                         <div className="row">
                             <div className="col-6" style={style.welcomeCard}>
-                                <i class="fab fa-dribbble fa-5x mb-5"></i>
+                                <i className="fab fa-dribbble fa-5x mb-5"></i>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. At aliquam rhoncus donec magna turpis, dictum sit amet tellus at, commodo elementum</p>
                             </div>
                             <div className="col-6" style={style.welcomeCard}>
-                                <i class="fab fa-dribbble fa-5x mb-5"></i>
+                                <i className="fab fa-dribbble fa-5x mb-5"></i>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. At aliquam rhoncus donec magna turpis, dictum sit amet tellus at, commodo elementum</p>
                             </div>                        </div>
                         <div className="row">
                             <div className="col-6" style={style.welcomeCard}>
-                                <i class="fab fa-dribbble fa-5x mb-5"></i>
+                                <i className="fab fa-dribbble fa-5x mb-5"></i>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. At aliquam rhoncus donec magna turpis, dictum sit amet tellus at, commodo elementum</p>
                             </div>
                             <div className="col-6" style={style.welcomeCard}>
-                                <i class="fab fa-dribbble fa-5x mb-5"></i>
+                                <i className="fab fa-dribbble fa-5x mb-5"></i>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. At aliquam rhoncus donec magna turpis, dictum sit amet tellus at, commodo elementum</p>
                             </div>
                         </div>

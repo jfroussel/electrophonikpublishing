@@ -106,7 +106,7 @@ class Navbar extends Component {
                                         </li> : null}
                                     <div className="cart-element">
                                         <span className="cart-icon">
-                                        <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
+                                        <i className="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
                                         </span>
                                         <span className="cart-notification">
                                         2

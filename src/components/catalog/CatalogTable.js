@@ -41,7 +41,7 @@ class CatalogTable extends Component {
                         loops details : details des boucles disponiblent <br />
                     </div>
                     <div className="col-4">
-                    <Wave />
+                   
                     </div>
                     <div className="col-2">
                     tune actions

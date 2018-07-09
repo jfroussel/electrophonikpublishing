@@ -3,6 +3,8 @@ import { fixturesData } from "./Utils";
 // Import React Table
 import ReactTable from "react-table";
 import "react-table/react-table.css";
+import Album from '../../assets/jacquette.jpg'
+import Wave from './Wave'
 
 
 
@@ -29,10 +31,21 @@ class CatalogTable extends Component {
         const { data } = this.state;
         const SubComponent = () => {
             return (
-                <div style={style.subComponent}>
-                    Title : Across The Border <br />
-                    Tags : jazz, blues, rock <br />
-                    loops details : details des boucles disponiblent <br />
+                <div className="row" style={style.subComponent}>
+                    <div className="col-2">
+                    <img src={Album} alt="album" width="200px" />
+                    </div>
+                    <div className="col-4">
+                        Title : Across The Border <br />
+                        Tags : jazz, blues, rock <br />
+                        loops details : details des boucles disponiblent <br />
+                    </div>
+                    <div className="col-4">
+                    <Wave />
+                    </div>
+                    <div className="col-2">
+                    tune actions
+                    </div>
                 </div>
             )
         }

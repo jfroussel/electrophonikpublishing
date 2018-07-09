@@ -2,21 +2,21 @@ import * as firebase from 'firebase';
 
 
 const prodConfig = {
-  apiKey: "AIzaSyDdQjllBvPhE2ftW3Zi8ma9iE3u7KlYCe8",
-  authDomain: "react-coaching.firebaseapp.com",
-  databaseURL: "https://react-coaching.firebaseio.com",
-  projectId: "react-coaching",
-  storageBucket: "react-coaching.appspot.com",
-  messagingSenderId: "576718770934"
+  apiKey: "AIzaSyCvdYTgdU-6DhV10i7eW7xS68IU2f3ioFo",
+    authDomain: "myapp-a124d.firebaseapp.com",
+    databaseURL: "https://myapp-a124d.firebaseio.com",
+    projectId: "myapp-a124d",
+    storageBucket: "myapp-a124d.appspot.com",
+    messagingSenderId: "191396994975"
 }
 
 const devConfig = {
-  apiKey: "AIzaSyDdQjllBvPhE2ftW3Zi8ma9iE3u7KlYCe8",
-  authDomain: "react-coaching.firebaseapp.com",
-  databaseURL: "https://react-coaching.firebaseio.com",
-  projectId: "react-coaching",
-  storageBucket: "react-coaching.appspot.com",
-  messagingSenderId: "576718770934"
+  apiKey: "AIzaSyCvdYTgdU-6DhV10i7eW7xS68IU2f3ioFo",
+    authDomain: "myapp-a124d.firebaseapp.com",
+    databaseURL: "https://myapp-a124d.firebaseio.com",
+    projectId: "myapp-a124d",
+    storageBucket: "myapp-a124d.appspot.com",
+    messagingSenderId: "191396994975"
 }
 
 const config = process.env.NODE_ENV === 'production'

@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import { fixturesData } from "./Utils";
-// Import React Table
-import ReactTable from "react-table";
-import "react-table/react-table.css";
+import React, { Component } from "react"
+import { fixturesData } from "./Utils"
+import ReactTable from "react-table"
+import "react-table/react-table.css"
 import Album from '../../assets/jacquette.jpg'
-import Wave from './Wave'
+import ReactAudioPlayer from 'react-audio-player';
+import Audio from './data/Accross.mp3'
 
 
 
@@ -15,7 +15,8 @@ const style = {
         padding: '10px 10px',
         fontWeight: '200',
         color: '#fff'
-    }
+    },
+    
 }
 
 
@@ -33,7 +34,7 @@ class CatalogTable extends Component {
             return (
                 <div className="row" style={style.subComponent}>
                     <div className="col-2">
-                    <img src={Album} alt="album" width="200px" />
+                        <img src={Album} alt="album" width="200px" />
                     </div>
                     <div className="col-4">
                         Title : Across The Border <br />
@@ -41,10 +42,14 @@ class CatalogTable extends Component {
                         loops details : details des boucles disponiblent <br />
                     </div>
                     <div className="col-4">
-                   
+                        <ReactAudioPlayer
+                            src={Audio}
+                            autoPlay
+                           
+                        />
                     </div>
                     <div className="col-2">
-                    tune actions
+                        tune actions
                     </div>
                 </div>
             )

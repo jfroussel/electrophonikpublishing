@@ -8,13 +8,7 @@ import AuthPage from './AuthPage'
 import MemberHome from './member/MemberHome'
 import { PrivateNavigation, PublicNavigation } from './Navigation'
 
-const style = {
-    cartNumber: {
-        color: '#189db2',
-        marginTop: '0.2em',
-        fontSize: '14px'
-    }
-}
+
 class Navbar extends Component {
 
     constructor(props) {

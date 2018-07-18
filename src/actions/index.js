@@ -1,5 +1,18 @@
 import axios from 'axios'
 
+
+export const UPDATE_SOUNDS = 'UPDATE_SOUNDS'
+export function updateSounds(sounds) {
+
+    return {
+        type: UPDATE_SOUNDS,
+        data: {
+            sounds
+        }
+    };
+}
+
+
 /* countries actions */
 export const GET_COUNTRIES = 'GET_COUNTRIES'
 export const ERROR_GET_COUNTRIES = 'ERROR_GET_COUNTRIES'

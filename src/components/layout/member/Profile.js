@@ -9,6 +9,7 @@ class Profile extends Component {
 
         this.state = {
             isLogged: false,
+            type:'',
             user: [],
             id: '',
             displayName: '',
@@ -30,7 +31,11 @@ class Profile extends Component {
     }
 
     componentDidMount() {
-        const user = firebase.auth().currentUser;
+        const user = firebase.auth().currentUser
+        const database = firebase.database().ref('members')
+
+        console.log(database)
+
         if (user) {
             this.setState(
                 {

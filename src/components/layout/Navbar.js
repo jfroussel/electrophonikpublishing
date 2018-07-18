@@ -94,7 +94,7 @@ class Navbar extends Component {
 
                                                 <div className="dropdown-divider"></div>
                                                 <a className="dropdown-item" href="" onClick={doSignOut}>Sign out</a>
-                                                <a className="dropdown-item" ><i class="fas fa-shopping-cart"></i></a>
+                                                <a className="dropdown-item" ><i className="fas fa-shopping-cart"></i></a>
 
                                             </div>
                                         </li> : null}

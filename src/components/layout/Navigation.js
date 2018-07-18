@@ -15,7 +15,7 @@ const PublicNavigation = () =>
 
 const PrivateNavigation = () =>
     <div className="navbar-nav">
-        <a className="nav-item nav-link"> <em>you are now connected</em><span className="text-info">  {auth.currentUser().email}</span></a>
+        <a className="nav-item nav-link"> <em>you are now connected </em><span className="text-info">  {auth.currentUser().displayName ? auth.currentUser().displayName : auth.currentUser().email }</span></a>
     </div>
 
 export {

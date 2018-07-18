@@ -1,13 +1,10 @@
 import React, { Component } from "react"
-import { fixturesData } from "./Utils"
+import firebase from 'firebase'
 import ReactTable from "react-table"
 import "react-table/react-table.css"
 import Album from '../../assets/jacquette.jpg'
 import ReactAudioPlayer from 'react-audio-player';
 import Audio from './data/Accross.mp3'
-
-
-
 
 const style = {
     subComponent: {
@@ -16,28 +13,52 @@ const style = {
         fontWeight: '200',
         color: '#fff'
     },
-    
+    table: {
+        color:'#FFF',
+    }
 }
-
 
 class CatalogTable extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: fixturesData
+            data: []
         };
+
+        const rootRef = firebase.database().ref();
+        this.soundsRef = rootRef.child('sounds');
     }
 
+
+    componentWillMount() {
+        this.soundsRef.on('value', snapshot => {
+            let sounds;
+
+            sounds = snapshot.val() ? Object.keys(snapshot.val()).map(key => {
+                return snapshot.val()[key];
+            }) :
+            sounds = [];
+            this.setState({data:sounds})
+            
+        })
+    }
+   
+
+
     render() {
-        const { data } = this.state;
+       
+        const data = this.state.data
+        console.log(data)
+
         const SubComponent = () => {
             return (
                 <div className="row" style={style.subComponent}>
+                {console.log('subComponent : ',data)}
                     <div className="col-2">
                         <img src={Album} alt="album" width="200px" />
                     </div>
                     <div className="col-4">
-                        Title : Across The Border <br />
+                        Title : {data[0].title} <br />
                         Tags : jazz, blues, rock <br />
                         loops details : details des boucles disponiblent <br />
                     </div>
@@ -45,7 +66,6 @@ class CatalogTable extends Component {
                         <ReactAudioPlayer
                             src={Audio}
                             autoPlay
-                           
                         />
                     </div>
                     <div className="col-2">
@@ -54,13 +74,14 @@ class CatalogTable extends Component {
                 </div>
             )
         }
+
         return (
             <div>
+                
                 <ReactTable
                     data={data}
                     columns={[
                         {
-
                             columns: [
                                 {
                                     expander: true,
@@ -92,8 +113,8 @@ class CatalogTable extends Component {
 
                                 },
                                 {
-                                    Header: "Length",
-                                    accessor: "length",
+                                    Header: "Lenght",
+                                    accessor: "lenght",
 
                                 },
                                 {
@@ -123,16 +144,21 @@ class CatalogTable extends Component {
                         },
                     ]}
                     defaultPageSize={10}
+                    style={style.table}
                     className="-striped -highlight"
-                    SubComponent={() => <div style={{ padding: '10px' }}><SubComponent /></div>}
+                    SubComponent={() => <div style={{ padding: '10px' }}><SubComponent title={data.title}  /></div>}
                 />
                 <br />
-
             </div>
         );
     }
 }
 
+
+
 export default CatalogTable
+
+
+
 
 

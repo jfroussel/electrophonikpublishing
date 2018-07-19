@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import './table.css'
 import firebase from 'firebase'
 import ReactTable from "react-table"
 import "react-table/react-table.css"
@@ -11,10 +12,10 @@ const style = {
         border: 'solid 1px #6c757d',
         padding: '10px 10px',
         fontWeight: '200',
-        color: '#fff'
+        color: '#FFF'
     },
     table: {
-        color:'#FFF',
+        color: '#FFF',
     }
 }
 
@@ -37,32 +38,56 @@ class CatalogTable extends Component {
             sounds = snapshot.val() ? Object.keys(snapshot.val()).map(key => {
                 return snapshot.val()[key];
             }) :
-            sounds = [];
-            this.setState({data:sounds})
-            
+                sounds = [];
+            this.setState({ data: sounds })
+
         })
     }
-   
+
 
 
     render() {
-       
-        const data = this.state.data
-        console.log(data)
 
-        const SubComponent = () => {
+        const data = this.state.data
+
+        const onRowClick = (state, rowInfo, column, instance) => {
+            return {
+                onClick: (e, handleOriginal) => {
+                    console.log(`Row index: ${rowInfo.index}, column header: ${column.Header}`);
+                    if (handleOriginal) {
+                        handleOriginal();
+                    }
+                }
+            };
+        };
+
+        const getTags = (tags, i) => {
+            return (
+
+                tags.map((tag, i) => {
+                    return (
+                        <span class="badge badge-warning ml-2" key={i}>{tag.value}</span>
+                    )
+                })
+
+            )
+
+        }
+
+        const SubComponent = (props) => {
             return (
                 <div className="row" style={style.subComponent}>
-                {console.log('subComponent : ',data)}
                     <div className="col-2">
                         <img src={Album} alt="album" width="200px" />
                     </div>
-                    <div className="col-4">
-                        Title : {data[0].title} <br />
-                        Tags : jazz, blues, rock <br />
-                        loops details : details des boucles disponiblent <br />
+                    <div className="col-6">
+                        Title : {data[props.id].title} <br />
+                        Genres :{getTags(data[props.id].genres)} <br />
+                        Moods :{getTags(data[props.id].moods)} <br />
+                        Instruments :{getTags(data[props.id].instruments)}<br />
+                        Loops :{data[props.id].loops} <br />
                     </div>
-                    <div className="col-4">
+                    <div className="col-2">
                         <ReactAudioPlayer
                             src={Audio}
                             autoPlay
@@ -77,7 +102,7 @@ class CatalogTable extends Component {
 
         return (
             <div>
-                
+
                 <ReactTable
                     data={data}
                     columns={[
@@ -97,7 +122,8 @@ class CatalogTable extends Component {
                                         fontSize: 25,
                                         padding: "0",
                                         textAlign: "center",
-                                        userSelect: "none"
+                                        userSelect: "none",
+                                        width: 50
                                     },
                                 }
                             ]
@@ -146,7 +172,9 @@ class CatalogTable extends Component {
                     defaultPageSize={10}
                     style={style.table}
                     className="-striped -highlight"
-                    SubComponent={() => <div style={{ padding: '10px' }}><SubComponent title={data.title}  /></div>}
+                    SubComponent={(row) => <div style={{ padding: '10px' }}><SubComponent id={row.index} /></div>}
+                    getTdProps={onRowClick}
+
                 />
                 <br />
             </div>

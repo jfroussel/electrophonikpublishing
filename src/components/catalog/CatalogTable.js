@@ -16,6 +16,18 @@ const style = {
     },
     table: {
         color: '#FFF',
+    },
+    play: {
+        width: 35,
+        height: 35,
+        border: 'solid 2px #FFF',
+        borderRadius: 50,
+        color: 'rgb(220, 173, 84)',
+        cursor: 'pointer',
+        textAlign: 'center',
+        marginTop: 4,
+        lineHeight: 1
+
     }
 }
 
@@ -62,16 +74,17 @@ class CatalogTable extends Component {
         };
 
         const getTags = (tags, i) => {
-            return (
+            if (tags) {
+                return (
 
-                tags.map((tag, i) => {
-                    return (
-                        <span class="badge badge-warning ml-2" key={i}>{tag.value}</span>
-                    )
-                })
+                    tags.map((tag, i) => {
+                        return (
+                            <span class="badge badge-warning ml-2" key={i}>{tag.value}</span>
+                        )
+                    })
 
-            )
-
+                )
+            }
         }
 
         const SubComponent = (props) => {
@@ -80,12 +93,13 @@ class CatalogTable extends Component {
                     <div className="col-2">
                         <img src={Album} alt="album" width="200px" />
                     </div>
-                    <div className="col-6">
+                    <div className="col-6" >
                         Title : {data[props.id].title} <br />
-                        Genres :{getTags(data[props.id].genres)} <br />
-                        Moods :{getTags(data[props.id].moods)} <br />
-                        Instruments :{getTags(data[props.id].instruments)}<br />
-                        Loops :{data[props.id].loops} <br />
+                        Author : {data[props.id].author}<br />
+                        Genres : {getTags(data[props.id].genres)} <br />
+                        Moods : {getTags(data[props.id].moods)} <br />
+                        Instruments : {getTags(data[props.id].instruments) ? getTags(data[props.id].instruments) : ''}<br />
+                        Loops : {data[props.id].loops} <br />
                     </div>
                     <div className="col-2">
                         <ReactAudioPlayer
@@ -114,8 +128,8 @@ class CatalogTable extends Component {
                                     Expander: ({ isExpanded, ...rest }) =>
                                         <div>
                                             {isExpanded
-                                                ? <span>&#x229D;</span>
-                                                : <span>&#x2295;</span>}
+                                                ? <div style={style.play}>&#9208;</div>
+                                                : <div style={style.play}>&#9654;</div>}
                                         </div>,
                                     style: {
                                         cursor: "pointer",
@@ -130,12 +144,16 @@ class CatalogTable extends Component {
                         },
                         {
                             columns: [
-                                {
-                                    accessor: "play"
-                                },
+
                                 {
                                     Header: "Title",
                                     accessor: "title",
+
+
+                                },
+                                {
+                                    Header: "Author",
+                                    accessor: "author",
 
                                 },
                                 {

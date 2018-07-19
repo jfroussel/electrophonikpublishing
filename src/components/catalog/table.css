@@ -34,3 +34,23 @@
     outline: none;
     color: #000;
 }
+
+.ReactTable .rt-tbody {
+    -ms-flex: 99999 1 auto;
+    flex: 99999 1 auto;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    overflow: auto;
+    padding-top: 35px;
+    padding-bottom: 35px;
+}
+
+.ReactTable .rt-tr {
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    padding-bottom: 10px;
+}

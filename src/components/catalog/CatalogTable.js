@@ -18,16 +18,16 @@ const style = {
         color: '#FFF',
     },
     play: {
-        width: 35,
-        height: 35,
-        border: 'solid 2px #FFF',
-        borderRadius: 50,
+        
         color: 'rgb(220, 173, 84)',
         cursor: 'pointer',
         textAlign: 'center',
-        marginTop: 4,
+        marginTop: -4,
         lineHeight: 1
 
+    },
+    icon: {
+        fontSize: 50
     }
 }
 
@@ -79,7 +79,7 @@ class CatalogTable extends Component {
 
                     tags.map((tag, i) => {
                         return (
-                            <span class="badge badge-warning ml-2" key={i}>{tag.value}</span>
+                            <span className="badge badge-warning ml-2" key={i}>{tag.value}</span>
                         )
                     })
 
@@ -128,8 +128,8 @@ class CatalogTable extends Component {
                                     Expander: ({ isExpanded, ...rest }) =>
                                         <div>
                                             {isExpanded
-                                                ? <div style={style.play}>&#9208;</div>
-                                                : <div style={style.play}>&#9654;</div>}
+                                                ? <div style={style.play}><i className="material-icons" style={style.icon}>pause_circle_filled</i></div>
+                                                : <div style={style.play}><i className="material-icons" style={style.icon}>play_circle_filled</i></div>}
                                         </div>,
                                     style: {
                                         cursor: "pointer",

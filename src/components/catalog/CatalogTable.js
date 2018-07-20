@@ -12,7 +12,8 @@ const style = {
         border: 'solid 1px #6c757d',
         padding: '10px 10px',
         fontWeight: '200',
-        color: '#FFF'
+        color: '#FFF',
+        
     },
     table: {
         color: '#FFF',
@@ -28,6 +29,15 @@ const style = {
     },
     icon: {
         fontSize: 50
+    },
+    tags: {
+        border: 'solid 2px rgb(220, 173, 84)',
+        borderRadius: 25,
+        backgroundColor: 'rgb(220, 173, 84)',
+        color: '#495057',
+        fontWeight: 'bold',
+        fontSize: 12,
+        
     }
 }
 
@@ -79,7 +89,7 @@ class CatalogTable extends Component {
 
                     tags.map((tag, i) => {
                         return (
-                            <span className="badge badge-warning ml-2" key={i}>{tag.value}</span>
+                            <span className="ml-2 pl-2 pr-2" key={i} style={style.tags}>{tag.value}</span>
                         )
                     })
 
@@ -93,22 +103,19 @@ class CatalogTable extends Component {
                     <div className="col-2">
                         <img src={Album} alt="album" width="200px" />
                     </div>
-                    <div className="col-6" >
-                        Title : {data[props.id].title} <br />
-                        Author : {data[props.id].author}<br />
-                        Genres : {getTags(data[props.id].genres)} <br />
-                        Moods : {getTags(data[props.id].moods)} <br />
-                        Instruments : {getTags(data[props.id].instruments) ? getTags(data[props.id].instruments) : ''}<br />
-                        Loops : {data[props.id].loops} <br />
+                    <div className="col-8" >
+                        <div className="pb-1">Title : {data[props.id].title}</div>
+                        <div className="pb-1">Author : {data[props.id].author}</div>
+                        <div className="pb-2">Genres : {getTags(data[props.id].genres)} </div>
+                        <div className="pb-2">Moods : {getTags(data[props.id].moods)}</div>
+                        <div className="pb-2">Instruments : {getTags(data[props.id].instruments) ? getTags(data[props.id].instruments) : ''}</div>
+                        <div className="pb-1">Loops : {data[props.id].loops}</div>
                     </div>
                     <div className="col-2">
                         <ReactAudioPlayer
                             src={Audio}
                             autoPlay
                         />
-                    </div>
-                    <div className="col-2">
-                        tune actions
                     </div>
                 </div>
             )

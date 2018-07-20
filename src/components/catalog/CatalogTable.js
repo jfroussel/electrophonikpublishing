@@ -7,19 +7,20 @@ import Album from '../../assets/jacquette.jpg'
 import ReactAudioPlayer from 'react-audio-player';
 import Audio from './data/Accross.mp3'
 
+
 const style = {
     subComponent: {
         border: 'solid 1px #6c757d',
         padding: '10px 10px',
         fontWeight: '200',
         color: '#FFF',
-        
+
     },
     table: {
         color: '#FFF',
     },
     play: {
-        
+
         color: 'rgb(220, 173, 84)',
         cursor: 'pointer',
         textAlign: 'center',
@@ -37,7 +38,21 @@ const style = {
         color: '#495057',
         fontWeight: 'bold',
         fontSize: 12,
-        
+
+    },
+    iconAction: {
+        color: '#dcad54',
+        backgroundColor: 'transparent',
+
+    },
+    iconBoxAction: {
+        border: 'solid 2px #dfe1e5c2',
+        textAlign: 'center',
+        paddingTop: 5,
+        borderRadius: 50,
+        width: 40,
+        height: 40,
+        cursor: 'pointer'
     }
 }
 
@@ -75,7 +90,7 @@ class CatalogTable extends Component {
         const onRowClick = (state, rowInfo, column, instance) => {
             return {
                 onClick: (e, handleOriginal) => {
-                    console.log(`Row index: ${rowInfo.index}, column header: ${column.Header}`);
+                    console.log(`Row index: ${rowInfo.index}, info: ${e}`);
                     if (handleOriginal) {
                         handleOriginal();
                     }
@@ -95,6 +110,30 @@ class CatalogTable extends Component {
 
                 )
             }
+        }
+
+        const Buy = () => {
+            return (
+                <button type="button" className="btn btn-warning">Buy 25€</button>
+            )
+        }
+
+        const CatalogActions = () => {
+            return (
+                <div>
+                    <div className="row">
+                        <div style={style.iconBoxAction} className="ml-3" >
+                            <i className="far fa-heart" style={style.iconAction} ></i>
+                        </div>
+                        <div style={style.iconBoxAction} className="ml-2">
+                            <i className="fas fa-download" style={style.iconAction} ></i>
+                        </div>
+                        <div style={style.iconBoxAction} className="ml-2">
+                            <i className="fas fa-music" style={style.iconAction} ></i>
+                        </div>
+                    </div>
+                </div>
+            )
         }
 
         const SubComponent = (props) => {
@@ -183,14 +222,20 @@ class CatalogTable extends Component {
                                     },
                                 },
                                 {
-
-                                    accessor: "player",
-
+                                    
+                                    accessor: "Actions",
+                                    Cell: row => (
+                                        <div><CatalogActions /></div>
+                                    )
                                 },
                                 {
-
+                                    
                                     accessor: "buy",
-                                }
+                                    Cell: row => (
+                                        <div><Buy /></div>
+                                    )
+                                },
+
                             ]
                         },
                     ]}

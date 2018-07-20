@@ -16,7 +16,7 @@ const style = {
         cursor: 'pointer'
     }
 }
-class Audioplayer extends Component {
+class CatalogActions extends Component {
 
     render() {
         return (
@@ -37,5 +37,5 @@ class Audioplayer extends Component {
     }
 }
 
-export default Audioplayer;
+export default CatalogActions;
 

@@ -4,7 +4,8 @@ import firebase from 'firebase'
 import ReactTable from "react-table"
 import "react-table/react-table.css"
 import Album from '../../assets/jacquette.jpg'
-import ReactAudioPlayer from 'react-audio-player';
+import AudioPlayer from './AudioPlayer'
+import WaveSurfer from './WaveSurfer'
 import Audio from './data/Accross.mp3'
 
 
@@ -53,6 +54,11 @@ const style = {
         width: 40,
         height: 40,
         cursor: 'pointer'
+    },
+    waveTools: {
+        border: 'solid 2px rgb(60, 61, 62)',
+        paddingTop: 10,
+        marginTop: 10,
     }
 }
 
@@ -142,7 +148,7 @@ class CatalogTable extends Component {
                     <div className="col-2">
                         <img src={Album} alt="album" width="200px" />
                     </div>
-                    <div className="col-8" >
+                    <div className="col-10" >
                         <div className="pb-1">Title : {data[props.id].title}</div>
                         <div className="pb-1">Author : {data[props.id].author}</div>
                         <div className="pb-2">Genres : {getTags(data[props.id].genres)} </div>
@@ -150,11 +156,8 @@ class CatalogTable extends Component {
                         <div className="pb-2">Instruments : {getTags(data[props.id].instruments) ? getTags(data[props.id].instruments) : ''}</div>
                         <div className="pb-1">Loops : {data[props.id].loops}</div>
                     </div>
-                    <div className="col-2">
-                        <ReactAudioPlayer
-                            src={Audio}
-                            autoPlay
-                        />
+                    <div className="col-12" style={style.waveTools} >
+                        <div className='parent-component'><WaveSurfer src={Audio} /></div>
                     </div>
                 </div>
             )
@@ -174,8 +177,8 @@ class CatalogTable extends Component {
                                     Expander: ({ isExpanded, ...rest }) =>
                                         <div>
                                             {isExpanded
-                                                ? <div style={style.play}><i className="material-icons" style={style.icon}>pause_circle_filled</i></div>
-                                                : <div style={style.play}><i className="material-icons" style={style.icon}>play_circle_filled</i></div>}
+                                                ? <div style={style.play}><i className="material-icons" style={style.icon}>arrow_drop_down</i></div>
+                                                : <div style={style.play}><i className="material-icons" style={style.icon}>arrow_right</i></div>}
                                         </div>,
                                     style: {
                                         cursor: "pointer",
@@ -222,14 +225,14 @@ class CatalogTable extends Component {
                                     },
                                 },
                                 {
-                                    
+
                                     accessor: "Actions",
                                     Cell: row => (
                                         <div><CatalogActions /></div>
                                     )
                                 },
                                 {
-                                    
+
                                     accessor: "buy",
                                     Cell: row => (
                                         <div><Buy /></div>

@@ -1,6 +1,7 @@
 import React from 'react'
 import { auth } from '../../firebase'
 
+
 const PublicNavigation = () =>
     <div className="navbar-nav">
         <a className="nav-item nav-link active " href="#home">Home <span className="sr-only">(current)</span></a>

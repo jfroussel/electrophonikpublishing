@@ -5,9 +5,10 @@ import WaveSurfer from 'wavesurfer.js'
 
 const style = {
     icon: {
-        fontSize: 50,
+
     }
 }
+
 export default class Waveform extends React.Component {
     constructor(props) {
         super(props)
@@ -40,12 +41,12 @@ export default class Waveform extends React.Component {
         return (
             <div className='container-fluide waveform'>
                 <div className="row">
-                    <div className="col-12">
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <button 
-                            type="button" 
-                            class="btn btn-secondary"
-                            onClick={this.playPause}
+                    <div className="col-6">
+                        <div class="btn-group mr-2 pt-5 btn-group-sm" role="group" aria-label="Basic example">
+                            <button
+                                type="button"
+                                class="btn btn-info"
+                                onClick={this.playPause}
                             >
                                 <i className="material-icons" style={style.icon}>play_arrow</i>
                             </button>
@@ -56,8 +57,8 @@ export default class Waveform extends React.Component {
                                 <i className="material-icons" style={style.icon}>stop</i>
                             </button>
                         </div>
-                        <div className='wave'></div>
-                        <div class="btn-group" role="group" aria-label="Basic example">
+
+                        <div class="btn-group mr-2 pt-5" role="group" aria-label="Basic example">
                             <button type="button" class="btn btn-secondary">
                                 <i className="material-icons" style={style.icon}>volume_down</i>
                             </button>
@@ -70,6 +71,8 @@ export default class Waveform extends React.Component {
                             <button type="button" class="btn btn-secondary">
                                 <i className="material-icons" style={style.icon}>volume_up</i>
                             </button>
+                        </div>
+                        <div class="btn-group mr-2 pt-5" role="group" aria-label="Basic example">
                             <button type="button" class="btn btn-secondary">
                                 <i className="material-icons" style={style.icon}>playlist_add</i>
                             </button>
@@ -77,20 +80,17 @@ export default class Waveform extends React.Component {
                                 <i className="material-icons" style={style.icon}>repeat</i>
                             </button>
                             <button type="button" class="btn btn-secondary">
-                                <i className="material-icons" style={style.icon}>equalizer</i>
-                            </button>
-                            <button type="button" class="btn btn-secondary">
                                 <i className="material-icons" style={style.icon}>tune</i>
                             </button>
-
+                            <button type="button" class="btn btn-secondary">
+                                <i className="material-icons" style={style.icon}>cloud_download</i>
+                            </button>
                         </div>
                     </div>
-                    <div className="col-12">
+                    <div className="col-6">
                         <div className='wave'></div>
                     </div>
                 </div>
-
-
             </div>
         )
     }

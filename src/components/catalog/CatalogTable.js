@@ -33,10 +33,10 @@ const style = {
         fontSize: 50
     },
     tags: {
-        border: 'solid 2px rgb(220, 173, 84)',
+        border: 'solid 2px #17a2b8',
         borderRadius: 25,
-        backgroundColor: 'rgb(220, 173, 84)',
-        color: '#495057',
+        backgroundColor: '#17a2b8',
+        color: '#FFF',
         fontWeight: 'bold',
         fontSize: 12,
 
@@ -145,18 +145,15 @@ class CatalogTable extends Component {
         const SubComponent = (props) => {
             return (
                 <div className="row" style={style.subComponent}>
-                    <div className="col-2">
+
+                    <div className="col-2 pt-3">
                         <img src={Album} alt="album" width="200px" />
                     </div>
-                    <div className="col-10" >
-                        <div className="pb-1">Title : {data[props.id].title}</div>
-                        <div className="pb-1">Author : {data[props.id].author}</div>
+                    <div className="col-10 pt-3" >
+                        
                         <div className="pb-2">Genres : {getTags(data[props.id].genres)} </div>
                         <div className="pb-2">Moods : {getTags(data[props.id].moods)}</div>
                         <div className="pb-2">Instruments : {getTags(data[props.id].instruments) ? getTags(data[props.id].instruments) : ''}</div>
-                        <div className="pb-1">Loops : {data[props.id].loops}</div>
-                    </div>
-                    <div className="col-12" style={style.waveTools} >
                         <div className='parent-component'><WaveSurfer src={Audio} /></div>
                     </div>
                 </div>

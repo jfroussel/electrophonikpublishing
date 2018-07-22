@@ -7,6 +7,9 @@ import Album from '../../assets/jacquette.jpg'
 import AudioPlayer from './AudioPlayer'
 import WaveSurfer from './WaveSurfer'
 import Audio from './data/Accross.mp3'
+import ReactTooltip from 'react-tooltip'
+
+
 
 
 const style = {
@@ -33,10 +36,10 @@ const style = {
         fontSize: 50
     },
     tags: {
-        border: 'solid 2px #17a2b8',
+        border: 'solid 2px rgb(220, 173, 84)',
         borderRadius: 25,
-        backgroundColor: '#17a2b8',
-        color: '#FFF',
+        backgroundColor: 'rgb(220, 173, 84)',
+        color: '#000',
         fontWeight: 'bold',
         fontSize: 12,
 
@@ -128,16 +131,17 @@ class CatalogTable extends Component {
             return (
                 <div>
                     <div className="row">
-                        <div style={style.iconBoxAction} className="ml-3" >
+                        <div style={style.iconBoxAction} className="ml-3" data-tip="like this track" >
                             <i className="far fa-heart" style={style.iconAction} ></i>
                         </div>
-                        <div style={style.iconBoxAction} className="ml-2">
+                        <div style={style.iconBoxAction} className="ml-2" data-tip="Download this track">
                             <i className="fas fa-download" style={style.iconAction} ></i>
                         </div>
-                        <div style={style.iconBoxAction} className="ml-2">
+                        <div style={style.iconBoxAction} className="ml-2" data-tip="Add to favorites">
                             <i className="fas fa-music" style={style.iconAction} ></i>
                         </div>
                     </div>
+                    <ReactTooltip />
                 </div>
             )
         }
@@ -174,8 +178,8 @@ class CatalogTable extends Component {
                                     Expander: ({ isExpanded, ...rest }) =>
                                         <div>
                                             {isExpanded
-                                                ? <div style={style.play}><i className="material-icons" style={style.icon}>arrow_drop_down</i></div>
-                                                : <div style={style.play}><i className="material-icons" style={style.icon}>arrow_right</i></div>}
+                                                ? <div data-tip="" style={style.play}><i className="material-icons" style={style.icon}>arrow_drop_down</i></div>
+                                                : <div data-tip="Expend for more infos"style={style.play}><i className="material-icons" style={style.icon}>arrow_right</i></div>}
                                         </div>,
                                     style: {
                                         cursor: "pointer",
@@ -247,6 +251,7 @@ class CatalogTable extends Component {
 
                 />
                 <br />
+                
             </div>
         );
     }

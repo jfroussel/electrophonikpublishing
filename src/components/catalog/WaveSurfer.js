@@ -40,13 +40,54 @@ export default class Waveform extends React.Component {
         return (
             <div className='container-fluide waveform'>
                 <div className="row">
-                    <div className="col-1">
-                        <i className="material-icons" style={style.icon}>play_circle_outline</i>
+                    <div className="col-12">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button 
+                            type="button" 
+                            class="btn btn-secondary"
+                            onClick={this.playPause}
+                            >
+                                <i className="material-icons" style={style.icon}>play_arrow</i>
+                            </button>
+                            <button type="button" class="btn btn-secondary">
+                                <i className="material-icons" style={style.icon}>pause</i>
+                            </button>
+                            <button type="button" class="btn btn-secondary">
+                                <i className="material-icons" style={style.icon}>stop</i>
+                            </button>
+                        </div>
+                        <div className='wave'></div>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-secondary">
+                                <i className="material-icons" style={style.icon}>volume_down</i>
+                            </button>
+                            <button type="button" class="btn btn-secondary">
+                                <i className="material-icons" style={style.icon}>volume_mute</i>
+                            </button>
+                            <button type="button" class="btn btn-secondary">
+                                <i className="material-icons" style={style.icon}>volume_off</i>
+                            </button>
+                            <button type="button" class="btn btn-secondary">
+                                <i className="material-icons" style={style.icon}>volume_up</i>
+                            </button>
+                            <button type="button" class="btn btn-secondary">
+                                <i className="material-icons" style={style.icon}>playlist_add</i>
+                            </button>
+                            <button type="button" class="btn btn-secondary">
+                                <i className="material-icons" style={style.icon}>repeat</i>
+                            </button>
+                            <button type="button" class="btn btn-secondary">
+                                <i className="material-icons" style={style.icon}>equalizer</i>
+                            </button>
+                            <button type="button" class="btn btn-secondary">
+                                <i className="material-icons" style={style.icon}>tune</i>
+                            </button>
+
+                        </div>
                     </div>
-                    <div className="col-8">
+                    <div className="col-12">
                         <div className='wave'></div>
                     </div>
-                    <div className="col-2"></div>
                 </div>
 
 

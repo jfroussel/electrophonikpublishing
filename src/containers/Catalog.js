@@ -23,9 +23,7 @@ class Catalog extends Component {
     }
   }
 
-
   render() {
-
     return (
       <ScrollableAnchor id={'catalog'}>
         <section className="features-1">
@@ -39,7 +37,6 @@ class Catalog extends Component {
                 <CatalogContent />
               </div>
             </div>
-
           </div>
         </section>
       </ScrollableAnchor>

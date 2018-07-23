@@ -4,13 +4,9 @@ import firebase from 'firebase'
 import ReactTable from "react-table"
 import "react-table/react-table.css"
 import Album from '../../assets/jacquette.jpg'
-import AudioPlayer from './AudioPlayer'
 import WaveSurfer from './WaveSurfer'
 import Audio from './data/Accross.mp3'
 import ReactTooltip from 'react-tooltip'
-
-
-
 
 const style = {
     subComponent: {
@@ -71,7 +67,7 @@ class CatalogTable extends Component {
         this.state = {
             data: []
         };
-
+        
         const rootRef = firebase.database().ref();
         this.soundsRef = rootRef.child('sounds');
     }
@@ -80,22 +76,17 @@ class CatalogTable extends Component {
     componentWillMount() {
         this.soundsRef.on('value', snapshot => {
             let sounds;
-
             sounds = snapshot.val() ? Object.keys(snapshot.val()).map(key => {
                 return snapshot.val()[key];
             }) :
                 sounds = [];
             this.setState({ data: sounds })
-
         })
     }
-
-
 
     render() {
 
         const data = this.state.data
-
         const onRowClick = (state, rowInfo, column, instance) => {
             return {
                 onClick: (e, handleOriginal) => {
@@ -110,7 +101,6 @@ class CatalogTable extends Component {
         const getTags = (tags, i) => {
             if (tags) {
                 return (
-
                     tags.map((tag, i) => {
                         return (
                             <span className="ml-2 pl-2 pr-2" key={i} style={style.tags}>{tag.value}</span>
@@ -198,23 +188,18 @@ class CatalogTable extends Component {
                                 {
                                     Header: "Title",
                                     accessor: "title",
-
-
                                 },
                                 {
                                     Header: "Author",
                                     accessor: "author",
-
                                 },
                                 {
                                     Header: "Lenght",
                                     accessor: "lenght",
-
                                 },
                                 {
                                     Header: "BPM",
                                     accessor: "bpm",
-
                                 },
                                 {
                                     Header: "Loops",
@@ -222,18 +207,15 @@ class CatalogTable extends Component {
                                     style: {
                                         cursor: "pointer",
                                         textAlign: "left",
-
                                     },
                                 },
                                 {
-
                                     accessor: "Actions",
                                     Cell: row => (
                                         <div><CatalogActions /></div>
                                     )
                                 },
                                 {
-
                                     accessor: "buy",
                                     Cell: row => (
                                         <div><Buy /></div>
@@ -256,8 +238,6 @@ class CatalogTable extends Component {
         );
     }
 }
-
-
 
 export default CatalogTable
 

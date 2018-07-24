@@ -35,7 +35,7 @@ const moods = [
   'Gentle / Light',
   'Happy / Cheerful',
 ]
-const artists = ['jeff','olive']
+const artists = ['jeff', 'olive']
 const instruments = [
   'Accordion',
   'Bagpipes',
@@ -92,11 +92,10 @@ export default class CatalogSidebar extends Component {
             <div className="card-header" id="headingOne">
               <h5 className="mb-0">
                 <button className="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  Genres
+                  GENRES
                 </button>
               </h5>
             </div>
-
             <div id="collapseOne" className="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
               <div className="card-body">
                 {genres.map((genre) => {
@@ -114,7 +113,7 @@ export default class CatalogSidebar extends Component {
             <div className="card-header" id="headingTwo">
               <h5 className="mb-0">
                 <button className="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  Mood
+                  MOODS
                 </button>
               </h5>
             </div>
@@ -150,7 +149,7 @@ export default class CatalogSidebar extends Component {
             <div className="card-header" id="headingFour">
               <h5 className="mb-0">
                 <button className="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
-                  Length
+                  LENGTH
                 </button>
               </h5>
             </div>
@@ -164,13 +163,13 @@ export default class CatalogSidebar extends Component {
             <div className="card-header" id="headingFive">
               <h5 className="mb-0">
                 <button className="btn btn-link collapsed " type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseThree">
-                Artists
+                  ARTISTS
                 </button>
               </h5>
             </div>
             <div id="collapseFive" className="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
               <div className="card-body">
-              {artists.map((artist) => {
+                {artists.map((artist) => {
                   return (
                     <div className="form-group form-check" key={artist}>
                       <input type="checkbox" className="form-check-input" id={artist} />
@@ -186,13 +185,13 @@ export default class CatalogSidebar extends Component {
             <div className="card-header" id="headingSix">
               <h5 className="mb-0">
                 <button className="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseThree">
-                  Instruments
+                  INSTRUMENTS
                 </button>
               </h5>
             </div>
             <div id="collapseSix" className="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
               <div className="card-body">
-              {instruments.map((instrument) => {
+                {instruments.map((instrument) => {
                   return (
                     <div className="form-group form-check" key={instrument}>
                       <input type="checkbox" className="form-check-input" id={instrument} />

@@ -88,7 +88,7 @@ export default class Waveform extends React.Component {
                         </span>
                     }
                     <div className="col-6">
-                        <div className='wave col-12'></div>
+                        <div className='wave'></div>
                     </div>
                     <div className="col-1" style={style.iconBox}>
                         <span data-tip="Stems">

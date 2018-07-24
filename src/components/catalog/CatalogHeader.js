@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 const style = {
   navbar: {
-    backgroundColor: '#001a1a',
+    //backgroundColor: '#001a1a',
   }
 }
 export default class CatalogHeader extends Component {

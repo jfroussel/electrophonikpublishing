@@ -6,10 +6,10 @@ import CatalogContent from '../components/catalog/CatalogContent'
 
 const style = {
   content: {
-    backgroundColor: '#001a1a',
+    //backgroundColor: '#001a1a',
   },
   sidebar: {
-    backgroundColor: '#001a1a',
+    //backgroundColor: '#001a1a',
   }
 }
 

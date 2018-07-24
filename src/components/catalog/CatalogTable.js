@@ -21,7 +21,7 @@ const style = {
     },
     play: {
 
-        color: 'rgb(220, 173, 84)',
+        color: '#dc3545',
         cursor: 'pointer',
         textAlign: 'center',
         marginTop: -4,

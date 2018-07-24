@@ -187,7 +187,7 @@ p {
   color: #dfe1e5 !important; }
 
 .navbar-custom {
-  background: #b5983ef5; 
+  background: #dc3545; 
   height: 92px;
 }
 
@@ -460,11 +460,11 @@ li.nav-item .btn-white {
 }
 
 .navbar-light .navbar-nav .nav-link {
-  color: #fff;
+  color: #FFF;
 }
 
 .navbar-light .navbar-nav .nav-link.active {
-  color: #fff !important;
+  color: #FFF !important;
 }
 
 .nav-item-hover:hover{
@@ -552,12 +552,12 @@ li.nav-item .btn-white {
 .container-catalog {
   padding-left:0;
   padding-right:0;
-  background-color: #000;
+  background-color: #212529;
   min-height: 1000px;
 }
 
 .card-catalog {
-  background-color:#001a1a;
+  background-color:#212529;
 }
 .btn-link {
   color: #ddd !important;

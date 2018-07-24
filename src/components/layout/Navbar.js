@@ -55,7 +55,7 @@ class Navbar extends Component {
                     <nav className="navbar navbar-expand-lg navbar-light navbar-custom fixed-top">
                         <div className="container-fluid">
                             <a className="navbar-brand pt-2 text-muted">
-                                reactSound
+                                <img src={Logo} width="200px" alt="" />
                             </a>
                             <button
                                 className="navbar-toggler"

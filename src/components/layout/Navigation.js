@@ -4,13 +4,13 @@ import { auth } from '../../firebase'
 
 const PublicNavigation = () =>
     <div className="navbar-nav">
-        <a className="nav-item nav-link active " href="#home">Home <span className="sr-only">(current)</span></a>
-        <a className="nav-item nav-link nav-item-hover " href="#catalog">Catalog</a>
-        <a className="nav-item nav-link nav-item-hover " href="#features">Features</a>
-        <a className="nav-item nav-link nav-item-hover " href="#works">Works</a>
-        <a className="nav-item nav-link nav-item-hover " href="#about">About</a>
-        <a className="nav-item nav-link nav-item-hover" href="#contact">Contact</a>
-        <a className="nav-item nav-link nav-item-hover" href="#language">FR</a>
+        <a className="nav-item nav-link active text-uppercase " href="#home">Home <span className="sr-only">(current)</span></a>
+        <a className="nav-item nav-link nav-item-hover text-uppercase  ml-3" href="#catalog">Catalog</a>
+        <a className="nav-item nav-link nav-item-hover text-uppercase ml-3" href="#features">Features</a>
+        <a className="nav-item nav-link nav-item-hover text-uppercase ml-3" href="#works">Works</a>
+        <a className="nav-item nav-link nav-item-hover text-uppercase ml-3" href="#about">About</a>
+        <a className="nav-item nav-link nav-item-hover text-uppercase ml-3" href="#contact">Contact</a>
+        <a className="nav-item nav-link nav-item-hover text-uppercase ml-3" href="#language">FR</a>
     </div>
 
 

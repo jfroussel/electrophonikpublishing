@@ -8,6 +8,12 @@ import AuthPage from './AuthPage'
 import MemberHome from './member/MemberHome'
 import { PrivateNavigation, PublicNavigation } from './Navigation'
 
+const style = {
+    loginIcon: {
+        fontSize: 35,
+        marginTop: -6
+    }
+}
 
 class Navbar extends Component {
 
@@ -16,6 +22,7 @@ class Navbar extends Component {
         super(props);
         this.state = {
             isLogged: false,
+
         }
     }
 
@@ -47,8 +54,8 @@ class Navbar extends Component {
                 <section className="cover-5">
                     <nav className="navbar navbar-expand-lg navbar-light navbar-custom fixed-top">
                         <div className="container-fluid">
-                            <a className="navbar-brand pt-2">
-                                <img src={Logo} width="100" alt="logo" />
+                            <a className="navbar-brand pt-2 text-muted">
+                                reactSound
                             </a>
                             <button
                                 className="navbar-toggler"
@@ -63,20 +70,22 @@ class Navbar extends Component {
                             <div
                                 className="collapse navbar-collapse pull-xs-right justify-content-end"
                                 id="navbarSupportedContent">
-                                <ul className="navbar-nav mt-2 mt-md-0">
+                                <ul className="navbar-nav mt-2">
                                     {!this.state.isLogged ? <PublicNavigation /> : <PrivateNavigation />}
 
                                     {!this.state.isLogged ?
 
                                         <li className="nav-item nav-login">
                                             <a
-                                                className="nav-link text-info"
+                                                className="nav-link"
                                                 href="#home"
                                                 data-toggle="collapse"
                                                 data-target="#collapse"
                                                 aria-expanded="false"
                                                 onClick={handleClick}
-                                            ><i className="far fa-user mr-2 login-icon "></i>Login</a>
+                                            ><i className="material-icons" style={style.loginIcon}>
+                                                    account_circle
+                                            </i></a>
 
                                         </li>
 
@@ -100,10 +109,12 @@ class Navbar extends Component {
                                         </li> : null}
                                     <div className="cart-element">
                                         <span className="cart-icon">
-                                        <i className="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
+                                            <i className="material-icons text-white" style={style.loginIcon}>
+                                                shopping_cart
+                                            </i>
                                         </span>
                                         <span className="cart-notification">
-                                        2
+                                            2
                                         </span>
                                     </div>
                                 </ul>

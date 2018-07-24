@@ -187,7 +187,9 @@ p {
   color: #dfe1e5 !important; }
 
 .navbar-custom {
-  background: #000; }
+  background: #b5983ef5; 
+  height: 92px;
+}
 
 a.navbar-brand, a.logo {
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -601,6 +603,7 @@ li.nav-item .btn-white {
 }
 .cart-element {
   margin-left: 2em;
+  margin-top: 8px;
 }
 
 .cart-icon {
@@ -608,15 +611,15 @@ li.nav-item .btn-white {
 }
 
 .cart-notification {
-    position: relative;
-    padding: 2px 6px;
-    border: solid 2px #dc3545;
-    border-radius: 50px;
-    color: #fff;
-    font-size: 10px;
-    background-color: #dc3545;
-    top: -1.8em;
-    left: -1em;
+  position: relative;
+  padding: 2px 6px;
+  border: solid 2px #dc3545;
+  border-radius: 50px;
+  color: #dc3545;
+  font-size: 11px;
+  background-color: #f8f9fa;
+  top: -2.3em;
+  left: -1.5em;
 }
 .nav-login {
   margin-left: 1em;

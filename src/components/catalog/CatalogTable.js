@@ -32,11 +32,11 @@ const style = {
         fontSize: 50
     },
     tags: {
-        border: 'solid 2px rgb(220, 173, 84)',
+        border: 'solid 2px rgba(223, 225, 229, 0.3)',
         borderRadius: 25,
-        backgroundColor: 'rgb(220, 173, 84)',
-        color: '#000',
-        fontWeight: 'bold',
+        backgroundColor: 'transparent',
+        color: 'rgba(255, 255, 255, 0.76)',
+        fontWeight: 400,
         fontSize: 12,
 
     },
@@ -58,6 +58,10 @@ const style = {
         border: 'solid 2px rgb(60, 61, 62)',
         paddingTop: 10,
         marginTop: 10,
+    },
+    wave: {
+        border: 'solid 1px rgba(223, 225, 229, 0.3)',
+        borderRadius: 10
     }
 }
 
@@ -67,7 +71,7 @@ class CatalogTable extends Component {
         this.state = {
             data: []
         };
-        
+
         const rootRef = firebase.database().ref();
         this.soundsRef = rootRef.child('sounds');
     }
@@ -103,7 +107,7 @@ class CatalogTable extends Component {
                 return (
                     tags.map((tag, i) => {
                         return (
-                            <span className="ml-2 pl-2 pr-2" key={i} style={style.tags}>{tag.value}</span>
+                            <span className="ml-2 pl-2 pt-1 pb-1 pr-2" key={i} style={style.tags}>{tag.value}</span>
                         )
                     })
 
@@ -139,16 +143,14 @@ class CatalogTable extends Component {
         const SubComponent = (props) => {
             return (
                 <div className="row" style={style.subComponent}>
-
                     <div className="col-2 pt-3">
                         <img src={Album} alt="album" width="200px" />
                     </div>
                     <div className="col-10 pt-3" >
-                        
-                        <div className="pb-2">Genres : {getTags(data[props.id].genres)} </div>
-                        <div className="pb-2">Moods : {getTags(data[props.id].moods)}</div>
-                        <div className="pb-2">Instruments : {getTags(data[props.id].instruments) ? getTags(data[props.id].instruments) : ''}</div>
-                        <div className='parent-component'><WaveSurfer src={Audio} /></div>
+                        <div className="pb-3">Genres : {getTags(data[props.id].genres)} </div>
+                        <div className="pb-3">Moods : {getTags(data[props.id].moods)}</div>
+                        <div className="pb-3">Instruments : {getTags(data[props.id].instruments) ? getTags(data[props.id].instruments) : ''}</div>
+                        <div className='parent-component' style={style.wave}><WaveSurfer src={Audio} /></div>
                     </div>
                 </div>
             )
@@ -169,7 +171,7 @@ class CatalogTable extends Component {
                                         <div>
                                             {isExpanded
                                                 ? <div data-tip="" style={style.play}><i className="material-icons" style={style.icon}>arrow_drop_down</i></div>
-                                                : <div data-tip="Expend for more infos"style={style.play}><i className="material-icons" style={style.icon}>arrow_right</i></div>}
+                                                : <div data-tip="Expend for more infos" style={style.play}><i className="material-icons" style={style.icon}>arrow_right</i></div>}
                                         </div>,
                                     style: {
                                         cursor: "pointer",
@@ -233,7 +235,7 @@ class CatalogTable extends Component {
 
                 />
                 <br />
-                
+
             </div>
         );
     }

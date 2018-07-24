@@ -7,7 +7,7 @@ import AutoSearch from './Autosuggest'
 const style = {
     coverImage: {
         width: '100%',
-        height: 800,
+        minHeight: 1000,
         margin: 0,
         padding: 0,
         background: 'url(' + CoverImage + ') no-repeat center fixed',

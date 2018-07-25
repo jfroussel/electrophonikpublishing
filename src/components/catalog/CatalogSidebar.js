@@ -1,5 +1,14 @@
 import React, { Component } from 'react';
 
+const style = {
+  containerSidebar: {
+    paddingTop: '5.5em'
+  },
+  sidebarIcon: {
+    marginLeft: '4em'
+  }
+}
+
 const genres = ['Jazz',
   'Funk',
   'Blues',
@@ -83,18 +92,46 @@ const instruments = [
   'Xylophone',
 ]
 
+
+
 export default class CatalogSidebar extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      mouseOverSidebar: false
+    }
+  }
+
+  onMouseOver() {
+    //this.setState({ mouseOverSidebar: true })
+    return (
+      console.log('on mouse over')
+    )
+  }
+
   render() {
     return (
-      <div>
-        <div className="accordion" id="accordionExample">
+      <div style={style.containerSidebar}>
+        <div className="accordion" id="catalog-sidebar">
           <div className="card card-catalog">
             <div className="card-header" id="headingOne">
               <h5 className="mb-0">
-                <button className="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <button
+                  className="btn btn-link collapsed"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#collapseOne"
+                  aria-expanded="true"
+                  aria-controls="collapseOne"
+                  onMouseOver={this.onMouseOver}
+                >
+                
                   GENRES
+                  
                 </button>
               </h5>
+
             </div>
             <div id="collapseOne" className="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
               <div className="card-body">
@@ -112,7 +149,14 @@ export default class CatalogSidebar extends Component {
           <div className="card card-catalog">
             <div className="card-header" id="headingTwo">
               <h5 className="mb-0">
-                <button className="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <button
+                  className="btn btn-link collapsed"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#collapseTwo"
+                  aria-expanded="false"
+                  aria-controls="collapseTwo"
+                >
                   MOODS
                 </button>
               </h5>
@@ -134,7 +178,14 @@ export default class CatalogSidebar extends Component {
           <div className="card card-catalog">
             <div className="card-header" id="headingThree">
               <h5 className="mb-0">
-                <button className="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                <button
+                  className="btn btn-link collapsed"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#collapseThree"
+                  aria-expanded="false"
+                  aria-controls="collapseThree"
+                >
                   BPM
                 </button>
               </h5>
@@ -148,7 +199,14 @@ export default class CatalogSidebar extends Component {
           <div className="card card-catalog">
             <div className="card-header" id="headingFour">
               <h5 className="mb-0">
-                <button className="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+                <button
+                  className="btn btn-link collapsed"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#collapseFour"
+                  aria-expanded="false"
+                  aria-controls="collapseThree"
+                >
                   LENGTH
                 </button>
               </h5>
@@ -162,7 +220,14 @@ export default class CatalogSidebar extends Component {
           <div className="card card-catalog">
             <div className="card-header" id="headingFive">
               <h5 className="mb-0">
-                <button className="btn btn-link collapsed " type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseThree">
+                <button
+                  className="btn btn-link collapsed "
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#collapseFive"
+                  aria-expanded="false"
+                  aria-controls="collapseThree"
+                >
                   ARTISTS
                 </button>
               </h5>
@@ -184,7 +249,14 @@ export default class CatalogSidebar extends Component {
           <div className="card card-catalog">
             <div className="card-header" id="headingSix">
               <h5 className="mb-0">
-                <button className="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseThree">
+                <button
+                  className="btn btn-link collapsed"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#collapseSix"
+                  aria-expanded="false"
+                  aria-controls="collapseThree"
+                >
                   INSTRUMENTS
                 </button>
               </h5>

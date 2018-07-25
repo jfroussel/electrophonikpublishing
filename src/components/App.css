@@ -187,7 +187,7 @@ p {
   color: #dfe1e5 !important; }
 
 .navbar-custom {
-  background: #dc3545; 
+  background: #17a2b8; 
   height: 92px;
 }
 
@@ -558,13 +558,15 @@ li.nav-item .btn-white {
 
 .card-catalog {
   background-color:#212529;
+  border-bottom: solid 1px #ffffff24
 }
 .btn-link {
   color: #ddd !important;
-  text-decoration: none;
+  text-decoration: none !important;
+  font-size: 14px;
 }
 .btn-link:hover {
-  color: #dcad54 !important;
+  color: #696b6e !important;
 }
 .form-check-label {
   color: #dcad54 !important;

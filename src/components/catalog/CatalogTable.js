@@ -21,7 +21,7 @@ const style = {
     },
     play: {
 
-        color: '#dc3545',
+        color: '#17a2b8',
         cursor: 'pointer',
         textAlign: 'center',
         marginTop: -4,
@@ -41,7 +41,7 @@ const style = {
 
     },
     iconAction: {
-        color: '#dcad54',
+        color: '#17a2b8',
         backgroundColor: 'transparent',
 
     },
@@ -117,7 +117,7 @@ class CatalogTable extends Component {
 
         const Buy = () => {
             return (
-                <button type="button" className="btn btn-warning">Buy 25€</button>
+                <button type="button" className="btn btn-outline-warning">Buy 25€</button>
             )
         }
 

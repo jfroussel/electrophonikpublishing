@@ -5,7 +5,7 @@ import ReactTable from "react-table"
 import "react-table/react-table.css"
 import Album from '../../assets/jacquette.jpg'
 import WaveSurfer from './WaveSurfer'
-import Audio from './data/Accross.mp3'
+//import Audio from './data/Accross.mp3'
 import ReactTooltip from 'react-tooltip'
 
 const style = {
@@ -70,13 +70,12 @@ class CatalogTable extends Component {
         super(props);
         this.state = {
             data: [],
-            audio: '',
+            
         };
 
         const rootRef = firebase.database().ref();
         this.soundsRef = rootRef.child('sounds');
         this.getAudio = this.getAudio.bind(this)
-
     }
 
 
@@ -89,31 +88,19 @@ class CatalogTable extends Component {
                 sounds = [];
             this.setState({ data: sounds })
         })
-        console.log(Audio)
     }
 
-    componentWillReceiveProps() {
-        console.log('etat du state : ', this.state)
-    }
-
-    getAudio(folder,filename) {
-            
-        const storage = firebase.storage();
-        const storageRef = storage.ref(folder + '/' + filename);
-        storageRef.getDownloadURL().then(function (url) {
-            return (
-                //this.setState({audio:url})
-                console.log('result : ', url)
-            )
+    getAudio(folder,filename){
+        const storage = firebase.storage().ref(folder + '/' + filename);;
+        storage.getDownloadURL().then(function (url) {
+            this.setState({audio:url}) 
         }).catch(function (error) {
             switch (error.code) {
                 case 'storage/object_not_found':
-                console.log('fichier introuvable')
+                    console.log('fichier introuvable')
                     break;
-
                 case 'storage/unauthorized':
                     break;
-
                 case 'storage/canceled':
                     break;
                 case 'storage/unknown':
@@ -124,12 +111,8 @@ class CatalogTable extends Component {
         });
     }
 
-    
-
-    
-
     render() {
-
+        
         const data = this.state.data
         const onRowClick = (state, rowInfo, column, instance) => {
             return {
@@ -186,7 +169,7 @@ class CatalogTable extends Component {
 
             const folder = data[props.id].author
             const filename = data[props.id].filename
-            this.getAudio(folder,filename)
+            
             return (
                 <div className="row" style={style.subComponent}>
                     <div className="col-2 pt-3">
@@ -197,7 +180,7 @@ class CatalogTable extends Component {
                         <div className="pb-3">Genres : {getTags(data[props.id].genres)} </div>
                         <div className="pb-3">Moods : {getTags(data[props.id].moods)}</div>
                         <div className="pb-3">Instruments : {getTags(data[props.id].instruments) ? getTags(data[props.id].instruments) : ''}</div>
-                        <div className='parent-component' style={style.wave}><WaveSurfer  src={this.state.audio} /></div>
+                        <div className='parent-component' style={style.wave}><WaveSurfer  src={this.getAudio(folder,filename)} /></div>
                     </div>
                 </div>
             )

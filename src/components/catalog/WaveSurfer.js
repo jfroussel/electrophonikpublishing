@@ -41,7 +41,7 @@ export default class Waveform extends React.Component {
         })
         this.wavesurfer.load(this.props.src)
         console.log('wavesurfer details : ', this.wavesurfer)
-        console.log(this.wavesurfer.getDuration())
+        console.log('get duration : ',this.wavesurfer.getDuration())
 
     }
 

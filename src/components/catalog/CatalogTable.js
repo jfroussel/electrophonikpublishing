@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import './table.css'
-import firebase from 'firebase'
+import firebase  from 'firebase'
 import ReactTable from "react-table"
 import "react-table/react-table.css"
 import Album from '../../assets/jacquette.jpg'
@@ -70,7 +70,7 @@ class CatalogTable extends Component {
         super(props);
         this.state = {
             data: [],
-            
+            audio: ''
         };
 
         const rootRef = firebase.database().ref();
@@ -90,11 +90,17 @@ class CatalogTable extends Component {
         })
     }
 
-    getAudio(folder,filename){
-        const storage = firebase.storage().ref(folder + '/' + filename);;
-        storage.getDownloadURL().then(function (url) {
-            this.setState({audio:url}) 
-        }).catch(function (error) {
+    
+    
+
+    getAudio(author, filename) {
+
+        const ref = firebase.storage().ref(author + '/' + filename)
+
+        ref.getDownloadURL().then((url) => {
+            this.setState({ audio: url })
+            console.log(url)
+        }).catch((error) => {
             switch (error.code) {
                 case 'storage/object_not_found':
                     console.log('fichier introuvable')
@@ -108,12 +114,14 @@ class CatalogTable extends Component {
                     break;
                 default:
             }
-        });
+        })
     }
 
     render() {
-        
+        console.log('etat du state : ', this.state.audio)
         const data = this.state.data
+        const audio = this.state.audio
+
         const onRowClick = (state, rowInfo, column, instance) => {
             return {
                 onClick: (e, handleOriginal) => {
@@ -167,20 +175,21 @@ class CatalogTable extends Component {
         const SubComponent = (props) => {
             //const audio = "https://firebasestorage.googleapis.com/v0/b/myapp-a124d.appspot.com/o/jeff%201%2Ftrack2.mp3?alt=media&token=0b814c65-f443-47cc-a5ce-a534d958a827"
 
-            const folder = data[props.id].author
+            const author = data[props.id].author
             const filename = data[props.id].filename
-            
+            this.getAudio(author,filename)
+
             return (
                 <div className="row" style={style.subComponent}>
                     <div className="col-2 pt-3">
                         <img src={Album} alt="album" width="200px" />
                     </div>
                     <div className="col-10 pt-3" >
-                        <div className="pb-3">Audio filename : {data[props.id].filename} </div>
+                        <div className="pb-3">Audio filename : {filename ? filename : 'track not found !'} <br /><span>By Author : {author ? author : 'author not found !'}</span> </div>
                         <div className="pb-3">Genres : {getTags(data[props.id].genres)} </div>
                         <div className="pb-3">Moods : {getTags(data[props.id].moods)}</div>
                         <div className="pb-3">Instruments : {getTags(data[props.id].instruments) ? getTags(data[props.id].instruments) : ''}</div>
-                        <div className='parent-component' style={style.wave}><WaveSurfer  src={this.getAudio(folder,filename)} /></div>
+                        <div className='parent-component' style={style.wave}><WaveSurfer src={audio} /></div>
                     </div>
                 </div>
             )
@@ -200,7 +209,7 @@ class CatalogTable extends Component {
                                         <div>
                                             {isExpanded
                                                 ? <div data-tip="" style={style.play}><i className="material-icons" style={style.icon}>arrow_drop_down</i></div>
-                                                : <div data-tip="Expend for more infos"  style={style.play}><i className="material-icons" style={style.icon}>arrow_right</i></div>}
+                                                : <div data-tip="Expend for more infos" style={style.play}><i className="material-icons" style={style.icon}>arrow_right</i></div>}
                                         </div>,
                                     style: {
                                         cursor: "pointer",

@@ -1,11 +1,11 @@
 import React, { Component } from "react"
 import './table.css'
-import firebase  from 'firebase'
+import firebase from 'firebase'
 import ReactTable from "react-table"
 import "react-table/react-table.css"
 import Album from '../../assets/jacquette.jpg'
 import WaveSurfer from './WaveSurfer'
-//import Audio from './data/Accross.mp3'
+import audioDefault from './audioDefault.mpeg'
 import ReactTooltip from 'react-tooltip'
 
 const style = {
@@ -70,12 +70,14 @@ class CatalogTable extends Component {
         super(props);
         this.state = {
             data: [],
-            audio: ''
+            audio: audioDefault
         };
 
         const rootRef = firebase.database().ref();
         this.soundsRef = rootRef.child('sounds');
-        this.getAudio = this.getAudio.bind(this)
+        
+
+
     }
 
 
@@ -87,47 +89,55 @@ class CatalogTable extends Component {
             }) :
                 sounds = [];
             this.setState({ data: sounds })
+            
         })
+        this.getAudio()
+        console.log('constructor PROPS : ', this.state)
+
     }
 
-    
-    
+        
+        getAudio() {
+            const author = 'A.Del'
+            const filename = this.state.audio
+            const ref = firebase.storage().ref(author + '/' + filename)
 
-    getAudio(author, filename) {
-
-        const ref = firebase.storage().ref(author + '/' + filename)
-
-        ref.getDownloadURL().then((url) => {
-            this.setState({ audio: url })
-            console.log(url)
-        }).catch((error) => {
-            switch (error.code) {
-                case 'storage/object_not_found':
-                    console.log('fichier introuvable')
-                    break;
-                case 'storage/unauthorized':
-                    break;
-                case 'storage/canceled':
-                    break;
-                case 'storage/unknown':
-                    console.log('fichier introuvable')
-                    break;
-                default:
-            }
-        })
-    }
+            ref.getDownloadURL().then((url) => {
+                this.setState({ audio: url })
+                return (
+                   this.state.audio
+                )
+            }).catch((error) => {
+                switch (error.code) {
+                    case 'storage/object_not_found':
+                        console.log('fichier introuvable')
+                        break;
+                    case 'storage/unauthorized':
+                        break;
+                    case 'storage/canceled':
+                        break;
+                    case 'storage/unknown':
+                        console.log('fichier introuvable')
+                        break;
+                    default:
+                }
+            })
+        }
 
     render() {
-        console.log('etat du state : ', this.state.audio)
+
         const data = this.state.data
         const audio = this.state.audio
+
+        console.log(this.state)
 
         const onRowClick = (state, rowInfo, column, instance) => {
             return {
                 onClick: (e, handleOriginal) => {
-                    console.log(`Row index: ${rowInfo.index}, info: ${e}`);
+                    console.log(`Row index: ${rowInfo.index}, info: ${state}`)
                     if (handleOriginal) {
                         handleOriginal();
+
                     }
                 }
             };
@@ -171,13 +181,13 @@ class CatalogTable extends Component {
             )
         }
 
-
         const SubComponent = (props) => {
-            //const audio = "https://firebasestorage.googleapis.com/v0/b/myapp-a124d.appspot.com/o/jeff%201%2Ftrack2.mp3?alt=media&token=0b814c65-f443-47cc-a5ce-a534d958a827"
+            //const defaultAudio = "https://firebasestorage.googleapis.com/v0/b/myapp-a124d.appspot.com/o/jeff%201%2Ftrack2.mp3?alt=media&token=0b814c65-f443-47cc-a5ce-a534d958a827"
 
             const author = data[props.id].author
             const filename = data[props.id].filename
-            this.getAudio(author,filename)
+            
+
 
             return (
                 <div className="row" style={style.subComponent}>

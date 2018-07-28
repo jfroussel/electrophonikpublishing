@@ -70,13 +70,11 @@ class CatalogTable extends Component {
         super(props);
         this.state = {
             data: [],
-            audio: audioDefault
+            audio: ''
         };
 
         const rootRef = firebase.database().ref();
         this.soundsRef = rootRef.child('sounds');
-        
-
 
     }
 
@@ -89,55 +87,29 @@ class CatalogTable extends Component {
             }) :
                 sounds = [];
             this.setState({ data: sounds })
-            
-        })
-        this.getAudio()
-        console.log('constructor PROPS : ', this.state)
 
+        })
+
+        console.log(this.state)
+        
     }
 
-        
-        getAudio() {
-            const author = 'A.Del'
-            const filename = this.state.audio
-            const ref = firebase.storage().ref(author + '/' + filename)
 
-            ref.getDownloadURL().then((url) => {
-                this.setState({ audio: url })
-                return (
-                   this.state.audio
-                )
-            }).catch((error) => {
-                switch (error.code) {
-                    case 'storage/object_not_found':
-                        console.log('fichier introuvable')
-                        break;
-                    case 'storage/unauthorized':
-                        break;
-                    case 'storage/canceled':
-                        break;
-                    case 'storage/unknown':
-                        console.log('fichier introuvable')
-                        break;
-                    default:
-                }
-            })
-        }
+    
 
     render() {
 
         const data = this.state.data
-        const audio = this.state.audio
-
-        console.log(this.state)
+        
+        console.log('render : ', this.state)
 
         const onRowClick = (state, rowInfo, column, instance) => {
             return {
                 onClick: (e, handleOriginal) => {
                     console.log(`Row index: ${rowInfo.index}, info: ${state}`)
                     if (handleOriginal) {
-                        handleOriginal();
-
+                        handleOriginal()
+                        console.log(this.state.audio)
                     }
                 }
             };
@@ -181,25 +153,54 @@ class CatalogTable extends Component {
             )
         }
 
-        const SubComponent = (props) => {
-            //const defaultAudio = "https://firebasestorage.googleapis.com/v0/b/myapp-a124d.appspot.com/o/jeff%201%2Ftrack2.mp3?alt=media&token=0b814c65-f443-47cc-a5ce-a534d958a827"
 
+        const GetAudio = (props) => {
+            console.log('RESULTS : ',props)
             const author = data[props.id].author
             const filename = data[props.id].filename
-            
+           
+            const storage = firebase.storage();
+            const storageRef = storage.ref();
+            const audioRef = storageRef.child(author + '/' + filename);
+    
+            //const ref = firebase.storage().ref(author + '/' + filename)
+    
+            audioRef.getDownloadURL().then((url) => {
+                this.setState({ audio: url })
+                return (
+                    this.state.audio
+                )
+            }).catch((error) => {
+                switch (error.code) {
+                    case 'storage/object_not_found':
+                        console.log('fichier introuvable')
+                        break;
+                    case 'storage/unauthorized':
+                        break;
+                    case 'storage/canceled':
+                        break;
+                    case 'storage/unknown':
+                        console.log('fichier introuvable')
+                        break;
+                    default:
+                }
+            })
+        }
 
-
+        const SubComponent = (props) => {
+            console.log('SUBCOMPONENT : ',props)
             return (
                 <div className="row" style={style.subComponent}>
                     <div className="col-2 pt-3">
                         <img src={Album} alt="album" width="200px" />
                     </div>
                     <div className="col-10 pt-3" >
-                        <div className="pb-3">Audio filename : {filename ? filename : 'track not found !'} <br /><span>By Author : {author ? author : 'author not found !'}</span> </div>
+                        <div className="pb-3">Audio filename : {data[props.id].filename ? data[props.id].filename : 'track not found !'} <br /><span>By Author : {data[props.id].author ? data[props.id].author : 'author not found !'}</span> </div>
                         <div className="pb-3">Genres : {getTags(data[props.id].genres)} </div>
                         <div className="pb-3">Moods : {getTags(data[props.id].moods)}</div>
                         <div className="pb-3">Instruments : {getTags(data[props.id].instruments) ? getTags(data[props.id].instruments) : ''}</div>
-                        <div className='parent-component' style={style.wave}><WaveSurfer src={audio} /></div>
+
+                        <div className='parent-component' style={style.wave}><WaveSurfer src={GetAudio} /></div>
                     </div>
                 </div>
             )
@@ -265,6 +266,7 @@ class CatalogTable extends Component {
                                         <div><CatalogActions /></div>
                                     )
                                 },
+                                
                                 {
                                     accessor: "buy",
                                     Cell: row => (
@@ -279,6 +281,7 @@ class CatalogTable extends Component {
                     style={style.table}
                     className="-striped -highlight"
                     SubComponent={(row) => <div style={{ padding: '10px' }}><SubComponent id={row.index} /></div>}
+                    GetAudio={(row) => <GetAudio id={row.index} />}
                     getTdProps={onRowClick}
 
                 />

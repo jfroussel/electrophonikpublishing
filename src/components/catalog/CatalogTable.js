@@ -75,7 +75,6 @@ class CatalogTable extends Component {
         this.state = {
 
         };
-
     }
 
 
@@ -89,13 +88,15 @@ class CatalogTable extends Component {
     render() {
         const { sounds, fruits, storageTrack } = this.props
         console.log('recuperation des sons : ', this.props)
+
+        
         const onRowClick = (state, rowInfo, column, instance) => {
             return {
                 onClick: (e, handleOriginal) => {
                     console.log(`Row index: ${rowInfo.index}, info: ${state}`)
                     if (handleOriginal) {
-                        handleOriginal();
-
+                        handleOriginal()
+                        console.log(this.state.audio)
                     }
                 }
             };
@@ -137,10 +138,7 @@ class CatalogTable extends Component {
                 </div>
             )
         }
-        
-        
-        
-        
+
         const SubComponent = (props) => {
             const author = sounds[props.id].author
             const filename = sounds[props.id].filename

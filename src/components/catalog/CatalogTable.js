@@ -1,11 +1,15 @@
 import React, { Component } from "react"
-import './table.css'
 import firebase from 'firebase'
+import './table.css'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { getSounds } from '../../actions/sounds'
+import { getFruits } from '../../actions/fruits'
+import { getStorageTrack } from '../../actions/storageTrack'
 import ReactTable from "react-table"
 import "react-table/react-table.css"
 import Album from '../../assets/jacquette.jpg'
 import WaveSurfer from './WaveSurfer'
-import audioDefault from './audioDefault.mpeg'
 import ReactTooltip from 'react-tooltip'
 
 const style = {
@@ -69,68 +73,22 @@ class CatalogTable extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: [],
-            audio: audioDefault
+
         };
-
-        const rootRef = firebase.database().ref();
-        this.soundsRef = rootRef.child('sounds');
-        
-
 
     }
 
 
     componentWillMount() {
-        this.soundsRef.on('value', snapshot => {
-            let sounds;
-            sounds = snapshot.val() ? Object.keys(snapshot.val()).map(key => {
-                return snapshot.val()[key];
-            }) :
-                sounds = [];
-            this.setState({ data: sounds })
-            
-        })
-        this.getAudio()
-        console.log('constructor PROPS : ', this.state)
-
+        this.props.getFruits()
+        this.props.getSounds()
+        this.props.getStorageTrack(this.props.author, this.props.filename)
     }
 
-        
-        getAudio() {
-            const author = 'A.Del'
-            const filename = this.state.audio
-            const ref = firebase.storage().ref(author + '/' + filename)
-
-            ref.getDownloadURL().then((url) => {
-                this.setState({ audio: url })
-                return (
-                   this.state.audio
-                )
-            }).catch((error) => {
-                switch (error.code) {
-                    case 'storage/object_not_found':
-                        console.log('fichier introuvable')
-                        break;
-                    case 'storage/unauthorized':
-                        break;
-                    case 'storage/canceled':
-                        break;
-                    case 'storage/unknown':
-                        console.log('fichier introuvable')
-                        break;
-                    default:
-                }
-            })
-        }
 
     render() {
-
-        const data = this.state.data
-        const audio = this.state.audio
-
-        console.log(this.state)
-
+        const { sounds, fruits, storageTrack } = this.props
+        console.log('recuperation des sons : ', this.props)
         const onRowClick = (state, rowInfo, column, instance) => {
             return {
                 onClick: (e, handleOriginal) => {
@@ -151,7 +109,6 @@ class CatalogTable extends Component {
                             <span className="ml-2 pl-2 pt-1 pb-1 pr-2" key={i} style={style.tags}>{tag.value}</span>
                         )
                     })
-
                 )
             }
         }
@@ -180,15 +137,14 @@ class CatalogTable extends Component {
                 </div>
             )
         }
-
+        
+        
+        
+        
         const SubComponent = (props) => {
-            //const defaultAudio = "https://firebasestorage.googleapis.com/v0/b/myapp-a124d.appspot.com/o/jeff%201%2Ftrack2.mp3?alt=media&token=0b814c65-f443-47cc-a5ce-a534d958a827"
-
-            const author = data[props.id].author
-            const filename = data[props.id].filename
+            const author = sounds[props.id].author
+            const filename = sounds[props.id].filename
             
-
-
             return (
                 <div className="row" style={style.subComponent}>
                     <div className="col-2 pt-3">
@@ -196,100 +152,119 @@ class CatalogTable extends Component {
                     </div>
                     <div className="col-10 pt-3" >
                         <div className="pb-3">Audio filename : {filename ? filename : 'track not found !'} <br /><span>By Author : {author ? author : 'author not found !'}</span> </div>
-                        <div className="pb-3">Genres : {getTags(data[props.id].genres)} </div>
-                        <div className="pb-3">Moods : {getTags(data[props.id].moods)}</div>
-                        <div className="pb-3">Instruments : {getTags(data[props.id].instruments) ? getTags(data[props.id].instruments) : ''}</div>
-                        <div className='parent-component' style={style.wave}><WaveSurfer src={audio} /></div>
+                        <div className="pb-3">Genres : {getTags(sounds[props.id].genres)} </div>
+                        <div className="pb-3">Moods : {getTags(sounds[props.id].moods)}</div>
+                        <div className="pb-3">Instruments : {getTags(sounds[props.id].instruments) ? getTags(sounds[props.id].instruments) : ''}</div>
+                        <div className='parent-component' style={style.wave}><WaveSurfer src={storageTrack} /></div>
                     </div>
                 </div>
             )
         }
+        
+        if (sounds) {
+            return (
+                <div>
+                    <ReactTable
+                        data={sounds}
+                        columns={[
+                            {
+                                columns: [
+                                    {
+                                        expander: true,
+                                        width: 65,
+                                        Expander: ({ isExpanded, ...rest }) =>
+                                            <div>
+                                                {isExpanded
+                                                    ? <div data-tip="" style={style.play}><i className="material-icons" style={style.icon}>arrow_drop_down</i></div>
+                                                    : <div data-tip="Expend for more infos" style={style.play}><i className="material-icons" style={style.icon}>arrow_right</i></div>}
+                                            </div>,
+                                        style: {
+                                            cursor: "pointer",
+                                            fontSize: 25,
+                                            padding: "0",
+                                            textAlign: "center",
+                                            userSelect: "none",
+                                            width: 50
+                                        },
+                                    }
+                                ]
+                            },
+                            {
+                                columns: [
 
-        return (
-            <div>
-                <ReactTable
-                    data={data}
-                    columns={[
-                        {
-                            columns: [
-                                {
-                                    expander: true,
-                                    width: 65,
-                                    Expander: ({ isExpanded, ...rest }) =>
-                                        <div>
-                                            {isExpanded
-                                                ? <div data-tip="" style={style.play}><i className="material-icons" style={style.icon}>arrow_drop_down</i></div>
-                                                : <div data-tip="Expend for more infos" style={style.play}><i className="material-icons" style={style.icon}>arrow_right</i></div>}
-                                        </div>,
-                                    style: {
-                                        cursor: "pointer",
-                                        fontSize: 25,
-                                        padding: "0",
-                                        textAlign: "center",
-                                        userSelect: "none",
-                                        width: 50
+                                    {
+                                        Header: "Title",
+                                        accessor: "title",
                                     },
-                                }
-                            ]
-                        },
-                        {
-                            columns: [
-
-                                {
-                                    Header: "Title",
-                                    accessor: "title",
-                                },
-                                {
-                                    Header: "Author",
-                                    accessor: "author",
-                                },
-                                {
-                                    Header: "Lenght",
-                                    accessor: "lenght",
-                                },
-                                {
-                                    Header: "BPM",
-                                    accessor: "bpm",
-                                },
-                                {
-                                    Header: "Loops",
-                                    accessor: "loops",
-                                    style: {
-                                        cursor: "pointer",
-                                        textAlign: "left",
+                                    {
+                                        Header: "Author",
+                                        accessor: "author",
                                     },
-                                },
-                                {
-                                    accessor: "Actions",
-                                    Cell: row => (
-                                        <div><CatalogActions /></div>
-                                    )
-                                },
-                                {
-                                    accessor: "buy",
-                                    Cell: row => (
-                                        <div><Buy /></div>
-                                    )
-                                },
+                                    {
+                                        Header: "Lenght",
+                                        accessor: "lenght",
+                                    },
+                                    {
+                                        Header: "BPM",
+                                        accessor: "bpm",
+                                    },
+                                    {
+                                        Header: "Loops",
+                                        accessor: "loops",
+                                        style: {
+                                            cursor: "pointer",
+                                            textAlign: "left",
+                                        },
+                                    },
+                                    {
+                                        accessor: "Actions",
+                                        Cell: row => (
+                                            <div><CatalogActions /></div>
+                                        )
+                                    },
+                                    {
+                                        accessor: "buy",
+                                        Cell: row => (
+                                            <div><Buy /></div>
+                                        )
+                                    },
 
-                            ]
-                        },
-                    ]}
-                    defaultPageSize={10}
-                    style={style.table}
-                    className="-striped -highlight"
-                    SubComponent={(row) => <div style={{ padding: '10px' }}><SubComponent id={row.index} /></div>}
-                    getTdProps={onRowClick}
+                                ]
+                            },
+                        ]}
+                        defaultPageSize={10}
+                        style={style.table}
+                        className="-striped -highlight"
+                        SubComponent={(row) => <div style={{ padding: '10px' }}><SubComponent id={row.index} /></div>}
+                        getTdProps={onRowClick}
 
-                />
-                <br />
+                    />
+                    <br />
 
-            </div>
-        );
+                </div>
+            );
+
+        }
+
+
     }
 }
 
-export default CatalogTable
+const mapStateToProps = (state) => {
+    return {
+        sounds: state.sounds,
+        fruits: state.fruits,
+        storageTrack: state.storageTrack
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({ getSounds, getFruits, getStorageTrack }, dispatch)
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(CatalogTable);
+
 
 
 

@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { getSounds } from '../../actions/sounds'
 import { getStorageTrack } from '../../actions/storageTrack'
-import DefaultSound from './data/audioDefault.mpeg'
+//import DefaultSound from './data/audioDefault.mpeg'
 import ReactTable from "react-table"
 import "react-table/react-table.css"
 import Album from '../../assets/jacquette.jpg'
@@ -32,9 +32,10 @@ class CatalogTable extends Component {
         const onRowClick = (state, rowInfo, column, instance) => {
             return {
                 onClick: (e, handleOriginal) => {
+                    let filename = ''
                     const id = rowInfo.index
                     const author = state.data[id].author
-                    const filename = state.data[id].filename
+                    filename = state.data[id].filename
                     filename && this.props.getStorageTrack(author, filename)
                     
                     if (handleOriginal) {
@@ -85,6 +86,7 @@ class CatalogTable extends Component {
         const SubComponent = (props) => {
             const author = sounds[props.id].author
             const filename = sounds[props.id].filename
+            const defaultTrack = '../data/audioDefault.mpeg'
             
             return (
                 <div className="row" style={style.subComponent}>
@@ -96,7 +98,7 @@ class CatalogTable extends Component {
                         <div className="pb-3">Genres : {getTags(sounds[props.id].genres)} </div>
                         <div className="pb-3">Moods : {getTags(sounds[props.id].moods)}</div>
                         <div className="pb-3">Instruments : {getTags(sounds[props.id].instruments) ? getTags(sounds[props.id].instruments) : ''}</div>
-                        <div className='parent-component' style={style.wave}><WaveSurfer src={!storageTrack ? DefaultSound : storageTrack } /></div>
+                        <div className='parent-component' style={style.wave}><WaveSurfer src={!storageTrack ? defaultTrack : storageTrack } /></div>
                     </div>
                 </div>
             )
@@ -151,6 +153,10 @@ class CatalogTable extends Component {
                                         accessor: "bpm",
                                     },
                                     {
+                                        Header: "Tone",
+                                        accessor: "tone.label",
+                                    },
+                                    {
                                         Header: "Loops",
                                         accessor: "loops",
                                         style: {
@@ -179,6 +185,7 @@ class CatalogTable extends Component {
                         className="-striped -highlight"
                         SubComponent={(row) => <div style={{ padding: '10px' }}><SubComponent id={row.index} /></div>}
                         getTdProps={onRowClick}
+                        collapseOnDataChange= {false}
 
                     />
                     <br />
@@ -195,7 +202,6 @@ class CatalogTable extends Component {
 const mapStateToProps = (state) => {
     return {
         sounds: state.sounds,
-        fruits: state.fruits,
         storageTrack: state.storageTrack
     }
 }

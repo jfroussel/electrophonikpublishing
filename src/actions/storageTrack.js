@@ -8,7 +8,6 @@ export const getStorageTrack = (author, filename) => {
     
     return (dispatch) => {
         ref.getDownloadURL().then((url) => {
-            console.log('reference : ',url)
             dispatch({ type: GET_STORAGE_TRACK, payload: url })
         })
     };

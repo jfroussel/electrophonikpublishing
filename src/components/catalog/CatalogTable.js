@@ -87,6 +87,7 @@ class CatalogTable extends Component {
 
     render() {
         const { sounds, fruits, storageTrack } = this.props
+        
         console.log('recuperation des sons : ', this.props)
 
         

@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { getSounds } from '../../actions/sounds'
 import { getStorageTrack } from '../../actions/storageTrack'
+import DefaultSound from './data/audioDefault.mpeg'
 import ReactTable from "react-table"
 import "react-table/react-table.css"
 import Album from '../../assets/jacquette.jpg'
@@ -21,22 +22,24 @@ class CatalogTable extends Component {
 
     componentWillMount() {
         this.props.getSounds()
-        this.props.getStorageTrack(this.props.author, this.props.filename)
     }
 
     render() {
         const { sounds, storageTrack } = this.props
 
-        console.log('recuperation des sons : ', this.props)
+        console.log('STORAGE : ',storageTrack)
 
-        
         const onRowClick = (state, rowInfo, column, instance) => {
             return {
                 onClick: (e, handleOriginal) => {
-                    console.log(`Row index: ${rowInfo.index}, info: ${state}`)
+                    const id = rowInfo.index
+                    const author = state.data[id].author
+                    const filename = state.data[id].filename
+                    filename && this.props.getStorageTrack(author, filename)
+                    
                     if (handleOriginal) {
                         handleOriginal()
-                        console.log(this.state.audio)
+                        
                     }
                 }
             };
@@ -93,7 +96,7 @@ class CatalogTable extends Component {
                         <div className="pb-3">Genres : {getTags(sounds[props.id].genres)} </div>
                         <div className="pb-3">Moods : {getTags(sounds[props.id].moods)}</div>
                         <div className="pb-3">Instruments : {getTags(sounds[props.id].instruments) ? getTags(sounds[props.id].instruments) : ''}</div>
-                        <div className='parent-component' style={style.wave}><WaveSurfer src={storageTrack} /></div>
+                        <div className='parent-component' style={style.wave}><WaveSurfer src={!storageTrack ? DefaultSound : storageTrack } /></div>
                     </div>
                 </div>
             )
@@ -129,7 +132,7 @@ class CatalogTable extends Component {
                             },
                             {
                                 columns: [
-
+                                    
                                     {
                                         Header: "Title",
                                         accessor: "title",

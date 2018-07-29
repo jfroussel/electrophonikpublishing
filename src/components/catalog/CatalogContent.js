@@ -23,7 +23,7 @@ class CatalogContent extends Component {
   componentWillReceiveProps(nextProps) {
     this.getCount()
   }
-  
+
   getCount() {
     return (
       this.setState({count:this.props.sounds.length})

@@ -1,7 +1,7 @@
 const style = {
     icon: {
-        fontSize: 35,
-        marginTop: 13,
+        fontSize: 25,
+        marginTop: 10,
         cursor: 'pointer'
     },
     iconBox: {

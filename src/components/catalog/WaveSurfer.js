@@ -21,7 +21,7 @@ export default class Waveform extends Component {
             container: this.$waveform,
             waveColor: '#b5983ef5',
             progressColor: '#ffc107',
-            height: 67,
+            height: 40,
         })
         this.wavesurfer.load(this.props.src)
     }

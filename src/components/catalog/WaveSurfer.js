@@ -1,34 +1,19 @@
-// components/waveform.js
-import React from 'react'
+import React, {Component } from 'react'
 import ReactDOM from 'react-dom'
 import WaveSurfer from 'wavesurfer.js'
 import ReactTooltip from 'react-tooltip'
+import style from './WaveSurferStyle'
 
-const style = {
-    icon: {
-        fontSize: 35,
-        marginTop: 13,
-        cursor: 'pointer'
-    },
-    iconBox: {
-        borderLeft: 'solid 1px rgba(223, 225, 229, 0.3)',
-        textAlign: 'center'
-    }
-
-
-}
-
-export default class Waveform extends React.Component {
+export default class Waveform extends Component {
     constructor(props) {
         super(props)
         this.state = {
             activePlay: false
         }
-
         this.playPause = this.playPause.bind(this)
         this.pause = this.pause.bind(this)
-
     }
+
     componentDidMount() {
         this.$el = ReactDOM.findDOMNode(this)
         this.$waveform = this.$el.querySelector('.wave')
@@ -37,11 +22,8 @@ export default class Waveform extends React.Component {
             waveColor: '#b5983ef5',
             progressColor: '#ffc107',
             height: 67,
-
         })
         this.wavesurfer.load(this.props.src)
-        
-
     }
 
     playPause() {
@@ -49,24 +31,14 @@ export default class Waveform extends React.Component {
         return (
             this.wavesurfer.playPause()
         )
-
     }
+
     pause() {
         this.setState({ activePlay: false })
         return (
             this.wavesurfer.pause()
         )
     }
-
-
-    componentWillUnmount() {
-
-    }
-
-    componentWillReceiveProps(nextProps) {
-        console.log('wcrp : ', this.wavesurfer.getDuration())
-    }
-
 
     render() {
 
@@ -126,8 +98,6 @@ export default class Waveform extends React.Component {
                     </div>
 
                 </div>
-
-
                 <ReactTooltip />
             </div>
         )

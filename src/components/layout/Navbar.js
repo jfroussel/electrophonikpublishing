@@ -54,8 +54,8 @@ class Navbar extends Component {
                 <section className="cover-5">
                     <nav className="navbar navbar-expand-lg navbar-light navbar-custom fixed-top">
                         <div className="container-fluid">
-                            <a className="navbar-brand pt-2 text-muted">
-                                <img src={Logo} width="200px" alt="" />
+                            <a href="#home" className="navbar-brand pt-2 text-muted">
+                                <img src={Logo}  width="200px" alt="" />
                             </a>
                             <button
                                 className="navbar-toggler"

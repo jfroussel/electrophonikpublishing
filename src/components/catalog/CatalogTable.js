@@ -186,6 +186,7 @@ class CatalogTable extends Component {
                         SubComponent={(row) => <div style={{ padding: '10px' }}><SubComponent id={row.index} /></div>}
                         getTdProps={onRowClick}
                         collapseOnDataChange= {false}
+                        collapseOnSortingChange= {true}
 
                     />
                     <br />

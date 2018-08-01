@@ -631,3 +631,13 @@ li.nav-item .btn-white {
   font-size: 1.4em !important;
 }
 
+.btn-default {
+  outline: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+.dropdown-reactsound::after {
+  display:none !important;
+}
+

@@ -12,7 +12,7 @@ const style = {
         fontSize: '2em',
         marginTop: '13px',
         marginRight: '10px',
-        marginLeft: '-35px',
+        marginLeft: '5px',
         cursor: 'pointer',
         border: 'solid 2px #fff',
         borderRadius: '50%',

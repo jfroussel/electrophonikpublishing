@@ -50,7 +50,7 @@ export default class CatalogSidebar extends Component {
               <div className="card-body">
                 {genres.map((genre) => {
                   return (
-                    <div className="form-group form-check" key={genre}>
+                    <div className="form-check" key={genre}>
                       <input type="checkbox" className="form-check-input" id={genre} />
                       <label className="form-check-label" htmlFor="exampleCheck1">{genre}</label>
                     </div>
@@ -78,7 +78,7 @@ export default class CatalogSidebar extends Component {
               <div className="card-body">
                 {moods.map((mood) => {
                   return (
-                    <div className="form-group form-check" key={mood}>
+                    <div className="form-check" key={mood}>
                       <input type="checkbox" className="form-check-input" id={mood} />
                       <label className="form-check-label" htmlFor="exampleCheck1">{mood}</label>
                     </div>
@@ -149,7 +149,7 @@ export default class CatalogSidebar extends Component {
               <div className="card-body">
                 {artists.map((artist) => {
                   return (
-                    <div className="form-group form-check" key={artist}>
+                    <div className="form-check" key={artist}>
                       <input type="checkbox" className="form-check-input" id={artist} />
                       <label className="form-check-label" htmlFor="exampleCheck1">{artist}</label>
                     </div>
@@ -178,7 +178,7 @@ export default class CatalogSidebar extends Component {
               <div className="card-body">
                 {instruments.map((instrument) => {
                   return (
-                    <div className="form-group form-check" key={instrument}>
+                    <div className="form-check has-warning" key={instrument}>
                       <input type="checkbox" className="form-check-input" id={instrument} />
                       <label className="form-check-label" htmlFor="exampleCheck1">{instrument}</label>
                     </div>

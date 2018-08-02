@@ -8,12 +8,12 @@ const filtersReducerDefaultState = {
 
 };
 
-export default (state = [], action) => {
+export default (state = filtersReducerDefaultState, action) => {
     switch (action.type) {
         case 'FILTER_GENRES':
             return [
                 {
-                    
+                    ...state,
                     genres: action.genres
                 }, ...state
             ]

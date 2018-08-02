@@ -81,6 +81,7 @@ class CatalogSidebar extends Component {
                 <button
                   className="btn btn-link collapsed"
                   type="button"
+                  
                   data-toggle="collapse"
                   data-target="#collapseTwo"
                   aria-expanded="false"
@@ -95,7 +96,16 @@ class CatalogSidebar extends Component {
                 {moods.map((mood) => {
                   return (
                     <div className="form-check" key={mood}>
-                      <input type="checkbox" className="form-check-input" id={mood} />
+                      <input 
+                      type="checkbox" 
+                      className="form-check-input" 
+                      value={mood}
+                      id={mood} 
+                      onClick  ={(e) => {
+                        console.log(e.target.value)
+                        this.props.dispatch(filterMoods(e.target.value));
+                    }}
+                      />
                       <label className="form-check-label" htmlFor="exampleCheck1">{mood}</label>
                     </div>
                   )

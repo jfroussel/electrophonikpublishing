@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { filterGenres, filterArtists, filterInstruments, filterMoods, filterBpm, filterLenght } from '../../actions/filters';
 import style from './CatalogSidebarStyle'
 import {genres,moods,artists,instruments} from './CatalogConstants'
 
@@ -7,7 +9,7 @@ import {genres,moods,artists,instruments} from './CatalogConstants'
 
 
 
-export default class CatalogSidebar extends Component {
+class CatalogSidebar extends Component {
 
   constructor(props) {
     super(props)
@@ -15,6 +17,8 @@ export default class CatalogSidebar extends Component {
       mouseOverSidebar: false
     }
   }
+
+ 
 
   onMouseOver() {
     //this.setState({ mouseOverSidebar: true })
@@ -24,11 +28,13 @@ export default class CatalogSidebar extends Component {
   }
 
   render() {
+
     return (
       <div style={style.containerSidebar}>
         <div className="accordion" id="catalog-sidebar">
           <div className="card card-catalog">
             <div className="card-header" id="headingOne">
+          
               <h5 className="mb-0">
                 <button
                   className="btn btn-link collapsed"
@@ -51,7 +57,17 @@ export default class CatalogSidebar extends Component {
                 {genres.map((genre) => {
                   return (
                     <div className="form-check" key={genre}>
-                      <input type="checkbox" className="form-check-input" id={genre} />
+                      <input 
+                      type="checkbox"
+                      value={genre}
+                      className="form-check-input" 
+                      id={genre} 
+                      onClick  ={(e) => {
+                        console.log(e.target.value)
+                        this.props.dispatch(filterGenres(e.target.value));
+                    }}
+                      
+                      />
                       <label className="form-check-label" htmlFor="exampleCheck1">{genre}</label>
                     </div>
                   )
@@ -192,3 +208,12 @@ export default class CatalogSidebar extends Component {
     )
   }
 };
+
+const mapStateToProps = (state) => {
+  return {
+      filters: state.filters
+  }
+}
+
+
+export default connect(mapStateToProps)(CatalogSidebar)

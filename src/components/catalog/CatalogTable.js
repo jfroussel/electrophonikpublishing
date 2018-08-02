@@ -16,7 +16,7 @@ class CatalogTable extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            pictureFixture: ''
         };
     }
 
@@ -25,22 +25,21 @@ class CatalogTable extends Component {
     }
 
     render() {
+       
         const { sounds, storageTrack } = this.props
-
-        console.log('STORAGE : ',storageTrack)
 
         const onRowClick = (state, rowInfo, column, instance) => {
             return {
                 onClick: (e, handleOriginal) => {
+                    
                     let filename = ''
                     const id = rowInfo.index
                     const author = state.data[id].author
                     filename = state.data[id].filename
                     filename && this.props.getStorageTrack(author, filename)
-                    
+        
                     if (handleOriginal) {
                         handleOriginal()
-                        
                     }
                 }
             };

@@ -37,11 +37,21 @@ class CatalogContent extends Component {
   render() {
     const { filters } = this.props
     console.log(filters.genres)
+
+    const searchRequestItems = () => {
+      console.log(filters)
+      if(filters){
+        return (
+          filters.genres +  filters.moods  + filters.instruments +  filters.artists 
+        )
+      } 
+    }
+    
     return (
       <div>
         <h3 style={style.title}>Most Popular Royalty Free Music</h3>
         <em><h5 style={style.count}>{this.state.count} tracks found</h5></em>
-        <em><h6 style={style.count}>search request :<br /> {`Genres (${ filters.genres })  `}  {`Moods (${filters.moods })  `}  {`Instruments (${filters.instruments })  `}{`Artists (${filters.artists })  `}     </h6></em>
+        <em><h6 style={style.count}>search request : {searchRequestItems()}  </h6></em>
         <CatalogTable />
       </div>
     )

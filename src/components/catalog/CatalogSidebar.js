@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { filterGenres, filterArtists, filterInstruments, filterMoods, filterBpm, filterLenght } from '../../actions/filters';
+import { 
+  filterGenres,
+  filterArtists, 
+  filterInstruments,  
+  filterMoods, 
+  filterBpm, 
+  filterLenght,
+ } from '../../actions/filters';
 import style from './CatalogSidebarStyle'
 import { genres, moods, artists, instruments } from './CatalogConstants'
 
@@ -62,7 +69,7 @@ class CatalogSidebar extends Component {
                           console.log(e.target.value)
                           if(e.target.checked) {
                             this.props.dispatch(filterGenres(e.target.value));
-                          }
+                          } 
                         }}
 
                       />

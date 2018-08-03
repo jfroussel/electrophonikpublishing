@@ -16,7 +16,7 @@ export default (state = filtersReducerDefaultState, action) => {
                 genres: [...state.genres, action.genres]
 
             }
-
+       
 
 
         case 'FILTER_MOODS':

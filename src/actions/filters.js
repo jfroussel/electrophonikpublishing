@@ -3,6 +3,7 @@ export const filterGenres = (genres = []) => ({
     genres
 });
 
+
 export const filterMoods = (moods = []) => ({
     type: 'FILTER_MOODS',
     moods

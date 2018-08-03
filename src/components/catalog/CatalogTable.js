@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { getSounds } from '../../actions/sounds'
 import { getStorageTrack } from '../../actions/storageTrack'
+import { filterGenres } from '../../actions/filters'
 //import DefaultSound from './data/audioDefault.mpeg'
 import ReactTable from "react-table"
 import "react-table/react-table.css"
@@ -16,7 +17,8 @@ class CatalogTable extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            pictureFixture: ''
+            pictureFixture: '',
+           
         };
     }
 
@@ -24,20 +26,26 @@ class CatalogTable extends Component {
         this.props.getSounds()
     }
 
+    componentWillReceiveProps(nextProps) {
+        console.log('CWM : ', this.props.sounds)
+        
+    }
+
+
     render() {
-       
-        const { sounds, storageTrack } = this.props
+
+        const { sounds, storageTrack, filters } = this.props
 
         const onRowClick = (state, rowInfo, column, instance) => {
             return {
                 onClick: (e, handleOriginal) => {
-                    
+
                     let filename = ''
                     const id = rowInfo.index
                     const author = state.data[id].author
                     filename = state.data[id].filename
                     filename && this.props.getStorageTrack(author, filename)
-        
+
                     if (handleOriginal) {
                         handleOriginal()
                     }
@@ -86,7 +94,7 @@ class CatalogTable extends Component {
             const author = sounds[props.id].author
             const filename = sounds[props.id].filename
             const defaultTrack = '../data/audioDefault.mpeg'
-            
+
             return (
                 <div className="row" style={style.subComponent}>
                     <div className="col-2 pt-3">
@@ -97,12 +105,12 @@ class CatalogTable extends Component {
                         <div className="pb-3">Genres : {getTags(sounds[props.id].genres)} </div>
                         <div className="pb-3">Moods : {getTags(sounds[props.id].moods)}</div>
                         <div className="pb-3">Instruments : {getTags(sounds[props.id].instruments) ? getTags(sounds[props.id].instruments) : ''}</div>
-                        <div className='parent-component' style={style.wave}><WaveSurfer src={!storageTrack ? defaultTrack : storageTrack } /></div>
+                        <div className='parent-component' style={style.wave}><WaveSurfer src={!storageTrack ? defaultTrack : storageTrack} /></div>
                     </div>
                 </div>
             )
         }
-        
+
         if (sounds) {
             return (
                 <div>
@@ -133,11 +141,11 @@ class CatalogTable extends Component {
                             },
                             {
                                 columns: [
-                                    
+
                                     {
                                         Header: "Title",
                                         accessor: "title",
-                                       
+
                                     },
                                     {
                                         Header: "Author",
@@ -184,8 +192,8 @@ class CatalogTable extends Component {
                         className="-striped -highlight"
                         SubComponent={(row) => <div style={{ padding: '10px' }}><SubComponent id={row.index} /></div>}
                         getTdProps={onRowClick}
-                        collapseOnDataChange= {false}
-                        collapseOnSortingChange= {true}
+                        collapseOnDataChange={false}
+                        collapseOnSortingChange={true}
 
                     />
                     <br />
@@ -202,7 +210,8 @@ class CatalogTable extends Component {
 const mapStateToProps = (state) => {
     return {
         sounds: state.sounds,
-        storageTrack: state.storageTrack
+        storageTrack: state.storageTrack,
+        filters: state.filters
     }
 }
 

@@ -152,8 +152,8 @@ class CatalogTable extends Component {
                                         accessor: "author",
                                     },
                                     {
-                                        Header: "Lenght",
-                                        accessor: "lenght",
+                                        Header: "Length",
+                                        accessor: "length",
                                     },
                                     {
                                         Header: "BPM",

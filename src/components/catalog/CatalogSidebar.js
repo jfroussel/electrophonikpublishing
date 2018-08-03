@@ -6,7 +6,7 @@ import {
   filterInstruments,  
   filterMoods, 
   filterBpm, 
-  filterLenght,
+  filterLength,
  } from '../../actions/filters';
 import style from './CatalogSidebarStyle'
 import { genres, moods, artists, instruments } from './CatalogConstants'
@@ -29,8 +29,10 @@ class CatalogSidebar extends Component {
     )
   }
 
-  render() {
 
+  render() {
+  const { filters } = this.props
+  console.log('SIDEBAR : ',filters)
     return (
       <div style={style.containerSidebar}>
         <div className="accordion" id="catalog-sidebar">
@@ -48,7 +50,7 @@ class CatalogSidebar extends Component {
                   onMouseOver={this.onMouseOver}
                 >
 
-                  GENRES
+                  GENRES <span class="badge badge-warning ml-3">{filters.genres.length}</span>
 
                 </button>
               </h5>
@@ -91,7 +93,7 @@ class CatalogSidebar extends Component {
                   aria-expanded="false"
                   aria-controls="collapseTwo"
                 >
-                  MOODS
+                  MOODS <span class="badge badge-warning ml-3">{filters.moods.length}</span>
                 </button>
               </h5>
             </div>
@@ -172,7 +174,7 @@ class CatalogSidebar extends Component {
                   aria-expanded="false"
                   aria-controls="collapseThree"
                 >
-                  ARTISTS
+                  ARTISTS <span class="badge badge-warning ml-3">{filters.artists.length}</span>
                 </button>
               </h5>
             </div>
@@ -210,7 +212,7 @@ class CatalogSidebar extends Component {
                   aria-expanded="false"
                   aria-controls="collapseThree"
                 >
-                  INSTRUMENTS
+                  INSTRUMENTS <span class="badge badge-warning ml-3">{filters.instruments.length}</span>
                 </button>
               </h5>
             </div>

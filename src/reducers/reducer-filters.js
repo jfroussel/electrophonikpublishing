@@ -4,7 +4,7 @@ const filtersReducerDefaultState = {
     artists: [],
     instruments: [],
     bpm: '',
-    lenght: '',
+    length: '',
 
 };
 
@@ -44,10 +44,10 @@ export default (state = filtersReducerDefaultState, action) => {
                 ...state,
                 bpm: action.bpm
             }
-        case 'FILTER_LENGHT':
+        case 'FILTER_LENGTH':
             return {
                 ...state,
-                lenght: action.lenght
+                length: action.length
             };
 
         case 'CLEAR':
@@ -58,7 +58,7 @@ export default (state = filtersReducerDefaultState, action) => {
                 artists: action.defaultFilter.artists,
                 instruments: action.defaultFilter.instruments,
                 bpm: action.defaultFilter.bpm,
-                lenght: action.defaultFilter.lenght,
+                length: action.defaultFilter.length,
 
             }
         default:

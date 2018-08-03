@@ -24,7 +24,7 @@ export const filterBpm = (bpm = []) => ({
     bpm
 });
 
-export const filterLenght = (lenght = []) => ({
-    type: 'FILTER_LENGHT',
-    lenght
+export const filterLength = (length = []) => ({
+    type: 'FILTER_LENGTH',
+    length
 });

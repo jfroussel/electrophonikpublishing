@@ -42,7 +42,7 @@ class CatalogContent extends Component {
       console.log(filters)
       if(filters){
         return (
-          filters.genres +  filters.moods  + filters.instruments +  filters.artists 
+          filters.genres + ',' +  filters.moods  + filters.instruments +  filters.artists 
         )
       } 
     }

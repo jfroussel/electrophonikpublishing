@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { filterGenres, filterArtists, filterInstruments, filterMoods, filterBpm, filterLenght } from '../../actions/filters';
 import style from './CatalogSidebarStyle'
-import {genres,moods,artists,instruments} from './CatalogConstants'
-
-
-
-
+import { genres, moods, artists, instruments } from './CatalogConstants'
 
 
 class CatalogSidebar extends Component {
@@ -14,11 +10,10 @@ class CatalogSidebar extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      mouseOverSidebar: false
+      mouseOverSidebar: false,
+      checked: false
     }
   }
-
- 
 
   onMouseOver() {
     //this.setState({ mouseOverSidebar: true })
@@ -34,7 +29,7 @@ class CatalogSidebar extends Component {
         <div className="accordion" id="catalog-sidebar">
           <div className="card card-catalog">
             <div className="card-header" id="headingOne">
-          
+
               <h5 className="mb-0">
                 <button
                   className="btn btn-link collapsed"
@@ -45,9 +40,9 @@ class CatalogSidebar extends Component {
                   aria-controls="collapseOne"
                   onMouseOver={this.onMouseOver}
                 >
-                
+
                   GENRES
-                  
+
                 </button>
               </h5>
 
@@ -57,16 +52,19 @@ class CatalogSidebar extends Component {
                 {genres.map((genre) => {
                   return (
                     <div className="form-check" key={genre}>
-                      <input 
-                      type="checkbox"
-                      value={genre}
-                      className="form-check-input" 
-                      id={genre} 
-                      onClick  ={(e) => {
-                        console.log(e.target.value)
-                        this.props.dispatch(filterGenres(e.target.value));
-                    }}
-                      
+                      <input
+                        type="checkbox"
+
+                        value={genre}
+                        className="form-check-input"
+                        id={genre}
+                        onChange={(e) => {
+                          console.log(e.target.value)
+                          if(e.target.checked) {
+                            this.props.dispatch(filterGenres(e.target.value));
+                          }
+                        }}
+
                       />
                       <label className="form-check-label" htmlFor="exampleCheck1">{genre}</label>
                     </div>
@@ -81,7 +79,6 @@ class CatalogSidebar extends Component {
                 <button
                   className="btn btn-link collapsed"
                   type="button"
-                  
                   data-toggle="collapse"
                   data-target="#collapseTwo"
                   aria-expanded="false"
@@ -96,15 +93,16 @@ class CatalogSidebar extends Component {
                 {moods.map((mood) => {
                   return (
                     <div className="form-check" key={mood}>
-                      <input 
-                      type="checkbox" 
-                      className="form-check-input" 
-                      value={mood}
-                      id={mood} 
-                      onClick  ={(e) => {
-                        console.log(e.target.value)
-                        this.props.dispatch(filterMoods(e.target.value));
-                    }}
+                      <input
+                        type="checkbox"
+                        className="form-check-input"
+                        checked={this.state.checked}
+                        value={mood}
+                        id={mood}
+                        onClick={(e) => {
+                          console.log(e.target.value)
+                          this.props.dispatch(filterMoods(e.target.value));
+                        }}
                       />
                       <label className="form-check-label" htmlFor="exampleCheck1">{mood}</label>
                     </div>
@@ -176,7 +174,16 @@ class CatalogSidebar extends Component {
                 {artists.map((artist) => {
                   return (
                     <div className="form-check" key={artist}>
-                      <input type="checkbox" className="form-check-input" id={artist} />
+                      <input
+                        type="checkbox"
+                        className="form-check-input"
+                        id={artist}
+                        value={artist}
+                        onClick={(e) => {
+                          console.log(e.target.value)
+                          this.props.dispatch(filterArtists(e.target.value));
+                        }}
+                      />
                       <label className="form-check-label" htmlFor="exampleCheck1">{artist}</label>
                     </div>
                   )
@@ -205,7 +212,16 @@ class CatalogSidebar extends Component {
                 {instruments.map((instrument) => {
                   return (
                     <div className="form-check has-warning" key={instrument}>
-                      <input type="checkbox" className="form-check-input" id={instrument} />
+                      <input
+                        type="checkbox"
+                        className="form-check-input"
+                        id={instrument}
+                        value={instrument}
+                        onClick={(e) => {
+                          console.log(e.target.value)
+                          this.props.dispatch(filterInstruments(e.target.value));
+                        }}
+                      />
                       <label className="form-check-label" htmlFor="exampleCheck1">{instrument}</label>
                     </div>
                   )
@@ -221,7 +237,7 @@ class CatalogSidebar extends Component {
 
 const mapStateToProps = (state) => {
   return {
-      filters: state.filters
+    filters: state.filters
   }
 }
 

@@ -18,14 +18,12 @@ class CatalogContent extends Component {
 
   componentWillMount() {
     this.props.getSounds()
-    
+
 
   }
 
   componentWillReceiveProps(nextProps) {
     this.getCount()
-
-
   }
 
   getCount() {
@@ -34,19 +32,21 @@ class CatalogContent extends Component {
     )
   }
 
+  
+
   render() {
     const { filters } = this.props
     console.log(filters.genres)
 
     const searchRequestItems = () => {
       console.log(filters)
-      if(filters){
+      if (filters) {
         return (
-          filters.genres + ',' +  filters.moods  + filters.instruments +  filters.artists 
+          filters.genres + filters.moods + filters.instruments + filters.artists
         )
-      } 
+      }
     }
-    
+
     return (
       <div>
         <h3 style={style.title}>Most Popular Royalty Free Music</h3>

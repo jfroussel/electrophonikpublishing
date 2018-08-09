@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { 
+import {
   filterGenres,
-  filterArtists, 
-  filterInstruments,  
-  filterMoods, 
- } from '../../actions/filters';
+  removeFilterGenres,
+  filterArtists,
+  filterInstruments,
+  filterMoods,
+} from '../../actions/filters';
 import style from './CatalogSidebarStyle'
 import { genres, moods, artists, instruments } from './CatalogConstants'
 
@@ -29,8 +30,8 @@ class CatalogSidebar extends Component {
 
 
   render() {
-  const { filters } = this.props
-  //console.log('SIDEBAR : ',filters)
+    const { filters } = this.props
+
     return (
       <div style={style.containerSidebar}>
         <div className="accordion" id="catalog-sidebar">
@@ -56,7 +57,7 @@ class CatalogSidebar extends Component {
             </div>
             <div id="collapseOne" className="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
               <div className="card-body">
-                {genres.map((genre,i) => {
+                {genres.map((genre, i) => {
                   return (
                     <div className="form-check" key={genre}>
                       <input
@@ -66,13 +67,12 @@ class CatalogSidebar extends Component {
                         className="form-check-input"
                         id={genre}
                         onChange={(e) => {
-                          console.log(e.target.value)
-                          if(e.target.checked) {
-                           
+                         
+                          if (e.target.checked) {
                             this.props.dispatch(filterGenres(e.target.value));
+                            console.log('CHECKED NAME : ', e.target.value)
                           } else {
-                          
-                            
+                            this.props.dispatch(removeFilterGenres(e.target.value))
                           }
                         }}
 

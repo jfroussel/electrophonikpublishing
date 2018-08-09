@@ -14,9 +14,16 @@ export default (state = filtersReducerDefaultState, action) => {
             return {
                 ...state,
                 genres: [...state.genres, action.genres]
+                
 
             }
-       
+        case 'REMOVE_FILTER_GENRES':
+            return {
+                ...state,
+                genres: state.genres.filter((item,index) => action.id !== index)
+
+            }
+
 
 
         case 'FILTER_MOODS':

@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { getSounds } from '../../actions/sounds'
 import { getStorageTrack } from '../../actions/storageTrack'
-import { filterGenres } from '../../actions/filters'
 //import DefaultSound from './data/audioDefault.mpeg'
 import ReactTable from "react-table"
 import "react-table/react-table.css"
@@ -27,14 +26,14 @@ class CatalogTable extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log('CWM : ', this.props.sounds)
+        //console.log('CWM : ', this.props.sounds)
         
     }
 
 
     render() {
 
-        const { sounds, storageTrack, filters } = this.props
+        const { sounds, storageTrack } = this.props
 
         const onRowClick = (state, rowInfo, column, instance) => {
             return {

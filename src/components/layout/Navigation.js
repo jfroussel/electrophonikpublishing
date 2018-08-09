@@ -1,4 +1,6 @@
 import React from 'react'
+
+import 'firebase/auth'
 import { auth } from '../../firebase'
 
 

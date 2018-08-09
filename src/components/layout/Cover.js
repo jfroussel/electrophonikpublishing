@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ScrollableAnchor, { } from 'react-scrollable-anchor'
-import firebase from 'firebase'
+import firebase from 'firebase/app'
 import CoverImage from '../../assets/console.jpg'
 import AutoSearch from './Autosuggest'
 

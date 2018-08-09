@@ -5,8 +5,6 @@ import {
   filterArtists, 
   filterInstruments,  
   filterMoods, 
-  filterBpm, 
-  filterLength,
  } from '../../actions/filters';
 import style from './CatalogSidebarStyle'
 import { genres, moods, artists, instruments } from './CatalogConstants'
@@ -32,7 +30,7 @@ class CatalogSidebar extends Component {
 
   render() {
   const { filters } = this.props
-  console.log('SIDEBAR : ',filters)
+  //console.log('SIDEBAR : ',filters)
     return (
       <div style={style.containerSidebar}>
         <div className="accordion" id="catalog-sidebar">
@@ -58,7 +56,7 @@ class CatalogSidebar extends Component {
             </div>
             <div id="collapseOne" className="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
               <div className="card-body">
-                {genres.map((genre) => {
+                {genres.map((genre,i) => {
                   return (
                     <div className="form-check" key={genre}>
                       <input
@@ -70,8 +68,12 @@ class CatalogSidebar extends Component {
                         onChange={(e) => {
                           console.log(e.target.value)
                           if(e.target.checked) {
+                           
                             this.props.dispatch(filterGenres(e.target.value));
-                          } 
+                          } else {
+                          
+                            
+                          }
                         }}
 
                       />

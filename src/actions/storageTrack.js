@@ -1,5 +1,6 @@
 
-import firebase from 'firebase'
+import firebase from 'firebase/app'
+import 'firebase/storage'
 
 export const GET_STORAGE_TRACK = 'GET_STORAGE_TRACK'
 

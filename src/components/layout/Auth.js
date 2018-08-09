@@ -1,6 +1,7 @@
 import React from 'react';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import firebase from 'firebase';
+import 'firebase/auth'
 import './Auth.css'
 
 const style = {
@@ -35,7 +36,7 @@ class Auth extends React.Component {
 
         ],
         callbacks: {
-            signInSuccess: () => false
+            signInSuccessWithAuthResult: () => false
         }
     };
 

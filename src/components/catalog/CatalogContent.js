@@ -3,7 +3,6 @@ import style from './CatalogContentStyle'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { getSounds } from '../../actions/sounds'
-import { filterGenres, filterMoods, filterArtists, filterInstruments, filterBpm, filterLenght } from '../../actions/filters'
 import CatalogTable from './CatalogTable'
 
 
@@ -32,14 +31,11 @@ class CatalogContent extends Component {
     )
   }
 
-  
-
   render() {
     const { filters } = this.props
-    console.log(filters.genres)
-
+   
     const searchRequestItems = () => {
-      console.log(filters)
+     
       if (filters) {
         return (
           filters.genres + filters.moods + filters.instruments + filters.artists
@@ -66,7 +62,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ getSounds, filterGenres }, dispatch)
+  return bindActionCreators({ getSounds }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CatalogContent)

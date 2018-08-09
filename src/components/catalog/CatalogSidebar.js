@@ -4,8 +4,11 @@ import {
   filterGenres,
   removeFilterGenres,
   filterArtists,
+  removeFilterArtists,
   filterInstruments,
+  removeFilterInstruments,
   filterMoods,
+  removeFilterMoods,
 } from '../../actions/filters';
 import style from './CatalogSidebarStyle'
 import { genres, moods, artists, instruments } from './CatalogConstants'
@@ -62,20 +65,18 @@ class CatalogSidebar extends Component {
                     <div className="form-check" key={genre}>
                       <input
                         type="checkbox"
-
                         value={genre}
                         className="form-check-input"
                         id={genre}
                         onChange={(e) => {
-                         
                           if (e.target.checked) {
                             this.props.dispatch(filterGenres(e.target.value));
-                            console.log('CHECKED NAME : ', e.target.value)
+                            console.log('CHECK : ',e.target.value)
                           } else {
                             this.props.dispatch(removeFilterGenres(e.target.value))
+                            console.log('UNCHECK : ',e.target.value)
                           }
                         }}
-
                       />
                       <label className="form-check-label" htmlFor="exampleCheck1">{genre}</label>
                     </div>
@@ -101,18 +102,22 @@ class CatalogSidebar extends Component {
             </div>
             <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
               <div className="card-body">
-                {moods.map((mood) => {
+                {moods.map((mood, i) => {
                   return (
                     <div className="form-check" key={mood}>
                       <input
                         type="checkbox"
                         className="form-check-input"
-                        checked={this.state.checked}
                         value={mood}
                         id={mood}
-                        onClick={(e) => {
-                          console.log(e.target.value)
-                          this.props.dispatch(filterMoods(e.target.value));
+                        onChange={(e) => {
+                          if (e.target.checked) {
+                            this.props.dispatch(filterMoods(e.target.value));
+                            console.log('CHECK : ',e.target.value)
+                          } else {
+                            this.props.dispatch(removeFilterMoods(e.target.value))
+                            console.log('UNCHECK : ',e.target.value)
+                          }
                         }}
                       />
                       <label className="form-check-label" htmlFor="exampleCheck1">{mood}</label>
@@ -122,7 +127,6 @@ class CatalogSidebar extends Component {
               </div>
             </div>
           </div>
-
           <div className="card card-catalog">
             <div className="card-header" id="headingThree">
               <h5 className="mb-0">
@@ -182,7 +186,7 @@ class CatalogSidebar extends Component {
             </div>
             <div id="collapseFive" className="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
               <div className="card-body">
-                {artists.map((artist) => {
+                {artists.map((artist, i) => {
                   return (
                     <div className="form-check" key={artist}>
                       <input
@@ -190,9 +194,12 @@ class CatalogSidebar extends Component {
                         className="form-check-input"
                         id={artist}
                         value={artist}
-                        onClick={(e) => {
-                          console.log(e.target.value)
-                          this.props.dispatch(filterArtists(e.target.value));
+                        onChange={(e) => {
+                          if(e.target.checked) {
+                            this.props.dispatch(filterArtists(e.target.value))
+                          } else {
+                            this.props.dispatch(removeFilterArtists(e.target.value))
+                          }
                         }}
                       />
                       <label className="form-check-label" htmlFor="exampleCheck1">{artist}</label>
@@ -220,7 +227,7 @@ class CatalogSidebar extends Component {
             </div>
             <div id="collapseSix" className="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
               <div className="card-body">
-                {instruments.map((instrument) => {
+                {instruments.map((instrument, i) => {
                   return (
                     <div className="form-check has-warning" key={instrument}>
                       <input
@@ -228,9 +235,12 @@ class CatalogSidebar extends Component {
                         className="form-check-input"
                         id={instrument}
                         value={instrument}
-                        onClick={(e) => {
-                          console.log(e.target.value)
-                          this.props.dispatch(filterInstruments(e.target.value));
+                        onChange={(e) => {
+                          if(e.target.checked) {
+                            this.props.dispatch(filterInstruments(e.target.value))
+                          } else {
+                            this.props.dispatch(removeFilterInstruments(e.target.value))
+                          }
                         }}
                       />
                       <label className="form-check-label" htmlFor="exampleCheck1">{instrument}</label>

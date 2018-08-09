@@ -14,13 +14,28 @@ export const filterMoods = (moods = []) => ({
     moods
 });
 
+export const removeFilterMoods = (moods = []) => ({
+    type: 'REMOVE_FILTER_MOODS',
+    moods
+});
+
 export const filterArtists = (artists = []) => ({
     type: 'FILTER_ARTISTS',
     artists
 });
 
+export const removeFilterArtists = (artists = []) => ({
+    type: 'REMOVE_FILTER_ARTISTS',
+    artists
+});
+
 export const filterInstruments = (instruments = []) => ({
     type: 'FILTER_INSTRUMENTS',
+    instruments
+});
+
+export const removeFilterInstruments = (instruments = []) => ({
+    type: 'REMOVE_FILTER_INSTRUMENTS',
     instruments
 });
 

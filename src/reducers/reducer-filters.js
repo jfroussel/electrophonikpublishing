@@ -14,22 +14,27 @@ export default (state = filtersReducerDefaultState, action) => {
             return {
                 ...state,
                 genres: [...state.genres, action.genres]
-                
+
 
             }
         case 'REMOVE_FILTER_GENRES':
             return {
                 ...state,
-                genres: state.genres.filter((item,index) => action.id !== index)
+                genres: state.genres.filter((item, index) => { return action.genres !== item })
 
             }
-
-
 
         case 'FILTER_MOODS':
             return {
                 ...state,
                 moods: [...state.moods, action.moods]
+            }
+
+        case 'REMOVE_FILTER_MOODS':
+            return {
+                ...state,
+                moods: state.moods.filter((item, index) => { return action.moods !== item })
+
             }
 
 
@@ -39,11 +44,25 @@ export default (state = filtersReducerDefaultState, action) => {
                 artists: [...state.artists, action.artists]
             }
 
+        case 'REMOVE_FILTER_ARTISTS':
+            return {
+                ...state,
+                artists: state.artists.filter((item, index) => { return action.artists !== item })
+
+            }
+
 
         case 'FILTER_INSTRUMENTS':
             return {
                 ...state,
                 instruments: [...state.instruments, action.instruments]
+            }
+
+        case 'REMOVE_FILTER_INSTRUMENTS':
+            return {
+                ...state,
+                instruments: state.instruments.filter((item, index) => { return action.instruments !== item })
+
             }
 
         case 'FILTER_BPM':

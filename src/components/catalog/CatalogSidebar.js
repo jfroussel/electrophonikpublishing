@@ -13,8 +13,6 @@ import {
 import style from './CatalogSidebarStyle'
 import { genres, moods, artists, instruments } from './CatalogConstants'
 
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import Checkbox from '@material-ui/core/Checkbox'
 
 
 class CatalogSidebar extends Component {
@@ -154,17 +152,7 @@ class CatalogSidebar extends Component {
             </div>
             <div id="collapseThree" className="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
               <div className="card-body">
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={this.state.checked}
-                      onChange={this.handleChange('checkedA')}
-                      value="checkedA"
-                      
-                    />
-                  }
-                  label="Primary"
-                />
+                
               </div>
             </div>
           </div>

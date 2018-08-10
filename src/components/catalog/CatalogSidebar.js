@@ -13,6 +13,9 @@ import {
 import style from './CatalogSidebarStyle'
 import { genres, moods, artists, instruments } from './CatalogConstants'
 
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import Checkbox from '@material-ui/core/Checkbox'
+
 
 class CatalogSidebar extends Component {
 
@@ -29,6 +32,10 @@ class CatalogSidebar extends Component {
     return (
       console.log('on mouse over')
     )
+  }
+
+  handleChange = name => event => {
+    this.setState({ checked: event.target.checked });
   }
 
 
@@ -52,7 +59,7 @@ class CatalogSidebar extends Component {
                   onMouseOver={this.onMouseOver}
                 >
 
-                  GENRES <span className="badge badge-pill badge-secondary ml-3">{filters.genres.length}</span>
+                  GENRES <span className="badge badge-pill badge-custom ml-3">{filters.genres.length}</span>
 
                 </button>
               </h5>
@@ -62,6 +69,8 @@ class CatalogSidebar extends Component {
               <div className="card-body">
                 {genres.map((genre, i) => {
                   return (
+                    
+                    
                     <div className="form-check" key={genre}>
                       <input
                         type="checkbox"
@@ -71,15 +80,16 @@ class CatalogSidebar extends Component {
                         onChange={(e) => {
                           if (e.target.checked) {
                             this.props.dispatch(filterGenres(e.target.value));
-                            console.log('CHECK : ',e.target.value)
+                            console.log('CHECK : ', e.target.value)
                           } else {
                             this.props.dispatch(removeFilterGenres(e.target.value))
-                            console.log('UNCHECK : ',e.target.value)
+                            console.log('UNCHECK : ', e.target.value)
                           }
                         }}
                       />
                       <label className="form-check-label" htmlFor="exampleCheck1">{genre}</label>
                     </div>
+                    
                   )
                 })}
               </div>
@@ -96,7 +106,7 @@ class CatalogSidebar extends Component {
                   aria-expanded="false"
                   aria-controls="collapseTwo"
                 >
-                  MOODS <span className="badge badge-pill badge-secondary ml-3">{filters.moods.length}</span>
+                  MOODS <span className="badge badge-pill badge-custom ml-3">{filters.moods.length}</span>
                 </button>
               </h5>
             </div>
@@ -113,10 +123,10 @@ class CatalogSidebar extends Component {
                         onChange={(e) => {
                           if (e.target.checked) {
                             this.props.dispatch(filterMoods(e.target.value));
-                            console.log('CHECK : ',e.target.value)
+                            console.log('CHECK : ', e.target.value)
                           } else {
                             this.props.dispatch(removeFilterMoods(e.target.value))
-                            console.log('UNCHECK : ',e.target.value)
+                            console.log('UNCHECK : ', e.target.value)
                           }
                         }}
                       />
@@ -144,6 +154,17 @@ class CatalogSidebar extends Component {
             </div>
             <div id="collapseThree" className="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
               <div className="card-body">
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={this.state.checked}
+                      onChange={this.handleChange('checkedA')}
+                      value="checkedA"
+                      
+                    />
+                  }
+                  label="Primary"
+                />
               </div>
             </div>
           </div>
@@ -180,7 +201,7 @@ class CatalogSidebar extends Component {
                   aria-expanded="false"
                   aria-controls="collapseThree"
                 >
-                  ARTISTS <span className="badge badge-pill badge-secondary ml-3">{filters.artists.length}</span>
+                  ARTISTS <span className="badge badge-pill badge-custom ml-3">{filters.artists.length}</span>
                 </button>
               </h5>
             </div>
@@ -195,7 +216,7 @@ class CatalogSidebar extends Component {
                         id={artist}
                         value={artist}
                         onChange={(e) => {
-                          if(e.target.checked) {
+                          if (e.target.checked) {
                             this.props.dispatch(filterArtists(e.target.value))
                           } else {
                             this.props.dispatch(removeFilterArtists(e.target.value))
@@ -221,7 +242,7 @@ class CatalogSidebar extends Component {
                   aria-expanded="false"
                   aria-controls="collapseThree"
                 >
-                  INSTRUMENTS <span className="badge badge-pill badge-secondary ml-3">{filters.instruments.length}</span>
+                  INSTRUMENTS <span className="badge badge-pill badge-custom ml-3">{filters.instruments.length}</span>
                 </button>
               </h5>
             </div>
@@ -236,7 +257,7 @@ class CatalogSidebar extends Component {
                         id={instrument}
                         value={instrument}
                         onChange={(e) => {
-                          if(e.target.checked) {
+                          if (e.target.checked) {
                             this.props.dispatch(filterInstruments(e.target.value))
                           } else {
                             this.props.dispatch(removeFilterInstruments(e.target.value))

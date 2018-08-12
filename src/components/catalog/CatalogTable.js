@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import _ from 'lodash'
 import './table.css'
 import style from './CatalogTableStyle'
 import { connect } from 'react-redux'
@@ -18,16 +19,34 @@ class CatalogTable extends Component {
         this.state = {
             pictureFixture: '',
            
+
         };
     }
 
+    getGenre(data) {
+        return (
+           data[0].value
+        )
+    }
     componentWillMount() {
         this.props.getSounds()
     }
 
     componentWillReceiveProps(nextProps) {
-        //console.log('CWM : ', this.props.sounds)
         
+       
+    }
+
+    componentDidUpdate() {
+        const sounds = this.props.sounds
+        const filters = this.props.filters
+
+        const filteredSounds = sounds.filter(sound => 
+            this.getGenre(sound.genres) === this.props.filters.genres.toString()
+        
+        ) 
+        console.log('FILTERED SOUNDS : ', filteredSounds)
+
     }
 
 
@@ -92,18 +111,23 @@ class CatalogTable extends Component {
         const SubComponent = (props) => {
             const author = sounds[props.id].author
             const filename = sounds[props.id].filename
+            const genres = sounds[props.id].genres
+            const moods = sounds[props.id].moods
+            const instruments = sounds[props.id].instruments
             const defaultTrack = '../data/audioDefault.mpeg'
 
             return (
+               
                 <div className="row" style={style.subComponent}>
+                
                     <div className="col-2 pt-3">
                         <img src={Album} alt="album" width="200px" />
                     </div>
                     <div className="col-10 pt-3" >
                         <div className="pb-3">Audio filename : {filename ? filename : 'track not found !'} <br /><span>By Author : {author ? author : 'author not found !'}</span> </div>
-                        <div className="pb-3">Genres : {getTags(sounds[props.id].genres)} </div>
-                        <div className="pb-3">Moods : {getTags(sounds[props.id].moods)}</div>
-                        <div className="pb-3">Instruments : {getTags(sounds[props.id].instruments) ? getTags(sounds[props.id].instruments) : ''}</div>
+                        <div className="pb-3">Genres : {getTags(genres) ? getTags(genres) : '' } </div>
+                        <div className="pb-3">Moods : {getTags(moods) ? getTags(moods) : ''}</div>
+                        <div className="pb-3">Instruments : {getTags(instruments) ? getTags(instruments) : ''}</div>
                         <div className='parent-component' style={style.wave}><WaveSurfer src={!storageTrack ? defaultTrack : storageTrack} /></div>
                     </div>
                 </div>

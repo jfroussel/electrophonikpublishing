@@ -72,6 +72,7 @@ class CatalogSidebar extends Component {
                     <div className="form-check" key={genre}>
                       <input
                         type="checkbox"
+                        
                         value={genre}
                         className="form-check-input"
                         id={genre}

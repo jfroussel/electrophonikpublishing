@@ -15,8 +15,6 @@ import {
 import style from './CatalogSidebarStyle'
 import { genres, moods, artists, instruments, bpm } from './CatalogConstants'
 
-
-
 class CatalogSidebar extends Component {
 
   constructor(props) {
@@ -38,16 +36,13 @@ class CatalogSidebar extends Component {
     this.setState({ checked: event.target.checked });
   }
 
-
   render() {
     const { filters } = this.props
-    console.log('FILTERS : ',filters)
     return (
       <div style={style.containerSidebar}>
         <div className="accordion" id="catalog-sidebar">
           <div className="card card-catalog">
             <div className="card-header" id="headingOne">
-
               <h5 className="mb-0">
                 <button
                   className="btn btn-link collapsed"
@@ -72,7 +67,6 @@ class CatalogSidebar extends Component {
                     <div className="form-check" key={genre}>
                       <input
                         type="checkbox"
-
                         value={genre}
                         className="form-check-input"
                         id={genre}
@@ -147,7 +141,6 @@ class CatalogSidebar extends Component {
                   aria-controls="collapseThree"
                 >
                   BPM <span className="badge badge-pill badge-custom ml-3">{filters.bpm.length}</span>
-
                 </button>
               </h5>
             </div>
@@ -156,12 +149,12 @@ class CatalogSidebar extends Component {
                 {bpm.map((el, i) => {
                   console.log(el)
                   return (
-                    <div className="form-check" key={el}>
+                    <div className="form-check" key={el.name}>
                       <input
                         type="checkbox"
                         className="form-check-input"
-                        value={el}
-                        id={el}
+                        value={el.name}
+                        id={el.name}
                         onChange={(e) => {
                           if (e.target.checked) {
                             this.props.dispatch(filterBpm(e.target.value));
@@ -172,14 +165,13 @@ class CatalogSidebar extends Component {
                           }
                         }}
                       />
-                      <label className="form-check-label" htmlFor="exampleCheck1">{el}</label>
+                      <label className="form-check-label" htmlFor="exampleCheck1">{el.name }  {el.value}</label>
                     </div>
                   )
                 })}
               </div>
             </div>
           </div>
-
           <div className="card card-catalog">
             <div className="card-header" id="headingFour">
               <h5 className="mb-0">
@@ -200,7 +192,6 @@ class CatalogSidebar extends Component {
               </div>
             </div>
           </div>
-
           <div className="card card-catalog">
             <div className="card-header" id="headingFive">
               <h5 className="mb-0">
@@ -241,7 +232,6 @@ class CatalogSidebar extends Component {
               </div>
             </div>
           </div>
-
           <div className="card card-catalog">
             <div className="card-header" id="headingSix">
               <h5 className="mb-0">
@@ -293,6 +283,5 @@ const mapStateToProps = (state) => {
     filters: state.filters
   }
 }
-
 
 export default connect(mapStateToProps)(CatalogSidebar)

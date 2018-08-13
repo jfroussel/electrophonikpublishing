@@ -18,12 +18,24 @@ class CatalogTable extends Component {
         super(props);
         this.state = {
             pictureFixture: '',
+            filteredSounds: '',
         };
     }
 
     getFilterSelect(data) {
         return (
             data[0].value
+        )
+    }
+
+    filtered(sounds) {
+        return (
+            sounds.filter(sound =>
+                this.getFilterSelect(sound.genres) === this.props.filters.genres.toString() ||
+                this.getFilterSelect(sound.moods) === this.props.filters.moods.toString() ||
+                this.getFilterSelect(sound.instruments) === this.props.filters.instruments.toString()
+            )
+            
         )
     }
 
@@ -40,13 +52,7 @@ class CatalogTable extends Component {
         const filters = this.props.filters
         //const filtersChildrenNames = Object.getOwnPropertyNames(filters)
         const sounds = this.props.sounds
-        let filteredSounds = []
-        filteredSounds = sounds.filter(sound =>
-            this.getFilterSelect(sound.genres) === this.props.filters.genres.toString() ||
-            this.getFilterSelect(sound.moods) === this.props.filters.moods.toString() ||
-            this.getFilterSelect(sound.instruments) === this.props.filters.instruments.toString()
-        )
-        console.log('FILTERED SOUNDS : ', filteredSounds)
+        this.filtered(sounds)
     }
 
 
@@ -128,7 +134,6 @@ class CatalogTable extends Component {
                         <div className="pb-3">Genres : {getTags(genres) ? getTags(genres) : ''} </div>
                         <div className="pb-3">Moods : {getTags(moods) ? getTags(moods) : ''}</div>
                         <div className="pb-3">Instruments : {getTags(instruments) ? getTags(instruments) : ''}</div>
-
                         <div className='parent-component' style={style.wave}><WaveSurfer src={!storageTrack ? defaultTrack : storageTrack} /></div>
                     </div>
                 </div>
@@ -177,7 +182,7 @@ class CatalogTable extends Component {
                                     },
                                     {
                                         Header: "Length",
-                                        accessor: "length",
+                                        accessor: "lenght",
                                     },
                                     {
                                         Header: "BPM",

@@ -34,7 +34,7 @@ const moods = [
   'Happy / Cheerful',
 ]
 const artists = ['jeff', 'olive']
-
+/*
 const bpm = [
   'Slow',
   'Slow medium',
@@ -42,6 +42,15 @@ const bpm = [
   'Medium hight',
   'Hight',
 ]
+*/
+const bpm = [
+  {name:'Slow', value:'(0-50)'},
+  {name:'Slow medium', value:'(50-100)'},
+  {name:'Medium', value:'(100-150)'},
+  {name:'Medium hight', value:'(150-200)'},
+  {name:'Hight', value:'(200 +)'},
+]
+
 const instruments = [
   'Accordion',
   'Bagpipes',

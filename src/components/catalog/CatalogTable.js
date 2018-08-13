@@ -18,7 +18,6 @@ class CatalogTable extends Component {
         super(props);
         this.state = {
             pictureFixture: '',
-
         };
     }
 
@@ -27,8 +26,6 @@ class CatalogTable extends Component {
             data[0].value
         )
     }
-
-   
 
     componentWillMount() {
         this.props.getSounds()
@@ -47,12 +44,9 @@ class CatalogTable extends Component {
         filteredSounds = sounds.filter(sound =>
             this.getFilterSelect(sound.genres) === this.props.filters.genres.toString() ||
             this.getFilterSelect(sound.moods) === this.props.filters.moods.toString() ||
-            this.getFilterSelect(sound.instruments) === this.props.filters.instruments.toString() ||
-            this.getFilterSelect(sound.bpm) === this.props.filters.bpm.toString()
+            this.getFilterSelect(sound.instruments) === this.props.filters.instruments.toString()
         )
         console.log('FILTERED SOUNDS : ', filteredSounds)
-        
-
     }
 
 
@@ -120,7 +114,6 @@ class CatalogTable extends Component {
             const genres = sounds[props.id].genres
             const moods = sounds[props.id].moods
             const instruments = sounds[props.id].instruments
-            const bpm = sounds[props.id].bpm
             const defaultTrack = '../data/audioDefault.mpeg'
 
             return (
@@ -135,7 +128,7 @@ class CatalogTable extends Component {
                         <div className="pb-3">Genres : {getTags(genres) ? getTags(genres) : ''} </div>
                         <div className="pb-3">Moods : {getTags(moods) ? getTags(moods) : ''}</div>
                         <div className="pb-3">Instruments : {getTags(instruments) ? getTags(instruments) : ''}</div>
-                        <div className="pb-3">Bpm : {getTags(bpm) ? getTags(bpm) : ''}</div>
+
                         <div className='parent-component' style={style.wave}><WaveSurfer src={!storageTrack ? defaultTrack : storageTrack} /></div>
                     </div>
                 </div>

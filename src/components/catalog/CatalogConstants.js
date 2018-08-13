@@ -40,7 +40,7 @@ const bpm = [
   'Slow medium',
   'Medium',
   'Medium hight',
-  'Hight'
+  'Hight',
 ]
 const instruments = [
   'Accordion',

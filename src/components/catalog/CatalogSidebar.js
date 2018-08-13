@@ -41,7 +41,7 @@ class CatalogSidebar extends Component {
 
   render() {
     const { filters } = this.props
-
+    console.log('FILTERS : ',filters)
     return (
       <div style={style.containerSidebar}>
         <div className="accordion" id="catalog-sidebar">
@@ -69,8 +69,6 @@ class CatalogSidebar extends Component {
               <div className="card-body">
                 {genres.map((genre, i) => {
                   return (
-
-
                     <div className="form-check" key={genre}>
                       <input
                         type="checkbox"
@@ -90,7 +88,6 @@ class CatalogSidebar extends Component {
                       />
                       <label className="form-check-label" htmlFor="exampleCheck1">{genre}</label>
                     </div>
-
                   )
                 })}
               </div>
@@ -156,14 +153,15 @@ class CatalogSidebar extends Component {
             </div>
             <div id="collapseThree" className="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
               <div className="card-body">
-                {bpm.map((bpm, i) => {
+                {bpm.map((el, i) => {
+                  console.log(el)
                   return (
-                    <div className="form-check" key={bpm}>
+                    <div className="form-check" key={el}>
                       <input
                         type="checkbox"
                         className="form-check-input"
-                        value={bpm}
-                        id={bpm}
+                        value={el}
+                        id={el}
                         onChange={(e) => {
                           if (e.target.checked) {
                             this.props.dispatch(filterBpm(e.target.value));
@@ -174,7 +172,7 @@ class CatalogSidebar extends Component {
                           }
                         }}
                       />
-                      <label className="form-check-label" htmlFor="exampleCheck1">{bpm}</label>
+                      <label className="form-check-label" htmlFor="exampleCheck1">{el}</label>
                     </div>
                   )
                 })}

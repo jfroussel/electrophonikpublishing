@@ -9,9 +9,11 @@ import {
   removeFilterInstruments,
   filterMoods,
   removeFilterMoods,
+  filterBpm,
+  removeFilterBpm,
 } from '../../actions/filters';
 import style from './CatalogSidebarStyle'
-import { genres, moods, artists, instruments } from './CatalogConstants'
+import { genres, moods, artists, instruments, bpm } from './CatalogConstants'
 
 
 
@@ -67,12 +69,12 @@ class CatalogSidebar extends Component {
               <div className="card-body">
                 {genres.map((genre, i) => {
                   return (
-                    
-                    
+
+
                     <div className="form-check" key={genre}>
                       <input
                         type="checkbox"
-                        
+
                         value={genre}
                         className="form-check-input"
                         id={genre}
@@ -88,7 +90,7 @@ class CatalogSidebar extends Component {
                       />
                       <label className="form-check-label" htmlFor="exampleCheck1">{genre}</label>
                     </div>
-                    
+
                   )
                 })}
               </div>
@@ -147,13 +149,35 @@ class CatalogSidebar extends Component {
                   aria-expanded="false"
                   aria-controls="collapseThree"
                 >
-                  BPM
+                  BPM <span className="badge badge-pill badge-custom ml-3">{filters.bpm.length}</span>
+
                 </button>
               </h5>
             </div>
             <div id="collapseThree" className="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
               <div className="card-body">
-                
+                {bpm.map((bpm, i) => {
+                  return (
+                    <div className="form-check" key={bpm}>
+                      <input
+                        type="checkbox"
+                        className="form-check-input"
+                        value={bpm}
+                        id={bpm}
+                        onChange={(e) => {
+                          if (e.target.checked) {
+                            this.props.dispatch(filterBpm(e.target.value));
+                            console.log('CHECK : ', e.target.value)
+                          } else {
+                            this.props.dispatch(removeFilterBpm(e.target.value))
+                            console.log('UNCHECK : ', e.target.value)
+                          }
+                        }}
+                      />
+                      <label className="form-check-label" htmlFor="exampleCheck1">{bpm}</label>
+                    </div>
+                  )
+                })}
               </div>
             </div>
           </div>

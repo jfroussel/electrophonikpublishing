@@ -3,7 +3,7 @@ const filtersReducerDefaultState = {
     moods: [],
     artists: [],
     instruments: [],
-    bpm: '',
+    bpm: [],
     length: '',
 
 };
@@ -69,6 +69,13 @@ export default (state = filtersReducerDefaultState, action) => {
             return {
                 ...state,
                 bpm: action.bpm
+            }
+
+        case 'REMOVE_FILTER_BPM':
+            return {
+                ...state,
+                bpm: state.bpm.filter((item, index) => { return action.bpm !== item })
+
             }
         case 'FILTER_LENGTH':
             return {

@@ -34,6 +34,14 @@ const moods = [
   'Happy / Cheerful',
 ]
 const artists = ['jeff', 'olive']
+
+const bpm = [
+  'Slow',
+  'Slow medium',
+  'Medium',
+  'Medium hight',
+  'Hight'
+]
 const instruments = [
   'Accordion',
   'Bagpipes',
@@ -86,4 +94,5 @@ export {
     moods,
     artists,
     instruments,
+    bpm,
 }

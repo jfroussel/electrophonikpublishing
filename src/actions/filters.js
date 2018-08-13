@@ -44,6 +44,11 @@ export const filterBpm = (bpm = []) => ({
     bpm
 });
 
+export const removeFilterBpm = (bpm = []) => ({
+    type: 'REMOVE_FILTER_BPM',
+    bpm
+});
+
 export const filterLength = (length = []) => ({
     type: 'FILTER_LENGTH',
     length

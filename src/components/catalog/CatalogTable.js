@@ -18,34 +18,40 @@ class CatalogTable extends Component {
         super(props);
         this.state = {
             pictureFixture: '',
-           
 
         };
     }
 
-    getGenre(data) {
+    getFilterSelect(data) {
         return (
-           data[0].value
+            data[0].value
         )
     }
+
+   
+
     componentWillMount() {
         this.props.getSounds()
     }
 
     componentWillReceiveProps(nextProps) {
         
-       
+
     }
 
     componentDidUpdate() {
-        const sounds = this.props.sounds
         const filters = this.props.filters
-
-        const filteredSounds = sounds.filter(sound => 
-            this.getGenre(sound.genres) === this.props.filters.genres.toString()
-        
-        ) 
+        //const filtersChildrenNames = Object.getOwnPropertyNames(filters)
+        const sounds = this.props.sounds
+        let filteredSounds = []
+        filteredSounds = sounds.filter(sound =>
+            this.getFilterSelect(sound.genres) === this.props.filters.genres.toString() ||
+            this.getFilterSelect(sound.moods) === this.props.filters.moods.toString() ||
+            this.getFilterSelect(sound.instruments) === this.props.filters.instruments.toString() ||
+            this.getFilterSelect(sound.bpm) === this.props.filters.bpm.toString()
+        )
         console.log('FILTERED SOUNDS : ', filteredSounds)
+        
 
     }
 
@@ -114,20 +120,22 @@ class CatalogTable extends Component {
             const genres = sounds[props.id].genres
             const moods = sounds[props.id].moods
             const instruments = sounds[props.id].instruments
+            const bpm = sounds[props.id].bpm
             const defaultTrack = '../data/audioDefault.mpeg'
 
             return (
-               
+
                 <div className="row" style={style.subComponent}>
-                
+
                     <div className="col-2 pt-3">
                         <img src={Album} alt="album" width="200px" />
                     </div>
                     <div className="col-10 pt-3" >
                         <div className="pb-3">Audio filename : {filename ? filename : 'track not found !'} <br /><span>By Author : {author ? author : 'author not found !'}</span> </div>
-                        <div className="pb-3">Genres : {getTags(genres) ? getTags(genres) : '' } </div>
+                        <div className="pb-3">Genres : {getTags(genres) ? getTags(genres) : ''} </div>
                         <div className="pb-3">Moods : {getTags(moods) ? getTags(moods) : ''}</div>
                         <div className="pb-3">Instruments : {getTags(instruments) ? getTags(instruments) : ''}</div>
+                        <div className="pb-3">Bpm : {getTags(bpm) ? getTags(bpm) : ''}</div>
                         <div className='parent-component' style={style.wave}><WaveSurfer src={!storageTrack ? defaultTrack : storageTrack} /></div>
                     </div>
                 </div>

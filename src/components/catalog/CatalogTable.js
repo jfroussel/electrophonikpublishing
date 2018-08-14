@@ -6,7 +6,6 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { getSounds } from '../../actions/sounds'
 import { getStorageTrack } from '../../actions/storageTrack'
-//import DefaultSound from './data/audioDefault.mpeg'
 import ReactTable from "react-table"
 import "react-table/react-table.css"
 import Album from '../../assets/jacquette.jpg'
@@ -59,6 +58,7 @@ class CatalogTable extends Component {
     render() {
 
         const { sounds, storageTrack } = this.props
+        const filteredSounds = this.filtered(sounds).length ? this.filtered(sounds) : sounds
 
         const onRowClick = (state, rowInfo, column, instance) => {
             return {
@@ -91,7 +91,7 @@ class CatalogTable extends Component {
 
         const Buy = () => {
             return (
-                <button type="button" className="btn btn-outline-warning">Buy 25€</button>
+                <button type="button" className="btn btn-warning">Buy 25€</button>
             )
         }
 
@@ -144,7 +144,7 @@ class CatalogTable extends Component {
             return (
                 <div>
                     <ReactTable
-                        data={sounds}
+                        data={filteredSounds}
                         columns={[
                             {
                                 columns: [

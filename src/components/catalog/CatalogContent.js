@@ -25,6 +25,10 @@ class CatalogContent extends Component {
     this.getCount()
   }
 
+  componentDidUpdate() {
+    
+  }
+
   getCount() {
     return (
       this.setState({ count: this.props.sounds.length })
@@ -33,7 +37,7 @@ class CatalogContent extends Component {
 
   render() {
     const { filters } = this.props
-   
+    
     const searchRequestItems = () => {
      
       if (filters) {

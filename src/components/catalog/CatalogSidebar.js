@@ -65,22 +65,25 @@ class CatalogSidebar extends Component {
                 {genres.map((genre, i) => {
                   return (
                     <div className="form-check" key={genre}>
+
                       <input
                         type="checkbox"
                         value={genre}
                         className="form-check-input"
                         id={genre}
                         onChange={(e) => {
+                          console.log(e.target)
                           if (e.target.checked) {
                             this.props.dispatch(filterGenres(e.target.value));
-                            console.log('CHECK : ', e.target.value)
                           } else {
                             this.props.dispatch(removeFilterGenres(e.target.value))
-                            console.log('UNCHECK : ', e.target.value)
                           }
                         }}
                       />
-                      <label className="form-check-label" htmlFor="exampleCheck1">{genre}</label>
+                      <label
+                        className="form-check-label"
+                        htmlFor="exampleCheck1"
+                      >{genre}</label>
                     </div>
                   )
                 })}
@@ -115,10 +118,8 @@ class CatalogSidebar extends Component {
                         onChange={(e) => {
                           if (e.target.checked) {
                             this.props.dispatch(filterMoods(e.target.value));
-                            console.log('CHECK : ', e.target.value)
                           } else {
                             this.props.dispatch(removeFilterMoods(e.target.value))
-                            console.log('UNCHECK : ', e.target.value)
                           }
                         }}
                       />
@@ -147,7 +148,7 @@ class CatalogSidebar extends Component {
             <div id="collapseThree" className="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
               <div className="card-body">
                 {bpm.map((el, i) => {
-                  console.log(el)
+
                   return (
                     <div className="form-check" key={el.name}>
                       <input
@@ -158,14 +159,12 @@ class CatalogSidebar extends Component {
                         onChange={(e) => {
                           if (e.target.checked) {
                             this.props.dispatch(filterBpm(e.target.value));
-                            console.log('CHECK : ', e.target.value)
                           } else {
                             this.props.dispatch(removeFilterBpm(e.target.value))
-                            console.log('UNCHECK : ', e.target.value)
                           }
                         }}
                       />
-                      <label className="form-check-label" htmlFor="exampleCheck1">{el.name }  {el.value}</label>
+                      <label className="form-check-label" htmlFor="exampleCheck1">{el.name}  {el.value}</label>
                     </div>
                   )
                 })}

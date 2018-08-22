@@ -19,39 +19,56 @@ class CatalogTable extends Component {
             pictureFixture: '',
             filteredSounds: '',
         };
+
+        this.getTags = this.getTags.bind(this)
     }
 
     getFilterSelect(data) {
         return (
             data[0].value
+           
         )
     }
 
+ 
     filtered(sounds) {
         return (
             sounds.filter(sound =>
                 this.getFilterSelect(sound.genres) === this.props.filters.genres.toString() ||
                 this.getFilterSelect(sound.moods) === this.props.filters.moods.toString() ||
                 this.getFilterSelect(sound.instruments) === this.props.filters.instruments.toString()
+                
             )
             
         )
     }
-
+   
     componentWillMount() {
         this.props.getSounds()
     }
 
     componentWillReceiveProps(nextProps) {
-        
+
 
     }
 
     componentDidUpdate() {
         const filters = this.props.filters
-        //const filtersChildrenNames = Object.getOwnPropertyNames(filters)
         const sounds = this.props.sounds
         this.filtered(sounds)
+    }
+
+    getTags(tags, i) {
+        if (tags) {
+            
+            return (
+                tags.map((tag, i) => {
+                    return (
+                        <span className="ml-2 pl-2 pt-1 pb-1 pr-2" key={i} style={style.tags}>{tag.value}</span>
+                    )
+                })
+            )
+        }
     }
 
 
@@ -61,33 +78,24 @@ class CatalogTable extends Component {
         const filteredSounds = this.filtered(sounds).length ? this.filtered(sounds) : sounds
 
         const onRowClick = (state, rowInfo, column, instance) => {
+           
             return {
                 onClick: (e, handleOriginal) => {
-
+                   
                     let filename = ''
                     const id = rowInfo.index
                     const author = state.data[id].author
                     filename = state.data[id].filename
+                    
                     filename && this.props.getStorageTrack(author, filename)
-
+                    
                     if (handleOriginal) {
                         handleOriginal()
+                       
                     }
                 }
             };
         };
-
-        const getTags = (tags, i) => {
-            if (tags) {
-                return (
-                    tags.map((tag, i) => {
-                        return (
-                            <span className="ml-2 pl-2 pt-1 pb-1 pr-2" key={i} style={style.tags}>{tag.value}</span>
-                        )
-                    })
-                )
-            }
-        }
 
         const Buy = () => {
             return (
@@ -115,32 +123,30 @@ class CatalogTable extends Component {
         }
 
         const SubComponent = (props) => {
-            const author = sounds[props.id].author
-            const filename = sounds[props.id].filename
-            const genres = sounds[props.id].genres
-            const moods = sounds[props.id].moods
-            const instruments = sounds[props.id].instruments
+            const author = props.author
+            const filename = props.filename
+            const genres = props.genres
+            const moods = props.moods
+            const instruments = props.instruments
             const defaultTrack = '../data/audioDefault.mpeg'
 
             return (
-
                 <div className="row" style={style.subComponent}>
-
                     <div className="col-2 pt-3">
                         <img src={Album} alt="album" width="200px" />
                     </div>
                     <div className="col-10 pt-3" >
                         <div className="pb-3">Audio filename : {filename ? filename : 'track not found !'} <br /><span>By Author : {author ? author : 'author not found !'}</span> </div>
-                        <div className="pb-3">Genres : {getTags(genres) ? getTags(genres) : ''} </div>
-                        <div className="pb-3">Moods : {getTags(moods) ? getTags(moods) : ''}</div>
-                        <div className="pb-3">Instruments : {getTags(instruments) ? getTags(instruments) : ''}</div>
+                        <div className="pb-3">Genres : {this.getTags(genres) ? this.getTags(genres) : ''} </div>
+                        <div className="pb-3">Moods : {this.getTags(moods) ? this.getTags(moods) : ''}</div>
+                        <div className="pb-3">Instruments : {this.getTags(instruments) ? this.getTags(instruments) : ''}</div>
                         <div className='parent-component' style={style.wave}><WaveSurfer src={!storageTrack ? defaultTrack : storageTrack} /></div>
                     </div>
                 </div>
             )
         }
 
-        if (sounds) {
+        if (filteredSounds) {
             return (
                 <div>
                     <ReactTable
@@ -219,20 +225,17 @@ class CatalogTable extends Component {
                         defaultPageSize={10}
                         style={style.table}
                         className="-striped -highlight"
-                        SubComponent={(row) => <div style={{ padding: '10px' }}><SubComponent id={row.index} /></div>}
+                        SubComponent={(row) => <div style={{ padding: '10px' }}><SubComponent id={row.index} genres={row.original.genres} author={row.original.author} filename={row.original.filename} moods={row.original.moods} instruments={row.original.instruments} /></div>}
                         getTdProps={onRowClick}
                         collapseOnDataChange={false}
                         collapseOnSortingChange={true}
-
+                        showPaginationBottom
                     />
                     <br />
 
                 </div>
             );
-
         }
-
-
     }
 }
 

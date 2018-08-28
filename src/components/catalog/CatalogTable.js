@@ -19,30 +19,26 @@ class CatalogTable extends Component {
             pictureFixture: '',
             filteredSounds: '',
         };
-
         this.getTags = this.getTags.bind(this)
     }
 
     getFilterSelect(data) {
         return (
             data[0].value
-           
         )
     }
 
- 
+
     filtered(sounds) {
         return (
             sounds.filter(sound =>
                 this.getFilterSelect(sound.genres) === this.props.filters.genres.toString() ||
                 this.getFilterSelect(sound.moods) === this.props.filters.moods.toString() ||
                 this.getFilterSelect(sound.instruments) === this.props.filters.instruments.toString()
-                
             )
-            
         )
     }
-   
+
     componentWillMount() {
         this.props.getSounds()
     }
@@ -56,11 +52,12 @@ class CatalogTable extends Component {
         const filters = this.props.filters
         const sounds = this.props.sounds
         this.filtered(sounds)
+
     }
 
     getTags(tags, i) {
         if (tags) {
-            
+
             return (
                 tags.map((tag, i) => {
                     return (
@@ -74,24 +71,25 @@ class CatalogTable extends Component {
 
     render() {
 
-        const { sounds, storageTrack } = this.props
+        const { sounds, storageTrack, filters } = this.props
         const filteredSounds = this.filtered(sounds).length ? this.filtered(sounds) : sounds
-
+        console.log('SOUNDS :::::', sounds)
+        console.log('FILTERS :::: ', filters)
         const onRowClick = (state, rowInfo, column, instance) => {
-           
+
             return {
                 onClick: (e, handleOriginal) => {
-                   
+
                     let filename = ''
                     const id = rowInfo.index
                     const author = state.data[id].author
                     filename = state.data[id].filename
-                    
+
                     filename && this.props.getStorageTrack(author, filename)
-                    
+
                     if (handleOriginal) {
                         handleOriginal()
-                       
+
                     }
                 }
             };

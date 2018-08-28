@@ -24,13 +24,14 @@ class CatalogSidebar extends Component {
       checked: false
     }
   }
-
+/*
   onMouseOver() {
     //this.setState({ mouseOverSidebar: true })
     return (
       console.log('on mouse over')
     )
   }
+*/
 
   handleChange = name => event => {
     this.setState({ checked: event.target.checked });
@@ -38,6 +39,7 @@ class CatalogSidebar extends Component {
 
   render() {
     const { filters } = this.props
+
     return (
       <div style={style.containerSidebar}>
         <div className="accordion" id="catalog-sidebar">
@@ -51,7 +53,7 @@ class CatalogSidebar extends Component {
                   data-target="#collapseOne"
                   aria-expanded="true"
                   aria-controls="collapseOne"
-                  onMouseOver={this.onMouseOver}
+                  //onMouseOver={this.onMouseOver}
                 >
 
                   GENRES <span className="badge badge-pill badge-custom ml-3">{filters.genres.length}</span>
@@ -72,7 +74,7 @@ class CatalogSidebar extends Component {
                         className="form-check-input"
                         id={genre}
                         onChange={(e) => {
-                          console.log(e.target)
+                         
                           if (e.target.checked) {
                             this.props.dispatch(filterGenres(e.target.value));
                           } else {

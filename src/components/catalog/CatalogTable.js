@@ -72,8 +72,6 @@ class CatalogTable extends Component {
 
         const { sounds, storageTrack, filters } = this.props
         const filteredSounds = this.filtered(sounds).length ? this.filtered(sounds) : sounds
-        console.log('SOUNDS :::::', sounds)
-        console.log('FILTERS :::: ', filters)
         const onRowClick = (state, rowInfo, column, instance) => {
 
             return {

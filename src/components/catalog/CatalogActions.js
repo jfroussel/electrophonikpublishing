@@ -26,7 +26,8 @@ class CatalogActions extends Component {
     };
 
     onOpenModal = () => {
-        this.setState({ open: true });
+        //this.setState({ open: true });
+        alert('test')
     };
 
     onCloseModal = () => {
@@ -38,8 +39,8 @@ class CatalogActions extends Component {
         return (
             <div>
                 <div className="row">
-                    <div style={style.iconBox} className="ml-3" onClick={this.onOpenModal} >
-                        <i className="far fa-heart" style={style.icon}  ></i>
+                    <div style={style.iconBox} className="ml-3" >
+                        <i className="far fa-heart" style={style.icon} onClick={this.onOpenModal}  ></i>
                     </div>
                     <div style={style.iconBox} className="ml-2">
                         <i className="fas fa-download" style={style.icon} ></i>

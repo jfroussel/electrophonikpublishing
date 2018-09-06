@@ -21,22 +21,7 @@ const style = {
 
 class CatalogActions extends Component {
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            
-        }
-    }
-    
-
-   
-
-    onCloseModal = () => {
-        this.setState({ open: false });
-    };
-
     render() {
-        const { openModal } = this.state;
         return (
             <div>
                 <div className="row">
@@ -49,13 +34,7 @@ class CatalogActions extends Component {
                     <div style={style.iconBox} className="ml-2">
                         <i className="fas fa-music" style={style.icon} ></i>
                     </div>
-                    
-                    <div className="example">
-
-                       
-                    </div>
                 </div>
-
             </div>
         );
     }

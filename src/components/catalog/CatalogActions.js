@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import notLogged from '../messages/notLogged'
 
 const style = {
     icon: {
@@ -16,20 +17,32 @@ const style = {
         cursor: 'pointer'
     }
 }
+
+
+
 class CatalogActions extends Component {
+
+    isLogged() {
+        return (
+            alert("not logged")
+        )
+    }
 
     render() {
         return (
             <div>
                 <div className="row">
-                    <div style={style.iconBox} className="ml-3" >
-                        <i className="far fa-heart" style={style.icon} ></i>
+                    <div style={style.iconBox} className="ml-3"  >
+                        <i className="far fa-heart" style={style.icon}  ></i>
                     </div>
                     <div style={style.iconBox} className="ml-2">
                         <i className="fas fa-download" style={style.icon} ></i>
                     </div>
                     <div style={style.iconBox} className="ml-2">
                         <i className="fas fa-music" style={style.icon} ></i>
+                    </div>
+                    <div style={style.iconBox} className="ml-2">
+                       <button onClick={this.isLogged}>Click here</button>
                     </div>
                 </div>
             </div>

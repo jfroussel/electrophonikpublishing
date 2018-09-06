@@ -17,6 +17,7 @@
     "react-dom": "^16.4.1",
     "react-firebaseui": "^3.0.4",
     "react-i18next": "^7.9.0",
+    "react-modal": "^3.5.1",
     "react-notifications": "^1.4.3",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",

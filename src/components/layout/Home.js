@@ -4,7 +4,7 @@ import Features from './Features'
 import Footer from './Footer'
 import Contact from './Contact'
 import About from './About'
-import Works from './Works'
+import Projects from './Projects'
 import firebase from 'firebase'
 import 'firebase/auth'
 import Catalog from '../../containers/Catalog'
@@ -34,9 +34,10 @@ class Home extends Component {
                 <div>
                     <Features />
                     <Catalog />
+                    <Projects />
                     <About />
                     <Contact />
-                    <Works />
+                    
                     <Footer />
                 </div>
                 }

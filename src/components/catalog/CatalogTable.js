@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import _ from 'lodash'
 import './table.css'
 import style from './CatalogTableStyle'
 import { connect } from 'react-redux'
@@ -49,7 +48,7 @@ class CatalogTable extends Component {
     }
 
     componentDidUpdate() {
-        const filters = this.props.filters
+       
         const sounds = this.props.sounds
         this.filtered(sounds)
 

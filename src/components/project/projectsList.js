@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 //import { removeSound } from '../actions/sounds'
 import ReactTable from "react-table"
 import "react-table/react-table.css"
+
 import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css'
 

@@ -18,8 +18,8 @@ export const addProject = (projectData = {
             description: projectData.description,
             
         };
-
-        return firebase.database.ref('projects').push(project).then(ref => {
+       console.log('CLG :',project)
+        return firebase.database().ref('projects').push(project).then(ref => {
             dispatch(_addProject({
                 id: ref.key,
                 ...project

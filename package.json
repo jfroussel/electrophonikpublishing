@@ -20,6 +20,7 @@
     "react-modal": "^3.5.1",
     "react-notifications": "^1.4.3",
     "react-redux": "^5.0.7",
+    "react-responsive-modal": "^3.3.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
     "react-scrollable-anchor": "^0.6.1",

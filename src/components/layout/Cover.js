@@ -19,7 +19,7 @@ const style = {
         paddingTop: 150,
         fontWeight: '300',
     },
-   
+
 }
 
 class Cover extends Component {
@@ -31,9 +31,11 @@ class Cover extends Component {
             btnFindDev: 'Find a dev  !',
             userName: '',
             userEmail: '',
-            value: ''
+            value: '',
+            
         }
     }
+
 
     componentWillReceiveProps() {
         let user = firebase.auth().currentUser;
@@ -44,7 +46,7 @@ class Cover extends Component {
     }
 
     render() {
-
+       
         return (
             <ScrollableAnchor id={'cover'}>
                 <section className="cover-container pb-5" style={style.coverImage}>
@@ -52,11 +54,12 @@ class Cover extends Component {
                         <p className="text-left " style={style.baseline}>Explore Our<br />
                             Curated Royalty-Free<br />
                             Music Library
-                           
+
                         </p>
                         <AutoSearch />
+                       
                     </div>
-                   
+
                 </section>
             </ScrollableAnchor>
         )

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import notLogged from '../messages/notLogged'
+import Modal from 'react-responsive-modal';
 
 const style = {
     icon: {
@@ -21,18 +21,24 @@ const style = {
 
 
 class CatalogActions extends Component {
+    state = {
+        openModal: false,
+    };
 
-    isLogged() {
-        return (
-            alert("not logged")
-        )
-    }
+    onOpenModal = () => {
+        this.setState({ open: true });
+    };
+
+    onCloseModal = () => {
+        this.setState({ open: false });
+    };
 
     render() {
+        const { openModal } = this.state;
         return (
             <div>
                 <div className="row">
-                    <div style={style.iconBox} className="ml-3"  >
+                    <div style={style.iconBox} className="ml-3" onClick={this.onOpenModal} >
                         <i className="far fa-heart" style={style.icon}  ></i>
                     </div>
                     <div style={style.iconBox} className="ml-2">
@@ -41,10 +47,29 @@ class CatalogActions extends Component {
                     <div style={style.iconBox} className="ml-2">
                         <i className="fas fa-music" style={style.icon} ></i>
                     </div>
-                    <div style={style.iconBox} className="ml-2">
-                       <button onClick={this.isLogged}>Click here</button>
+                    <div className="example">
+
+                        <Modal
+                            open={openModal}
+                            onClose={this.onCloseModal}
+                            center
+                            classNames={{
+                                transitionEnter: 'transition-enter',
+                                transitionEnterActive: 'transition-enter-active',
+                                transitionExit: 'transition-exit-active',
+                                transitionExitActive: 'transition-exit-active',
+                            }}
+                            animationDuration={1000}
+                        >
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+                                pulvinar risus non risus hendrerit venenatis. Pellentesque sit amet
+                                hendrerit risus, sed porttitor quam.
+                            </p>
+                        </Modal>
                     </div>
                 </div>
+
             </div>
         );
     }

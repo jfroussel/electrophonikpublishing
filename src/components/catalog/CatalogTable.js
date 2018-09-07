@@ -1,5 +1,7 @@
 import React, { Component } from "react"
 import './table.css'
+import firebase from 'firebase';
+import 'firebase/auth'
 import style from './CatalogTableStyle'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -10,6 +12,7 @@ import "react-table/react-table.css"
 import Album from '../../assets/jacquette.jpg'
 import WaveSurfer from './WaveSurfer'
 import ReactTooltip from 'react-tooltip'
+import Modal from 'react-responsive-modal';
 
 class CatalogTable extends Component {
     constructor(props) {
@@ -17,9 +20,25 @@ class CatalogTable extends Component {
         this.state = {
             pictureFixture: '',
             filteredSounds: '',
+            open: false,
+            isLogged: false,
         };
         this.getTags = this.getTags.bind(this)
     }
+
+    onOpenModal = () => {
+        if(!this.state.isLogged) {
+            this.setState({ open: true });
+        } else {
+            alert("go to function")
+        }
+
+        
+    };
+
+    onCloseModal = () => {
+        this.setState({ open: false });
+    };
 
     getFilterSelect(data) {
         return (
@@ -40,6 +59,15 @@ class CatalogTable extends Component {
 
     componentWillMount() {
         this.props.getSounds()
+        var user = firebase.auth().currentUser;
+
+        if (user) {
+            this.setState({ isLogged: true })
+            console.log('USER IS LOGGED')
+        } else {
+            this.setState({ isLogged: false })
+            console.log('USER IS NOT LOGGED')
+        }
     }
 
     componentWillReceiveProps(nextProps) {
@@ -48,7 +76,7 @@ class CatalogTable extends Component {
     }
 
     componentDidUpdate() {
-       
+
         const sounds = this.props.sounds
         this.filtered(sounds)
 
@@ -68,12 +96,13 @@ class CatalogTable extends Component {
     }
 
 
-    render() {
 
-        const { sounds, storageTrack, filters } = this.props
+
+    render() {
+        console.log('IS LOGGED : ',this.state.isLogged)
+        const { open } = this.state;
+        const { sounds, storageTrack } = this.props
         const filteredSounds = this.filtered(sounds).length ? this.filtered(sounds) : sounds
-        console.log('SOUNDS :::::', sounds)
-        console.log('FILTERS :::: ', filters)
         const onRowClick = (state, rowInfo, column, instance) => {
 
             return {
@@ -94,9 +123,10 @@ class CatalogTable extends Component {
             };
         };
 
+
         const Buy = () => {
             return (
-                <button type="button" className="btn btn-warning">Buy 25€</button>
+                <button type="button" className="btn btn-warning" onClick={this.onOpenModal}>Buy 25€</button>
             )
         }
 
@@ -104,13 +134,13 @@ class CatalogTable extends Component {
             return (
                 <div>
                     <div className="row">
-                        <div style={style.iconBoxAction} className="ml-3" data-tip="like this track" >
+                        <div style={style.iconBoxAction} className="ml-3" data-tip="like this track" onClick={this.onOpenModal} >
                             <i className="far fa-heart" style={style.iconAction} ></i>
                         </div>
-                        <div style={style.iconBoxAction} className="ml-2" data-tip="Download this track">
+                        <div style={style.iconBoxAction} className="ml-2" data-tip="Download this track" onClick={this.onOpenModal}>
                             <i className="fas fa-download" style={style.iconAction} ></i>
                         </div>
-                        <div style={style.iconBoxAction} className="ml-2" data-tip="Add to favorites">
+                        <div style={style.iconBoxAction} className="ml-2" data-tip="Add to favorites" onClick={this.onOpenModal}>
                             <i className="fas fa-music" style={style.iconAction} ></i>
                         </div>
                     </div>
@@ -229,7 +259,22 @@ class CatalogTable extends Component {
                         showPaginationBottom
                     />
                     <br />
-
+                   
+                    <Modal
+                        open={open}
+                        onClose={this.onCloseModal}
+                        center
+                        classNames={{
+                            transitionEnter: 'transition-enter',
+                            transitionEnterActive: 'transition-enter-active',
+                            transitionExit: 'transition-exit-active',
+                            transitionExitActive: 'transition-exit-active',
+                        }}
+                        animationDuration={1000}
+                    >
+                            <h2>to use this feature you must register </h2>
+                            <button className="btn btn-lg btn-warning">Register now</button>
+                    </Modal>
                 </div>
             );
         }
@@ -247,7 +292,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({ getSounds, getStorageTrack }, dispatch)
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(CatalogTable);
 
